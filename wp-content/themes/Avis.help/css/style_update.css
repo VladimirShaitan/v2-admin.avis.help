@@ -1,0 +1,9 @@
+.chat-input input[type="submit"]{
+	background-image: url(/wp-content/themes/Avis.help/svg/send.svg);
+	width: 25px;
+    height: 25px;
+    transition: .2s;
+}
+.chat-input input[type="submit"]:hover, .chat-input input[type="submit"]:focus{
+	background-image: url(/wp-content/themes/Avis.help/svg/send2.svg);
+}

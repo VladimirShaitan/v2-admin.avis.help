@@ -14,7 +14,7 @@ $avis_lang = array(
     'profile_form_save'                =>  'SAVE',
     'profile_form_logout_btn'          => 'Logout',
 
-'login_title'                   =>'Customer Communication Platform',
+    'login_title'               => 'Customer Communication Platform',
     'login_form_login'          => 'Login',
     'login_form_pass'           => 'Password',
     'login_form_remember'       => 'Remember me',
@@ -138,6 +138,16 @@ $avis_lang = array(
     /* Tech messages */
 
     'success_send_promo_mob' => 'Promo code has been successfully sent',
-    'failure_send_promo_mob' => 'An error occurred while sending the promotional code'
+    'failure_send_promo_mob' => 'An error occurred while sending the promotional code',
 
+    /* Registration */
+
+    'reg_title'             => 'Registration',
+    'reg_form_login_btn'    => 'Register',
+    'reg_form_first_name'   => 'First name',
+    'reg_form_last_name'    => 'Last name', 
+    'reg_form_email'        => 'Email',
+    'reg_form_phone'        => 'Phone',
+    'reg-error'             => 'An error occurred while registration',
+    'reg-success'           => 'You were successfully registered'
 );

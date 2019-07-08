@@ -556,3 +556,17 @@ function upload_branch_logo(){
     print_r(json_encode($movefile));
 	wp_die();
 }
+
+
+// avis register
+add_action('wp_ajax_avis_register', 'avis_register');
+add_action('wp_ajax_nopriv_avis_register', 'avis_register');
+function avis_register(){
+	global $avis_helper;
+	parse_str($_POST['data'], $reg_data);
+	$reg_data['username'] = $reg_data['email'];
+	$reg_data['role'] = "ROLE_ADMIN";
+	$reg_resp = $avis_helper->register(json_encode($reg_data));
+	print_r($reg_data);
+	wp_die();
+}

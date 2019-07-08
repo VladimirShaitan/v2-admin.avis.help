@@ -7,3 +7,23 @@
 .chat-input input[type="submit"]:hover, .chat-input input[type="submit"]:focus{
 	background-image: url(/wp-content/themes/Avis.help/svg/send2.svg);
 }
+
+.registration-page .login_text{
+	padding: 35px;
+}
+
+.registration-page .ms{
+    text-align: center;
+    width: 100%;
+    border-radius: 5px;
+    color: white;
+    padding: 3px 0;
+    margin: 15px 0 0;
+}
+.registration-page .mes-success {
+    background: rgba(0, 128, 0, 0.65);
+}
+
+.registration-page .mes-error{
+    background: #ee6a6a;
+} 

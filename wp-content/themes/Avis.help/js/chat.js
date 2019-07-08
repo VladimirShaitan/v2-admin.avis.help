@@ -80,7 +80,7 @@ let message_handler = {
 
 
 	function connect(){	
-		client = Stomp.client('ws://qrticket-env.pymmzmsf4z.eu-west-3.elasticbeanstalk.com/ws/websocket');
+		client = Stomp.client('wss://qrticket-env.pymmzmsf4z.eu-west-3.elasticbeanstalk.com/ws/websocket');
 
 		client.ws.addEventListener('open', function(){
 			console.log('connection open');

@@ -20,7 +20,7 @@
 			}
 	   }
 
-    	private $api_url = 'http://qrticket-env.pymmzmsf4z.eu-west-3.elasticbeanstalk.com';
+    	private $api_url = 'https://qrticket-env.pymmzmsf4z.eu-west-3.elasticbeanstalk.com';
     	private $request_headers = array("accept: */*", "Content-Type: application/json", "Connection: close");
         private $request_headers_file = array("accept: */*", "Content-Type: multipart/form-data");
 
@@ -35,7 +35,6 @@
 			'delete_branch' => '/api/v0/branch/deleteBranch/',
             'get_statistic' => '/api/v0/branch/getStatistic',
             'get_stats' => '/api/v0/branch/getStats/',
-            // 'get_stats_by_type' => '/api/v0/branch/getGraphStatByType/',
             'save_logo' => '/api/v0/branch/update_branch_avatar'
 		);
 
@@ -277,6 +276,13 @@
         public function send_prmocode_mob($promo_data){
             $url = $this->api_url.$this->promocodes['send_prmocode_mob'].'?promoId='.$promo_data['promocode_id'].'&recipient='.$promo_data['recipient'];
             $result = $this->curl_request($url, $this->request_authorized_header, false, 'post');
+            return $result;
+        }
+
+
+        public function register($register_data){
+            $url = $this->api_url.$this->auth['register_user'];
+            $result = $this->curl_request($url, $this->request_headers, $register_data, 'post');
             return $result;
         }
 

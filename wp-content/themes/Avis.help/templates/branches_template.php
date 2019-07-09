@@ -90,7 +90,8 @@
       </div>
 
         </div>
-        <div class="col-4">
+
+        <div id="create_branch_wrapper" class="col-4 <?php if(empty($company)){echo 'hidden'; } ?>">
             <div class="acc-home-wrapper branches-form-wrapper">
               <h4><?php echo $avis_lang['your_branch'];?></h4>
               <form>

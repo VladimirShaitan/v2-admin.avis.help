@@ -126,6 +126,17 @@ $avis_lang = array(
     /* Tech messages */
 
     'success_send_promo_mob' => 'Промо-код был успешно отправлен',
-    'failure_send_promo_mob' => 'Произошла ошибка при отправке промокода'
+    'failure_send_promo_mob' => 'Произошла ошибка при отправке промокода',
+
+    /* Registration */
+
+    'reg_title'             => 'Регистрация',
+    'reg_form_login_btn'    => 'Создать профиль',
+    'reg_form_first_name'   => 'Имя',
+    'reg_form_last_name'    => 'Фамилия', 
+    'reg_form_email'        => 'Email',
+    'reg_form_phone'        => 'Телефон',
+    'reg-error'             => 'Возникла ошибка во время регистрации',
+    'reg-success'           => 'Вы были успешно зарегистрированы'
 
 );

@@ -347,7 +347,6 @@ if(qs('.branches-list-holder') != null){
 		}
 	})
 
-	if(qs('.branch_header') != null){
 		qs('#branches-list-holder').addEventListener('change', function(e){
 			var form = jQuery(e.target.form)[0];
 		    var data = new FormData(form);
@@ -406,14 +405,6 @@ if(qs('.branches-list-holder') != null){
 		    }
 
 		});
-		// qs('#branches-list-holder').addEventListener('submit', function(e){
-		// 	e.preventDefault();
-
-
-
-
-		// })
-	}
 
 
 }
@@ -523,6 +514,10 @@ if(qs('#company_name') !=  null){
 	        timeout: 600000,
 	        success: function (data) {
 	            // success
+	            console.log('asdasdasdasdasdasdasdasdasd');
+	            if( qs('#create_branch_wrapper').classList.contains('hidden') ){
+	            	qs('#create_branch_wrapper').classList.remove('hidden') 
+	            }
 	        },
 	    });
 

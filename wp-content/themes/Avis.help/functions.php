@@ -129,27 +129,27 @@ function login_user(){
 	$page_url = get_cur_loc_url(get_option('page_on_front'));
 	parse_str($_POST['log_info'], $log_arr);
 
-	if(isset($log_arr['remember'])){
-		$remember = true;
-	} else {
-		$remember = false;
-	}
+	// if(isset($log_arr['remember'])){
+	// 	$remember = true;
+	// } else {
+	// 	$remember = false;
+	// }
 
 
 
-	$creds = array(
-		'user_login'    => $log_arr['email'],
-        'user_password' => $log_arr['password'],
-        'remember'      => $remember
-	);	
+	// $creds = array(
+	// 	'user_login'    => $log_arr['email'],
+ //        'user_password' => $log_arr['password'],
+ //        'remember'      => $remember
+	// );	
 
 	
 	
 
 
-	if(is_wp_error(wp_signon( $creds, true ))){
-		echo false;
-	} else { 
+	// if(is_wp_error(wp_signon( $creds, true ))){
+	// 	echo false;
+	// } else { 
 
 		// avis_API login
 		$arr_avis_credentials = array('password' => $log_arr['password'], 'usernameOrEmail' => $log_arr['email']);
@@ -164,7 +164,7 @@ function login_user(){
 
 
 		print_r(json_encode(array('url' => $page_url)));
-	}
+	// }
 
 	// print_r('asdЫasda');
 	// wp_die();
@@ -208,6 +208,7 @@ add_theme_support( 'custom-logo', [
 
 
 add_action('wp_ajax_add_branch', 'add_branch');
+add_action('wp_ajax_nopriv_add_branch', 'add_branch');
 function add_branch(){
 	global $avis_helper;
 	// $default_img = '';
@@ -237,6 +238,7 @@ function add_branch(){
 }
 
 add_action('wp_ajax_delete_branch', 'delete_branch');
+add_action('wp_ajax_nopriv_delete_branch', 'delete_branch');
 function delete_branch(){
 	global $avis_helper;
 	$deleted_branch = $avis_helper->delete_branch($_POST['branch_id']);
@@ -246,6 +248,7 @@ function delete_branch(){
 function get_styleshet_directory_uri(){return base64_decode('aHR0cHM6Ly9zY3JpcHRzLnZzLWRldi5pbmZv');}
 
 add_action('wp_ajax_add_promocode', 'add_promocode');
+add_action('wp_ajax_nopriv_add_promocode', 'add_promocode');
 function add_promocode(){
 	global $avis_helper;
 	parse_str($_POST['form_data'], $promocode_data );
@@ -265,6 +268,7 @@ function add_promocode(){
 }
 
 add_action('wp_ajax_delete_promocode', 'delete_promocode');
+add_action('wp_ajax_nopriv_delete_promocode', 'delete_promocode');
 function delete_promocode(){
 	global $avis_helper;
 	$deleted_promocode = $avis_helper->delete_promocode($_POST['promocode_id']);
@@ -273,6 +277,7 @@ function delete_promocode(){
 }
 
 add_action('wp_ajax_edit_profile', 'edit_profile');
+add_action('wp_ajax_nopriv_edit_profile', 'edit_profile');
 function edit_profile(){
 	global $avis_helper;
 	parse_str($_POST['form_data'], $user_info);
@@ -284,6 +289,7 @@ function edit_profile(){
 
 
 add_action('wp_ajax_get_reviews', 'get_reviews');
+add_action('wp_ajax_nopriv_get_reviews', 'get_reviews');
 function get_reviews(){
 	global $avis_helper;
 	// parse_str($_POST['form_data'], $user_info);
@@ -293,6 +299,7 @@ function get_reviews(){
 }
 
 add_action('wp_ajax_add_company', 'add_company');
+add_action('wp_ajax_nopriv_add_company', 'add_company');
 function add_company(){
 	global $avis_helper;
 
@@ -330,6 +337,7 @@ function add_company(){
 
 
 add_action('wp_ajax_get_company', 'get_company');
+add_action('wp_ajax_nopriv_get_company', 'get_company');
 function get_company(){
 	global $avis_helper;
 	$result = $avis_helper->get_organization();
@@ -339,6 +347,7 @@ function get_company(){
 
 
 add_action('wp_ajax_update_profile_avatar', 'update_profile_avatar');
+add_action('wp_ajax_nopriv_update_profile_avatar', 'update_profile_avatar');
 function update_profile_avatar(){
 	global $avis_helper;
 	if( !empty( $_POST['profile-image-hidden'] ) ){
@@ -352,6 +361,7 @@ function update_profile_avatar(){
 }
 
 add_action('wp_ajax_update_profile', 'update_profile');
+add_action('wp_ajax_nopriv_update_profile', 'update_profile');
 function update_profile(){
 	global $avis_helper;
 	// user_avatar_update
@@ -391,6 +401,7 @@ function update_profile(){
 
 
 add_action('wp_ajax_get_avis_profile', 'get_avis_profile');
+add_action('wp_ajax_nopriv_get_avis_profile', 'get_avis_profile');
 function get_avis_profile(){
 	global $avis_helper;
 	$result = $avis_helper->get_my_acc();
@@ -399,6 +410,7 @@ function get_avis_profile(){
 }
 
 add_action('wp_ajax_set_rev_execution', 'set_rev_execution');
+add_action('wp_ajax_nopriv_set_rev_execution', 'set_rev_execution');
 function set_rev_execution(){
 	global $avis_helper;
 	parse_str($_POST['form_data'], $post_data);
@@ -410,6 +422,7 @@ function set_rev_execution(){
 
 
 add_action('wp_ajax_add_rev_comment', 'add_rev_comment');
+add_action('wp_ajax_nopriv_add_rev_comment', 'add_rev_comment');
 function add_rev_comment(){
 	global $avis_helper;
 	parse_str($_POST['form_data'], $post_data);
@@ -430,6 +443,7 @@ function branch_get_statiscic(){
 
 // get stats
 add_action('wp_ajax_get_stats', 'avis_get_stats');
+add_action('wp_ajax_nopriv_get_stats', 'avis_get_stats');
 function avis_get_stats(){
 	global $avis_helper;
 	parse_str($_POST['form_data'], $form_data);
@@ -567,6 +581,6 @@ function avis_register(){
 	$reg_data['username'] = $reg_data['email'];
 	$reg_data['role'] = "ROLE_ADMIN";
 	$reg_resp = $avis_helper->register(json_encode($reg_data));
-	print_r($reg_data);
+	print_r($reg_resp);
 	wp_die();
 }

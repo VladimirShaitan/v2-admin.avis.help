@@ -8,7 +8,7 @@ if(qs('#registration-form') != null){
 				qs('.mes-success').classList.remove('hidden');
 				setTimeout(() => {
 					location.href = '/login/';
-				},2000)
+				},1500)
 			} else {
 				qs('.mes-error').classList.remove('hidden');
 				setTimeout(() => {

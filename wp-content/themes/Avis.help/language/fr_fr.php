@@ -127,6 +127,16 @@ $avis_lang = array(
     /* Tech messages */
 
     'success_send_promo_mob' => 'Сode promo a été envoyé avec succès',
-    'failure_send_promo_mob' => 'Une erreur s\'est produite lors de l\'envoi du code promotionnel'
+    'failure_send_promo_mob' => 'Une erreur s\'est produite lors de l\'envoi du code promotionnel',
 
+    /* Registration */
+
+    'reg_title'             => 'Enregistrement',
+    'reg_form_login_btn'    => 'Registre',
+    'reg_form_first_name'   => 'Prénom',
+    'reg_form_last_name'    => 'Nom', 
+    'reg_form_email'        => 'Email',
+    'reg_form_phone'        => 'Téléphone',
+    'reg-error'             => 'Une erreur s\'est produite lors de l\'inscription',
+    'reg-success'           => 'Vous avez été enregistré avec succès'
 );

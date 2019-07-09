@@ -1,5 +1,5 @@
 <?php 
-  if(empty(is_user_logged_in())){
+  if(empty(json_decode(base64_decode($_COOKIE['avis_auth']))->avis_token)){
     wp_safe_redirect('/logout/?lang='.explode('_', get_locale())[0]);
   };
 ?>
@@ -17,23 +17,18 @@
     const lang_tr = '<?php echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); ?>';
   </script>
     <?php 
-        // $GLOBALS["polylang"]->model->post->get_translations($post->ID);
         $trans_ids = $GLOBALS["polylang"]->model->post->get_translations($post->ID);
         $fr = get_post_permalink($trans_ids['fr']);
         $en = get_post_permalink($trans_ids['en']);
         $ru = get_post_permalink($trans_ids['ru']);
-        //print_r(get_locale());
       ?>
     <script type="text/javascript">
       <?php if (get_locale() === 'fr_FR'){?>
         let locs = 'fr_FR';
-        let invite_chat_mes = 'Bonjour, vous êtes invité à discuter avec ';
       <?php } elseif (get_locale() === 'ru_RU'){?>
         let locs = 'ru_RU';
-        let invite_chat_mes = 'Вы приглашены в чат с ';
       <?php } else {?>
         let locs = 'en_GB';
-        let invite_chat_mes = 'Hello, you are invited to chat with ';
       <?php };?>
       const ru = '<?php echo $ru; ?>';
       const en = '<?php echo $en; ?>';

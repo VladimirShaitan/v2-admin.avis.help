@@ -1,3 +1,27 @@
+let invite_chat_mes = {
+	en: 'You are invited to the chat with ',
+	ru: 'Vi priglasheni v chat s ',
+	ua: 'Vi zaprosheni v chat z ',
+	fr: 'Vous êtes invité à discuter avec '
+}
+
+let promode_mes = {
+	en: function(promocode_name, branch_name) {
+		return 'You have received a promo code ('+promocode_name+') from ('+branch_name+')';
+	} ,
+
+	ru: function(promocode_name, branch_name) {
+		return 'Vi poluchili promo kod ('+promocode_name+') ot ('+branch_name+')';
+	},
+	ua: function(promocode_name, branch_name) {
+		return 'Vi otrimali promo kod ('+promocode_name+') vid ('+branch_name+')';
+	},
+	fr: function(promocode_name, branch_name) {
+		return 'Vous avez reçu un code promotionnel ('+promocode_name+') de ('+branch_name+')';
+	},
+
+}
+
 
 let message_handler = {
 	send_message: function(mes, promocode, invite){
@@ -26,6 +50,7 @@ let message_handler = {
 		} else {
 			qs('.chat-body').appendChild(this.construct_message('to', mes));
 			// let obj = {
+
 				obj.content = mes;
 				obj.messageType = "CHATINVITE";
 				obj.reviewId = rev_id;
@@ -65,9 +90,10 @@ let message_handler = {
 
 	},
 	chat_invite: function(e){
+		console.log(invite_chat_mes[rev_lang])
 		if(!is_chat){
 			let chat_data = e.target.getAttribute('data-chat-url');
-			this.send_message(invite_chat_mes + branch_name + ' '+chat_data, false, true);
+			this.send_message(invite_chat_mes[rev_lang] + branch_name + ' '+chat_data, false, true);
 		}
 	}
 }
@@ -165,7 +191,8 @@ if(qs('#promo_codes')){
 				let data_holder = e.target.parentFinder('prm-wrapper');
 				let promocode_data = {
 					id: data_holder.getAttribute('data-promo-id'),
-					message: data_holder.getAttribute('data-promo-name'),
+					message: promode_mes[rev_lang](data_holder.getAttribute('data-promo-name'), branch_name),
+					 // data_holder.getAttribute('data-promo-name'),
 					icon: data_holder.getAttribute('data-promo-icon')
 				}
 				// console.log(promocode_data);

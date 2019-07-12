@@ -3,10 +3,6 @@
 get_header(); 
 ?>
 
-<?php
-
-
-?>
 <div class="login-page-main-wrapper">
 	<div class="container">
 		<div class="login_page_wrapper">

@@ -743,24 +743,28 @@ if(qs('.home_page_loggedin') != null){
 					qs('.nps-item.'+ item + ' .nps-procent').innerHTML = data.npsResponse[item]+'%';
 					qs('.nps-item.'+ item + ' .progress').style.width = data.npsResponse[item]+'%';
 				} else if (item === 'nps') {
-					var loc_ov_mark = 0
-					var count = 0;
-					if(data.npsResponse[item] > 0){
-						loc_ov_mark = data.npsResponse[item]+1	
-					} else {
-						loc_ov_mark = data.npsResponse[item]-1
-					}
 
-					setInterval(function(){
-							if(count != loc_ov_mark){
-								qs('#overall_mark').innerHTML = count;
-								if(loc_ov_mark > 0){
-										count++;
-								} else {
-									count--;
-								}
-							}
-					}, 50);
+					qs('#overall_mark').innerHTML = data.npsResponse[item];
+
+					// var loc_ov_mark = 0
+					// var count = 0;
+
+					// if(data.npsResponse[item] > 0){
+					// 	loc_ov_mark = data.npsResponse[item]+1	
+					// } else {
+					// 	loc_ov_mark = data.npsResponse[item]-1
+					// }
+
+					// setInterval(function(){
+					// 		if(count != loc_ov_mark){
+					// 			qs('#overall_mark').innerHTML = count;
+					// 			if(loc_ov_mark > 0){
+					// 					count++;
+					// 			} else {
+					// 				count--;
+					// 			}
+					// 		}
+					// }, 50);
 
 				} else if (item === 'color') {
 					qs('.stat-circle circle.progress').style.stroke = '#'+data.npsResponse[item];

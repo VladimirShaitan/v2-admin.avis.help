@@ -17,15 +17,12 @@
 
 ?>
 
-<!-- <pre>
-  <?php // print_r($review_data); ?>
-</pre>  -->
 <script>
   const topic = '<?php echo $chat_history->topic; ?>';
   const rev_id = '<?php echo $rev_coockie->rev_id; ?>';
   const branch_name = '<?php echo $review_data->branch; ?> ';
   const is_chat = '<?php echo $review_data->isChat; ?>';
-  const rev_lang = '<?php echo $review_data->lang; ?>'
+  const rev_lang = '<?php echo $review_data->lang; ?>';
 </script>
 
 

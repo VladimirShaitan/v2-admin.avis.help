@@ -9,23 +9,22 @@
   $chat_history = $avis_helper->getChatHistoryWeb($rev_id);
 
   if(!empty($review->phone)){
-    // $rev_link = get_home_url().'/authorized-reviews/authorized-review/?rev_id='.$rev_id;
     $rev_link = get_home_url().'/rev_handler/?p_id=96&rev_id='.$rev_id.'&lang='.explode('_', get_locale())[0];
-
   } else {
     $rev_link = get_home_url().'/rev_handler/?p_id=90&rev_id='.$rev_id.'&lang='.explode('_', get_locale())[0];
-    // $rev_link = get_home_url().'/anonymous-reviews/anonymous-review/?rev_id='.$rev_id;
   }
 
    $avis_helper->set_rev_viewed($review->id);
 ?>
 <!-- <pre>
-	<?php // print_r($review->id);?>
-</pre> --> 
+  <?php // print_r($review);?>
+</pre> -->
 <script>
   const topic = '<?php echo $chat_history->topic; ?>';
-  const rev_id = '<?php echo $rev_id; ?>';
+  const rev_id = '<?php echo $rev_coockie->rev_id; ?>';
   const branch_name = '<?php echo $review->branch; ?> ';
+  const is_chat = '<?php echo $review->isChat; ?>';
+  const rev_lang = '<?php echo $review->lang; ?>';
 </script>
 
 
@@ -58,15 +57,15 @@
                     </div>
                   <?php } ?> 
                   </div>
-                  <div class="chat-wrap">
-                  <div class="chat-wrapper" data-chat-url="<?php echo $review->chatUrl; ?>">
-                    <div class="promo-code">
-                      <i class="far fa-comments"></i>
+<!--                   <div class="chat-wrap">
+                    <div class="chat-wrapper" data-chat-url="<?php // echo $review->chatUrl; ?>">
+                      <div class="promo-code">
+                        <i class="far fa-comments"></i>
+                      </div>
+                      <span><?php // echo $avis_lang['invite_to_chat'];?></span>
                     </div>
-                    <span><?php echo $avis_lang['invite_to_chat'];?></span>
-                  </div>
                   </div> 
-
+ -->
                 </div>
                 <div class="chat-input">
                       <form id="send_message">

@@ -14,12 +14,19 @@ $avis_lang = array(
     'profile_form_save'                =>  'SAVE',
     'profile_form_logout_btn'          => 'Logout',
 
-    'login_title'               => 'Customer Communication Platform',
-    'login_form_login'          => 'Login',
+    'login_title'               =>'Customer communication platform',
+    'login_form_login'          => 'Email',
     'login_form_pass'           => 'Password',
     'login_form_remember'       => 'Remember me',
-    'login_form_login_btn'      => 'LOG IN',
+    'login_form_login_btn'      => 'SIGN IN',
+    'login_form_login_social'   => 'SIGN IN WITH',
     'login_form_forgot_pass'    => 'Forgot password?',
+    'login_form_or'             => 'OR',
+    'dont_have'                 => 'Don\'t have an account?',
+    'sign_up'                   => 'Sign up',
+    'min_symp'                   => 'min 6 symbols',
+    'sign_up_with'                   => 'Sign up with',
+    'have_acc'                   => 'Have an account?',
 
 /*   table head values  */
     'number'            =>'Number',

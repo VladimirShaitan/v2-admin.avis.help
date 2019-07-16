@@ -5,13 +5,12 @@
   $branches = $avis_helper->get_my_branches();
   $user_info = json_decode($avis_helper->get_my_info());
 ?>
-<div class="modal-overlay">
+<div class="modal-overlay modal-export">
   <div class="modal-window">
     <div class="modal-head"><?php echo $avis_lang['export_xml'];?> <span class="close">&times;</span></div>
     <div class="modal-body">
       <form id="export_form">
-        <label for="export_mail">Email</label>
-        <input type="text" name="export_mail" id="export_mail" value="<?php echo $user_info->email;?>">
+        <input type="text" name="export_mail" id="export_mail" value="<?php echo $user_info->email;?>" placeholder="Enter Email">
         <p class="export-notice"><?php echo $avis_lang['export_mes'];?></p>
         <div>
           <input type="submit" name="export_btn" id="export_btn" class="avis_submit" value="<?php echo $avis_lang['send'];?>">
@@ -20,125 +19,89 @@
     </div>
   </div>
 </div>
+<div class="modal-overlay modal-notification">
+  <div class="modal-window">
+    <div class="modal-body">
+      <p class="title"><?php echo $avis_lang['notif_title'];?></p>
+      <p class="qr-name">QR Name 1: No paper</p>
+      <p><?php echo $avis_lang['notif_mes'];?></p>
+      <p class="fake-btn"><?php echo $avis_lang['notif_btn'];?></p>
+    </div>
+  </div>
+</div>
 
-  <div class="row m-0 home_page_loggedin">
-        <div class="col-4 p-0">
-            <div class="acc-home-wrapper">
-              <div class="fake_disable hidden"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>
-              <h4 class="text-uppercase"><?php echo $avis_lang['select_branch'];?></h4>
-              <div class="form-filter-wrapper">
-                <form id="branch-revs-filter" class="branch-revs-filter">
+<div class="row filter-wrap">
+  <form id="branch-revs-filter" class="branch-revs-filter">
                   <select name="branch" class="custom_select">
                     <option value="OVERALL"><?php echo $avis_lang['branches_ov'];?></option>
                     <?php foreach($branches as $branch){ ?>
                       <option value="<?php echo $branch->id; ?>"><?php echo $branch->name; ?></option>
                     <?php } ?>
                   </select>
-                  <div class="caledars_wrapper">
-                    <div class="row m-0">
-                      <div class="col-6 p-0">
-                        <label class="calendar calendar-from">
-                          <span class="calendar-caption"><?php echo $avis_lang['from'];?></span>
-                          <input class="date_filter_fake_input" autocomplete="off" type="text" name="filter-date-from-fake" readonly>
-                          <input type="hidden" name="filter-date-from">
-                        </label>
-                      </div>
-                      <div class="col-6 p-0">
-                        <label class="calendar calendar-to">
-                          <span class="calendar-caption"><?php echo $avis_lang['to'];?></span>
-                          <input class="date_filter_fake_input" autocomplete="off" type="text" name="filter-date-to-fake" readonly>
-                          <input type="hidden" name="filter-date-to">
-                        </label>
-                      </div>      
-                    </div>
-                  </div>  
+                  
+                  <div class="days-wrapper">
                   <div class="checkboxes_wrapper">
                       <div class="row m-0">
-                         <div class="col-4 p-0">
                           <label>
                             <input type="checkbox" name="today" data-date="day">
-                            <div class="fake_btn fake_first">
-                              <div class="btn_checkbox_text"><?php echo $avis_lang['today']; ?></div>
-                            </div>
+                            <div class="fake_btn fake_first"><?php echo $avis_lang['today']; ?></div>
                           </label>
-                        </div>
-                        <div class="col-4 p-0">
                           <label>
                             <input type="checkbox" name="week" data-date="week">
                             <div class="fake_btn fake_middle">
-                              <div class="btn_checkbox_text"><?php echo $avis_lang['week'];?></div>
+                              <?php echo $avis_lang['week'];?>
                             </div>
                           </label>
-                        </div>  
-                        <div class="col-4 p-0">
                           <label>
                             <input type="checkbox" name="month" data-date="month">
                             <div class="fake_btn fake_last">
-                              <div class="btn_checkbox_text"><?php echo $avis_lang['month'];?></div>
+                              <?php echo $avis_lang['month'];?>
                             </div>
                           </label>
-                        </div> 
                       </div>
                   </div>
+                  <div class="caledars_wrapper">
+                    <div class="row m-0">
+                      <div class="calendars-wrap">
+                        <label class="calendar calendar-from">
+                          <!-- <span class="calendar-caption"><?php echo $avis_lang['from'];?></span> -->
+                          <input class="date_filter_fake_input" autocomplete="off" type="text" name="filter-date-from-fake" readonly placeholder="<?php echo $avis_lang['from'];?>">
+                          <input type="hidden" name="filter-date-from">
+                        </label>
+                      <span class="calendar-line">-</span>
+                        <label class="calendar calendar-to">
+                          <!-- <span class="calendar-caption"><?php echo $avis_lang['to'];?></span> -->
+                          <input class="date_filter_fake_input" autocomplete="off" type="text" name="filter-date-to-fake" readonly placeholder="<?php echo $avis_lang['to'];?>">
+                          <input type="hidden" name="filter-date-to">
+                        </label>
+                      </div>    
+                    </div>
+                  </div> 
+                  </div>
+
+
                   <div class="submit_btn_wrapper text-center hidden">
                     <input class=" text-uppercase" type="submit" name="submit-search" value="Search">
                   </div>
-                                <div class="filter_bottom_wrapper">
-                  <div class="row text-center">
-                    <div class="col-6">
-                      <div class="counters total_revs">?</div>
-                      <span class="caption"><?php echo $avis_lang['total-reviews'];?></span>
-                    </div>    
-                    <div class="col-6">
-                      <div class="counters total_convs">?</div>
-                      <span class="caption"><?php echo $avis_lang['total-conversations'];?></span>
-                    </div>    
-                  </div>
-
-                  <div class="rating_wrapper">
-                    <select class="custom_select" name="rating-type" form="branch-revs-filter">
+                     <select class="custom_select" name="rating-type" form="branch-revs-filter">
                       <option value="OVERALL"><?php echo $avis_lang['overall-rating'] ?></option>
                       <option value="GENERAL"><?php echo $avis_lang['general'] ?></option>
                       <option value="CLEANNESS"><?php echo $avis_lang['cleaness'] ?></option>
                       <option value="SERVICE"><?php  echo $avis_lang['service'] ?></option>
                     </select>
-
-                    <div class="stars text-center">
-                      <div class="stars_wrapper">
-                        <img draggable="false" src="/wp-content/uploads/2019/02/stars.png">
-                        <div class="rating_progress" ></div> 
-                        <!-- style="width: 70%;" -->
-                      </div>
-                    </div>
-
-                    <div class="text-center">
-                      <div class="counters p-0 marks"></div>
-                    </div>
-
-                  </div>
-
-
-                  
-
-              </div>
                 </form>
               </div>
-          </div>
-
-<div class="acc-home-wrapper export-wrap" style="display: none;">
-            <h4 class="text-uppercase"><?php echo $avis_lang['export'] ?></h4>
-            <div class="export">
-                    <div class="avis_submit"><?php echo $avis_lang['export_btn'] ?></div>
-                  </div>
-          </div>
 
 
-        </div>
-        <div class="col-8">
-          <div class="acc-home-wrapper nps">
-            <h4 class="text-uppercase"><?php echo $avis_lang['nps'];?></h4>
+  <div class="row m-0 home_page_loggedin">
+     <div class="fake_disable hidden"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>
+
+        <div class="col-4 p-0">
+          <div class="new-home-wrap nps-home">
+            <h4><?php echo $avis_lang['nps'];?></h4>
             <div class="nps-wrapper">
-              <div id="nps" class="text-center">
+
+              <!-- <div id="nps" class="text-center">
                 <div is="stat-circle" percentage="100"></div>
               </div>
               <script id="stat-circle" type="x-template">
@@ -148,35 +111,91 @@
                   <text x="60%" y="73%" id="overall_mark">0</text>
                 </svg>
               </script>
+ -->
+              
+                <div class="progress progress-nps" id="progress-nps">
+                  <div class="inner" id="overall_mark"></div>
+                </div>
+              
+
               <div class="results">
-                <span class="nps-type"><?php echo $avis_lang['promoters'];?></span>
+                  <div class="nps-group">
+                    <div class="nps-item detractor"><div class="progress red"></div></div>
+                    <div class="nps-item neutral"><div class="progress yellow"></div></div>
+                    <div class="nps-item promoters"><div class="progress"></div></div>
+                  </div>
+                  <div class="nps-titles">
+                    <span class="nps-type"><?php echo $avis_lang['promoters'];?></span>
                 <div class="nps-item promoters" >
-                  <div class="progress"></div>
                   
                   <span class="nps-procent">0</span>
+                   <div class="progress"></div>
                 </div>
                 <span class="nps-type"><?php echo $avis_lang['passives'];?></span>
                 <div class="nps-item neutral">
-                  <!-- <div class="circle yellow">23%</div> -->
-                  <div class="progress yellow"></div>
                   
                   <span class="nps-procent">0</span>
+                   <div class="progress yellow"></div>
                 </div>
                  <span class="nps-type"><?php echo $avis_lang['detractors'];?></span>
                 <div class="nps-item detractor">
-                  <!-- <div class="circle red">12%</div> -->
-                  <div class="progress red"></div>
                  
                   <span class="nps-procent">0</span>
+                  <div class="progress red"></div>
                 </div>
+                  </div>
+                
+                 </div>
               </div>
             </div>
-          </div>
-          <div class="acc-home-wrapper diagram">
-              <h4 class="text-uppercase"><?php echo $avis_lang['your-stats'];?></h4>
-              <canvas id="myChart" width="900" height="380"></canvas>
+
+            <div class="new-home-wrap">
+            <h4>Rating</h4>
+             <div class="row text-center">
+                    <div class="col-5">
+                      <div class="counters total_revs">0</div>
+                      <span class="caption"><?php echo $avis_lang['total-reviews'];?></span>
+                      <div class="counters total_convs">0</div>
+                      <span class="caption"><?php echo $avis_lang['total-conversations'];?></span>
+                    </div>    
+                    <div class="col-6">
+                      <div class="progress progress-rating" id="progress-rating">
+                        <div class="inner" id="marks"></div>
+                      </div>
+
+                     <!--  <div id="rating" class="text-center">
+                <div is="rating-circle"></div>
+              </div>
+              <script id="rating-circle" type="x-template">
+                <svg class="rating-circle" viewBox="1.6 1.6 16.8 16.8">
+                  <circle class="bg" cx="10" cy="10" r="8"/></circle>
+                  <circle class="progress circle-progress" cx="10" cy="10" r="8"/></circle>
+                  <text x="60%" y="-45%" class="counters p-0 marks">0</text>
+                </svg>
+              </script> -->
+                    </div>    
+                  </div>
+                      
             </div>
+
+
+          </div>
+        
+        <div class="col-8">
+          <div class="diagram">
+              <canvas id="myChart" width="900" height="380"></canvas>
+          </div>
+          <div class="export">
+            <div class="avis_submit"><?php echo $avis_lang['export_btn'] ?></div>
+          </div>
         </div>
+    </div>
   </div>
 
+
+
+
+
+
+                   
 <?php get_footer('account'); ?> 

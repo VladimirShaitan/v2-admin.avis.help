@@ -3,13 +3,17 @@
 get_header(); 
 ?>
 
+<?php
+
+
+?>
 <div class="login-page-main-wrapper">
+	<div class="nav-item lang">
+		<?php pll_the_languages(array('display_names_as'=>'slug','dropdown'=>1)); ?>
+	</div>
 	<div class="container">
 		<div class="login_page_wrapper">
 			<div class="">
-				<div class="nav-item lang">
-					<?php pll_the_languages(array('display_names_as'=>'slug','dropdown'=>1)); ?>
-				</div>
 				<div class="login-logo-holder col-12">
 					<a href="/">
 						<img src="/wp-content/uploads/2019/02/logo.png">
@@ -17,7 +21,7 @@ get_header();
 				</div>
 				<div class="login_text col-12"><?php echo $avis_lang['login_title'];?></div>
 				<div class="login_form_wrapper">
-					<div class="login_form">
+					<!-- <div class="login_form"> -->
 						<form id="login-form" autocomplete="off">
 						  <div class="form-group">
 						    <input type="text"  autofocus class="form-control" name="email" placeholder="<?php echo $avis_lang['login_form_login']; ?>" autocomplete="off">
@@ -28,23 +32,31 @@ get_header();
 						  </div>
 						  <div class="login-bottom">
 							  <div class="row m-0">
-								  <div class="col-6 custom-col">
+								  <div class="col-6 p-0 custom-col">
 								  	<div class="checkbox-wrapper">
 									    <input  type="checkbox" class="form-check-input" name="remamber" id="exampleCheck1">
 									    <label class="form-check-label" for="exampleCheck1"><?php echo $avis_lang['login_form_remember'];?></label>
 								    </div>
 								  </div>
-								  <div class="col-6">
-								  		<button type="submit" class="btn"><?php echo $avis_lang['login_form_login_btn']; ?></button>
+								  <div class="col-6 restore-pass text-right">
+								  		<a href="#"><?php echo $avis_lang['login_form_forgot_pass']; ?></a>
 								  </div>
 							  </div>
+							  <div class="col-12 text-center">
+								<button type="submit" class="avis_submit"><?php echo $avis_lang['login_form_login_btn']; ?></button>
+							</div>
 						  </div>
 						</form>
-					</div>
+					<!-- </div> -->
+						<div class="text-center login-bold-text"><?php echo $avis_lang['login_form_or']; ?></div>
+						<div class="social-media-wrap">
+							<a href="#" class="avis_submit fb"><?php echo $avis_lang['login_form_login_social']; ?> <img src="/wp-content/themes/Avis.help/fb.png"></a>
+							<a href="#" class="avis_submit google"><?php echo $avis_lang['login_form_login_social']; ?> <img src="/wp-content/themes/Avis.help/google.png"></a>
+						</div>
+						<div class="text-center login-bold-text"><?php echo $avis_lang['dont_have']; ?></div>
+						<div class="text-center sign-link"><a href="#"><?php echo $avis_lang['sign_up']; ?></a></div>
 				</div>	
-				<div class="col-12 restore-pass text-center">
-					<a href="#"><?php echo $avis_lang['login_form_forgot_pass']; ?></a>
-				</div>
+				
 			</div>
 		</div>
 

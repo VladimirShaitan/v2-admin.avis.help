@@ -1,22 +1,36 @@
 <?php 
 /*Template Name: Promocode page*/
-// print_r($post->ID); 
 get_header('account');
  $icons = json_decode(file_get_contents(get_stylesheet_directory().'/css/icons.json')); 
  $promocodes = array_reverse($avis_helper->get_user_promocodes());
 ?>  
 <script type="text/javascript">
   let promocodes_cuont = <?php echo count($promocodes); ?>
-</script>
-<!-- <pre>
-  <?php  // print_r($promocodes); ?>  
-</pre> -->
-  <div class="row m-0">
-    <div class="col-12 p-0">
-      <div class="row m-0">
+</script>W
+      <div class="row m-0 full-height">
+        <div class="col-4 p-0">
+          <div class="subtitle">Apply Promo Code</div>
+          <div class="promo-id-wrap text-center">
+            <div class="promo-id-title">Enter Promo Code ID</div>
+            <form>
+              <input type="text" name="" placeholder="-">
+              <input type="text" name="" placeholder="-">
+              <input type="text" name="" placeholder="-">
+              <input type="text" name="" placeholder="-">
+              <input type="text" name="" placeholder="-">
+            </form>
+            <input type="submit" name="promo-id" value="APPLY" class="avis_submit">
+          </div>
+        </div>
+        <div class="col-8 full-height promocode-table">
+          <div class="avis_submit">ADD PROMO CODE +</div>
+        </div>
+
+
+
         
 
-        <div class="col-4 p-0">
+        <!-- <div class="col-4 p-0">
             <div class="acc-home-wrapper review-page-wrapper  promocodes-page-wrapper">
               <h4><?php echo $avis_lang['new_promocode'];?></h4>
               <form id="create-shortcode" class="create-shortcode">
@@ -119,12 +133,10 @@ get_header('account');
               
           </div>
         </div>
-
+ -->
 
 
 
       </div>
-      </div>
-
-  </div>
+    
 <?php get_footer('account'); ?> 

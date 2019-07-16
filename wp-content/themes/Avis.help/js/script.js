@@ -32,13 +32,14 @@ let acc_menu = qs('.account_side_menu');
 }
 jQuery('.menu_button').click(function(){
 	jQuery(this).toggleClass('opened');
+	jQuery('.site-logo').toggleClass('closed');
 });
 
 if(qs('.calendar') != null){
-	jQuery.fn.datepicker.defaults.format = "dd-mm-yyyy";
+	jQuery.fn.datepicker.defaults.format = "dd/mm/yy";
 	jQuery('.calendar input.date_filter_fake_input').datepicker({autoclose: true}).on('hide', function(e){
+		jQuery(this).parents('.calendars-wrap').removeClass('active');
 		// console.log();
-
 		e.target.parentElement.qs('input[type=hidden]').value = moment(e.date).format('DD-MM-YYYY HH:mm:ss'); 
 
 		if(this.name === 'filter-date-from-fake' || this.name === 'filter-date-to-fake'){
@@ -46,11 +47,15 @@ if(qs('.calendar') != null){
 		}
 
 	});
+	jQuery('.calendar input.date_filter_fake_input').on('show', function(e){
+		jQuery(this).parents('.calendars-wrap').addClass('active');
+	})
 	qs('.caledars_wrapper').addEventListener('focusout', function(e){
 		if(e.target.name === 'filter-date-from' || e.target.name === 'filter-date-to'){
 			e.target.value = '';
 		}
 	})
+
 }
 
 
@@ -92,21 +97,21 @@ if(qs('.checkboxes_wrapper input[type="checkbox"]') != null){
 
 		console.log(e.target.getAttribute('data-date'));
 		if(e.target.getAttribute('data-date') === 'day'){
-			qs('input[name="filter-date-from-fake"]').value = moment().subtract(0, 'days').format('DD-MM-YYYY');
-			qs('input[name="filter-date-to-fake"]').value = moment().subtract(0, 'days').format('DD-MM-YYYY');
+			qs('input[name="filter-date-from-fake"]').value = moment().subtract(0, 'days').format('DD/MM/YY');
+			qs('input[name="filter-date-to-fake"]').value = moment().subtract(0, 'days').format('DD/MM/YY');
 
 			qs('input[name="filter-date-from"]').value = moment().subtract(0, 'days').format('DD-MM-YYYY')+' 01:00:00';
 			qs('input[name="filter-date-to"]').value = moment().subtract(0, 'days').format('DD-MM-YYYY')+' 23:00:00';
 		} else if(e.target.getAttribute('data-date') === 'week'){
-			qs('input[name="filter-date-from-fake"]').value = moment().subtract(6, 'days').format('DD-MM-YYYY');
-			qs('input[name="filter-date-to-fake"]').value = moment().subtract(0, 'days').format('DD-MM-YYYY');
+			qs('input[name="filter-date-from-fake"]').value = moment().subtract(6, 'days').format('DD/MM/YY');
+			qs('input[name="filter-date-to-fake"]').value = moment().subtract(0, 'days').format('DD/MM/YY');
 
 			qs('input[name="filter-date-from"]').value = moment().subtract(6, 'days').format('DD-MM-YYYY')+' 01:00:00';
 			qs('input[name="filter-date-to"]').value = moment().subtract(0, 'days').format('DD-MM-YYYY HH:mm:ss');
 
 		} else if(e.target.getAttribute('data-date') === 'month'){
-			qs('input[name="filter-date-from-fake"]').value = moment().subtract(29, 'days').format('DD-MM-YYYY');
-			qs('input[name="filter-date-to-fake"]').value = moment().subtract(0, 'days').format('DD-MM-YYYY');
+			qs('input[name="filter-date-from-fake"]').value = moment().subtract(29, 'days').format('DD/MM/YY');
+			qs('input[name="filter-date-to-fake"]').value = moment().subtract(0, 'days').format('DD/MM/YY');
 
 			
 			qs('input[name="filter-date-from"]').value = moment().subtract(29, 'days').format('DD-MM-YYYY')+' 01:00:00';
@@ -347,6 +352,7 @@ if(qs('.branches-list-holder') != null){
 		}
 	})
 
+	if(qs('.branch_header') != null){
 		qs('#branches-list-holder').addEventListener('change', function(e){
 			var form = jQuery(e.target.form)[0];
 		    var data = new FormData(form);
@@ -405,6 +411,14 @@ if(qs('.branches-list-holder') != null){
 		    }
 
 		});
+		// qs('#branches-list-holder').addEventListener('submit', function(e){
+		// 	e.preventDefault();
+
+
+
+
+		// })
+	}
 
 
 }
@@ -514,10 +528,6 @@ if(qs('#company_name') !=  null){
 	        timeout: 600000,
 	        success: function (data) {
 	            // success
-	            console.log('asdasdasdasdasdasdasdasdasd');
-	            if( qs('#create_branch_wrapper').classList.contains('hidden') ){
-	            	qs('#create_branch_wrapper').classList.remove('hidden') 
-	            }
 	        },
 	    });
 
@@ -644,21 +654,24 @@ if(qs('.sidebar-sticky') != null){
 					window.close();
 				}
 				if(data.newAuthReviewCount != 0 || data.newNotAuthReviewCount != 0 || data.newConversationCount != 0) {
-					jQuery('.menu_button img').attr('src', '/wp-content/uploads/2019/02/menu_button.png');
+					jQuery('.menu_button img').attr('src', '/wp-content/themes/Avis.help/menu_button-active.png');
 				} else {
-					jQuery('.menu_button img').attr('src', '/wp-content/themes/Avis.help/menu_button-1.png');
+					jQuery('.menu_button img').attr('src', '/wp-content/themes/Avis.help/menu_button.png');
 				}
 
 				if(data.newAuthReviewCount != 0) {
 					if(qs('[data-menu-item-name="authorized_reviews"]') != null) {
 						qs('[data-menu-item-name="authorized_reviews"]').classList.remove('hidden');
 						qs('[data-menu-item-name="authorized_reviews"]').innerHTML = data.newAuthReviewCount;
+						jQuery('[data-menu-item-name="authorized_reviews"]').parent('a').addClass('circle');
 					} else if(qs('[data-menu-item-name="avis_identifié"]') != null) {
 						qs('[data-menu-item-name="avis_identifié"]').classList.remove('hidden');
 						qs('[data-menu-item-name="avis_identifié"]').innerHTML = data.newAuthReviewCount;
+						jQuery('[data-menu-item-name="avis_identifié"]').parent('a').addClass('circle');
 					} else if(qs('[data-menu-item-name="Авторизованные_отзывы"]') != null) {
 						qs('[data-menu-item-name="Авторизованные_отзывы"]').classList.remove('hidden');
 						qs('[data-menu-item-name="Авторизованные_отзывы"]').innerHTML = data.newAuthReviewCount;
+						jQuery('[data-menu-item-name="Авторизованные_отзывы"]').parent('a').addClass('circle');
 					}
 				} else {
 					if(qs('[data-menu-item-name="authorized_reviews"]') != null) {
@@ -673,12 +686,15 @@ if(qs('.sidebar-sticky') != null){
 					if(qs('[data-menu-item-name="anonymous_reviews"]') != null) {
 						qs('[data-menu-item-name="anonymous_reviews"]').classList.remove('hidden');
 						qs('[data-menu-item-name="anonymous_reviews"]').innerHTML = data.newNotAuthReviewCount;
+						jQuery('[data-menu-item-name="anonymous_reviews"]').parent('a').addClass('circle');
 					} else if(qs('[data-menu-item-name="avis_anonyme"]') != null) {
 						qs('[data-menu-item-name="avis_anonyme"]').classList.remove('hidden');
 						qs('[data-menu-item-name="avis_anonyme"]').innerHTML = data.newNotAuthReviewCount;
+						jQuery('[data-menu-item-name="avis_anonyme"]').parent('a').addClass('circle');
 					} else if(qs('[data-menu-item-name="Анонимные_отзывы"]') != null) {
 						qs('[data-menu-item-name="Анонимные_отзывы"]').classList.remove('hidden');
 						qs('[data-menu-item-name="Анонимные_отзывы"]').innerHTML = data.newNotAuthReviewCount;
+						jQuery('[data-menu-item-name="Анонимные_отзывы"]').parent('a').addClass('circle');
 					}
 				} else {
 					if(qs('[data-menu-item-name="anonymous_reviews"]') != null) {
@@ -694,12 +710,15 @@ if(qs('.sidebar-sticky') != null){
 					if(qs('[data-menu-item-name="conversations"]') != null) {
 						qs('[data-menu-item-name="conversations"]').classList.remove('hidden');
 						qs('[data-menu-item-name="conversations"]').innerHTML = data.newConversationCount;
+						jQuery('[data-menu-item-name="conversations"]').parent('a').addClass('circle');
 					} else if(qs('[data-menu-item-name="conversation"]') != null) {
 						qs('[data-menu-item-name="conversation"]').classList.remove('hidden');
 						qs('[data-menu-item-name="conversation"]').innerHTML = data.newConversationCount;
+						jQuery('[data-menu-item-name="conversation"]').parent('a').addClass('circle');
 					} else if(qs('[data-menu-item-name="Чаты"]') != null) {
 						qs('[data-menu-item-name="Чаты"]').classList.remove('hidden');
 						qs('[data-menu-item-name="Чаты"]').innerHTML = data.newConversationCount;
+						jQuery('[data-menu-item-name="Чаты"]').parent('a').addClass('circle');
 					}
 				} else {
 					if(qs('[data-menu-item-name="conversations"]') != null) {
@@ -722,7 +741,25 @@ if(qs('.sidebar-sticky') != null){
 }
 
 // home page
+let circle_procent = 0;
 if(qs('.home_page_loggedin') != null){
+	let progressRating =
+		new ProgressBar.Circle('#progress-rating', {
+			color: '#db5959',
+			strokeWidth: 3,
+			duration: 2000,
+			easing: 'easeInOut'
+	});
+	let progressNPS = 
+		new ProgressBar.Circle('#progress-nps', {
+			step: function(state, progressNPS, attachment) {
+	        	progressNPS.path.setAttribute('stroke', state.color);
+	        },
+			color: '#ebebeb',
+			strokeWidth: 5,
+			duration: 2000,
+			easing: 'easeInOut'
+	});
 
 	qs('#branch-revs-filter').addEventListener('change', function(e){
 		this.qs('input[type="submit"]').click();
@@ -741,51 +778,105 @@ if(qs('.home_page_loggedin') != null){
 				console.log(item);
 				if(qs('.nps-item.'+ item + ' .nps-procent') != null){	
 					qs('.nps-item.'+ item + ' .nps-procent').innerHTML = data.npsResponse[item]+'%';
-					qs('.nps-item.'+ item + ' .progress').style.width = data.npsResponse[item]+'%';
+					qs('.nps-item.'+ item + ' .progress').style.height = data.npsResponse[item]+'%';
 				} else if (item === 'nps') {
+					var loc_ov_mark = 0
+					var count = 0;
+					if(data.npsResponse[item] > 0){
+						loc_ov_mark = data.npsResponse[item]+1	
+					} else {
+						loc_ov_mark = data.npsResponse[item]-1
+					}
 
-					qs('#overall_mark').innerHTML = data.npsResponse[item];
+					setInterval(function(){
+							if(count != loc_ov_mark){
+								qs('#overall_mark').innerHTML = count;
+								if(loc_ov_mark > 0){
+										count++;
+								} else {
+									count--;
+								}
+							}
+					}, 50);
 
-					// var loc_ov_mark = 0
-					// var count = 0;
-
-					// if(data.npsResponse[item] > 0){
-					// 	loc_ov_mark = data.npsResponse[item]+1	
-					// } else {
-					// 	loc_ov_mark = data.npsResponse[item]-1
-					// }
-
-					// setInterval(function(){
-					// 		if(count != loc_ov_mark){
-					// 			qs('#overall_mark').innerHTML = count;
-					// 			if(loc_ov_mark > 0){
-					// 					count++;
-					// 			} else {
-					// 				count--;
-					// 			}
-					// 		}
-					// }, 50);
-
-				} else if (item === 'color') {
-					qs('.stat-circle circle.progress').style.stroke = '#'+data.npsResponse[item];
 				}
 
+				else if (item === 'color') {
+					console.log(data.npsResponse[item]);
+						// color: '#' + data.npsResponse[item]
+						let options = {
+						    from: { color: '#' + data.npsResponse[item]},
+						    to: { color: '#' + data.npsResponse[item]}
+						};
+						progressNPS.animate(1, options);
+					}
 			}
+			  
 
 
 			loader.classList.add('hidden');
 			if(data.error === undefined){
-			qs('.total_revs').innerHTML = data.reviews;
-			
-			qs('.total_convs').innerHTML = data.conversations;
+				console.log(data);
 
-			qs('.rating_progress').style.width = ((data.stars * 100) / 5) + '%';
-			if(!isNaN(data.stars)){
-				qs('.marks').innerHTML = data.stars;
+				var mark_rate = 0
+				var count_rate = 0;
+					if(data.reviews > 0){
+						mark_rate = data.reviews+1
+					} else {
+						mark_rate = data.reviews-1
+					}
+
+					setInterval(function(){
+							if(count_rate != mark_rate){
+								qs('.total_revs').innerHTML = count_rate;
+								if(mark_rate > 0){
+										count_rate++;
+								} else {
+									count_rate--;
+								}
+							}
+					}, 70);
+
+
+				var mark_conv_rate = 0
+				var count_conv_rate = 0;
+					if(data.reviews > 0){
+						mark_conv_rate = data.conversations+1
+					} else {
+						mark_conv_rate = data.conversations-1
+					}
+
+					setInterval(function(){
+							if(count_conv_rate != mark_conv_rate){
+								qs('.total_convs').innerHTML = count_conv_rate;
+								if(mark_conv_rate > 0){
+										count_conv_rate++;
+								} else {
+									count_conv_rate--;
+								}
+							}
+					}, 70);
+
+
+			// qs('.total_revs').innerHTML = data.reviews;
+			
+			// qs('.total_convs').innerHTML = data.conversations;
+
+			// circle_procent = (data.stars * 100) / 5;
+			if(!isNaN(data.stars) && data.stars !=0 ){
+				// qs('#marks').innerHTML = data.stars;
+				jQuery('#marks').countTo({
+				    from: 0,
+				    to: data.stars,
+				    speed: 1500,
+				    decimals: 2,
+				    separator: '.'
+				  });
 			} else {
-				qs('.marks').innerHTML = '';
-				qs('.rating_progress').style.width = '0';
+				qs('#marks').innerHTML = '0';
 			}
+			progressRating.animate(data.stars / 5);
+
 
 				if(myChart){
 					myChart.destroy();
@@ -798,10 +889,14 @@ if(qs('.home_page_loggedin') != null){
 				let date_format;
 				if(qs('.checkboxes_wrapper input[data-date="day"]').checked){
 					date_format = 'HH:00';
-					lables.push('00:00');
+					lables.push(moment(new Date()).format('dddd'));
+				}
+				else if(qs('.checkboxes_wrapper input[data-date="month"]').checked){
+					date_format = 'DD';
+					lables.push('');
 				} else {
-					date_format = 'MM.DD';
-					lables.push('00.00');
+					date_format = 'dddd';
+					lables.push('');
 				}
 
 				data.reviewHourStats.forEach(function(item){
@@ -815,15 +910,32 @@ if(qs('.home_page_loggedin') != null){
 				      labels: lables,
 				      datasets: [{
 				        data: datasets,
+				        shadowOffsetX: 3,
+			            shadowOffsetY: 3,
+			            shadowBlur: 7,
+			            shadowColor: 'rgba(233, 88, 88, 0.5)',
 				        lineTension: 0.4,
 				        backgroundColor: 'transparent',
-				        borderColor: '#ce5e5e',
+				        borderColor: '#da6763',
 				        borderWidth: 4,
-				        pointBackgroundColor: '#ce5e5e'
+				        pointBackgroundColor: 'transparent',
+				        pointBorderWidth: 0,
+				        pointBorderColor: 'transparent'
 				      }]
 				    },
 				    options: {
 				      scales: {
+				      	xAxes: [{
+				            gridLines: {
+				                color: "rgba(0, 0, 0, 0)",
+				            },
+				            ticks: {
+                        fontColor: '#575e6e',
+                        fontSize: 13,
+                        padding: 5,
+                        lineHeight:1
+                        }
+				        }],
 				        yAxes: [{
 				          ticks: {
 				            beginAtZero: true
@@ -859,10 +971,10 @@ if(qs('.profile_pass_input') != null){
   //   this.parentElement.qs('input[type="password"]').type = 'text' 
     if(this.parentElement.qs('input').type === 'password' ){
       this.parentElement.qs('input').type = 'text';
-      this.src = '/wp-content/themes/Avis.help/eye_hide.png'
+      this.src = '/wp-content/themes/Avis.help/eye_view.png'
     } else {
       this.parentElement.qs('input').type = 'password';
-      this.src = '/wp-content/themes/Avis.help/eye_view.png'
+      this.src = '/wp-content/themes/Avis.help/eye_hide.png'
     }
 
   }
@@ -873,31 +985,83 @@ if(qs('.profile_pass_input') != null){
 
 
 
-Vue.component("stat-circle", {
-  template: "#stat-circle",
-  props: ["percentage"]
-});
+// Vue.component("stat-circle", {
+//   template: "#stat-circle",
+//   props: ["percentage"]
+// });
 
-new Vue(
-{
-  el: "#nps",
-  mounted: function() {
-    var $statCircle = document.querySelectorAll(".stat-circle circle");
-    for (var i = 0; i < $statCircle.length; i++) {
-      var p = parseFloat($statCircle[i].dataset.percentage);
-      var off = -51 -((51 / 100) * p);
-      new TweenMax.to($statCircle[i], .8, {
-        strokeDashoffset: off
-      });
-    }
-  }
-});
+// new Vue(
+// {
+//   el: "#nps",
+//   mounted: function() {
+//     var $statCircle = document.querySelectorAll(".stat-circle circle");
+//     for (var i = 0; i < $statCircle.length; i++) {
+//       var p = parseFloat($statCircle[i].dataset.percentage);
+//       var off = -51 -((51 / 100) * p);
+//       new TweenMax.to($statCircle[i], 3, {
+//         strokeDashoffset: off
+//       });
+//     }
+//   }
+// });
+
+// Vue.component("rating-circle", {
+//   template: "#rating-circle"
+// });
+
+// let star_circle = new Vue(
+// {
+//   el: "#rating",
+//   mounted: function() {
+//     var $ratingCircle = document.querySelectorAll(".rating-circle circle");
+//     for (var i = 0; i < $ratingCircle.length; i++) {
+//       var p = 80;
+//       var off = -51 -((51 / 100) * p);
+//       new TweenMax.to($ratingCircle[i], 2, {
+//         strokeDashoffset: off
+//       });
+//     }
+//   }
+// });
 
 if(qs('.export') != null){
 	qs('.export .avis_submit').addEventListener('click', function(e){
-		jQuery('.modal-overlay').fadeIn(400);
+		jQuery('.modal-overlay.modal-export').fadeIn(400);
 	});
 	qs('.modal-window .close').addEventListener('click', function(e){
-		jQuery('.modal-overlay').fadeOut(400);
+		jQuery('.modal-overlay.modal-export').fadeOut(400);
 	});
 }
+
+if(qs('.modal-notification') != null){
+	qs('.modal-notification .fake-btn').addEventListener('click', function(e){
+		jQuery('.modal-overlay.modal-notification').fadeOut(400);
+	});
+}
+
+// Vue.component('v-select', VueSelect.VueSelect)
+
+// new Vue({
+//   el: '.select',
+//   data: {
+//     options: []
+//   }
+// })
+
+
+if(qs('.navbar-nav') != null){
+	qs('.navbar-nav').addEventListener('click', function(e){
+		jQuery('.profile-menu').slideToggle(300);
+		if(qs('.nav-item-email').classList.contains('open')) {
+		qs('.nav-item-email').classList.remove('open');
+		} else {
+			qs('.nav-item-email').classList.add('open');
+		}
+	});
+	qs('.nav-item-notifiation').addEventListener('click', function(e){
+		jQuery('.notifiation-menu').slideToggle(300);
+	});
+}
+
+  jQuery('select').niceSelect();
+

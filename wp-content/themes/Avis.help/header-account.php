@@ -6,12 +6,12 @@
 <!DOCTYPE html>
 <html class="" <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
+  <meta charset="<?php bloginfo( 'charset' ); ?>">
   <title>Avis.help</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="Cache-Control" content="no-store" />
-	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<?php wp_head(); ?>
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <?php wp_head(); ?>
   <script type="text/javascript">
     let lang = '<?php echo get_locale();?>';
     const lang_tr = '<?php echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); ?>';
@@ -47,17 +47,55 @@
 <nav class="navbar flex-md-nowrap p-0 account_navbar">
   <div class="site-logo">
     <?php the_custom_logo(); ?>
+    <div class="menu_button"><a href="javascript:void(0)"><img src="/wp-content/themes/Avis.help/menu_button.png"></a></div>
   </div>
-  <div class="menu_button"><a href="javascript:void(0)"><img src="/wp-content/themes/Avis.help/menu_button-1.png"></a></div>
+  
+  <div class="page_name"><?php the_title(); ?></div>
+  <div class="nav-item text-nowrap nav-item-notifiation">
+      <img src="/wp-content/themes/Avis.help/notification-icon-min.png">
+      
+  </div>
+  <div class="notifiation-menu">
+        <p>
+          <label class="switch" for="notif_rev">Reviews
+            <input type="checkbox" id="notif_rev" name="notif_rev">
+            <span class="slider"></span>
+          </label>
+        </p>
+        <p>
+          <label class="switch" for="notif_chats">Chats
+            <input type="checkbox" id="notif_chats" name="notif_chats">
+            <span class="slider"></span>
+          </label>
+        </p>
+        <p>
+          <label class="switch" for="notif_cta">CTA
+            <input type="checkbox" id="notif_cta" name="notif_cta">
+            <span class="slider"></span>
+          </label>
+        </p>
+        <p>
+          <label class="switch" for="notif_survey">Survey
+            <input type="checkbox" id="notif_survey" name="notif_survey">
+            <span class="slider"></span>
+          </label>
+        </p>
+    </div>
   <ul class="navbar-nav">
-    <li class="nav-item text-nowrap lang"><?php pll_the_languages(array('display_names_as'=>'slug','dropdown'=>1)); ?></li>
-    <li class="nav-item text-nowrap"><a href="<?php if (get_locale() === 'fr_FR'){?> https://admin.avis.help/fr/profil<?php } elseif (get_locale() === 'ru_RU'){?> https://admin.avis.help/ru/profile-ru/<?php } else { ?> https://admin.avis.help/profile<?php };?>"><?php echo $user_data->email; ?></a></li>
-    <li class="nav-item text-nowrap">
-      <a class="user-logo" href="<?php if (get_locale() === 'fr_FR'){?> https://admin.avis.help/fr/profil<?php } elseif (get_locale() === 'ru_RU'){?> https://admin.avis.help/ru/profile-ru/<?php } else { ?> https://admin.avis.help/profile<?php };?>">
-        <img width="50" height="50" src="<?php if(!empty($user_data->avatarUrl)) {echo $user_data->avatarUrl;} else { echo '/wp-content/uploads/2019/03/img-profile.png';} ?>" alt="<?php echo $user_data->username; ?>" title="<?php echo $user_data->username; ?>">
-      </a>
+    
+    <li class="nav-item text-nowrap nav-item-email">
+      <a><?php echo $user_data->email; ?></a>
     </li>
+    <li class="nav-item text-nowrap nav-item-logo">
+        <img width="50" height="50" src="<?php if(!empty($user_data->avatarUrl)) {echo $user_data->avatarUrl;} else { echo '/wp-content/uploads/2019/03/img-profile.png';} ?>" alt="<?php echo $user_data->username; ?>" title="<?php echo $user_data->username; ?>">    
+    </li>
+    <div class="profile-menu">
+        <a href="<?php if (get_locale() === 'fr_FR'){?> https://admin.avis.help/fr/profil<?php } elseif (get_locale() === 'ru_RU'){?> https://admin.avis.help/ru/profile-ru/<?php } else { ?> https://admin.avis.help/profile<?php };?>"><img src="/wp-content/themes/Avis.help/icon-profile.png"> Your profile</a>
+        <a id="logout" href="/logout/?lang=<?php echo explode('_', get_locale())[0] ?>"><img src="/wp-content/themes/Avis.help/icon-out.png"> Sign out</a>
+    </div>
   </ul>
+  <div class="nav-item text-nowrap lang"><?php pll_the_languages(array('display_names_as'=>'slug','dropdown'=>1)); ?></div>
+ 
 </nav>
 
 <div class="container-fluid">
@@ -86,7 +124,4 @@
 
 <div class="container-fluid p-0">
   <main role="main" class="account-body">
-    <div class="account-title-wrapper">
-       <h1 class="account-title m-0"><?php the_title(); ?></h1>
-    </div>
     <div class="content_block_wrapper">

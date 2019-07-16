@@ -1,8 +1,8 @@
 .chat-input input[type="submit"]{
-	background-image: url(/wp-content/themes/Avis.help/svg/send.svg);
-	width: 25px;
-    height: 25px;
-    transition: .2s;
+  background-image: url(/wp-content/themes/Avis.help/svg/send.svg);
+  width: 22px;
+  height: 22px;
+  transition: .2s;
 }
 .chat-input input[type="submit"]:hover, .chat-input input[type="submit"]:focus{
 	background-image: url(/wp-content/themes/Avis.help/svg/send2.svg);
@@ -27,3 +27,146 @@
 .registration-page .mes-error{
     background: #ee6a6a;
 } 
+
+/*promocodes*/
+
+.promo-id-wrap form {
+    display: flex;
+    justify-content: center;
+}
+
+.promo-id-wrap form input {
+    width: 45px;
+    height: 40px;
+    border: 0;
+    padding: 0 5px;
+    line-height: 40px;
+    color: #fd4f56;
+    font-family: Avenir;
+    font-size: 35px;
+    font-weight: 900;
+    letter-spacing: .05px;
+    text-align: center;
+    background: none; 
+}
+.promo-id-wrap form input::placeholder{
+    color:#6c757d;
+    opacity:1;
+    font-size: 35px;
+}
+a.avis_submit_wrapper{
+    color: white;
+    text-decoration: none
+}
+a.avis_submit_wrapper:hover{
+    text-decoration: none
+}
+.promocode-table {
+    border-left: 2px solid #fff;
+    padding: 30px 25px;
+}
+
+.add-promo-form-wrapper{
+    display: flex;
+    /*align-items: center;*/
+    justify-content: flex-end;
+    height: 100%;
+}
+.add-promo-form-wrapper form {
+    width: 600px;
+}
+.add-promo-form-wrapper form input,
+.add-promo-form-wrapper form  textarea,
+.promo-icons-wrapper {
+    padding: 11px 20px;
+    border: none;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 0 8px -7px black;
+    font-size: 22px;
+    resize: none;
+    background-color: white
+}
+
+.add-promo-form-wrapper form  textarea{
+    margin: 35px 0;
+}
+
+
+.add-promo-form-wrapper form input[type=number]{
+    width: 100px;
+    text-align: center;
+}
+
+
+.add-promo-form-wrapper form input[name=lifetime] {
+    width: 74px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 25px;
+    font-size: 19px;
+    color: #595e6c
+}
+
+.add-promo-form-wrapper form .vf {
+    padding-left: 20px;
+}
+
+.promo-icons-wrapper{
+    width: 600px
+}
+
+.promo-icons-wrapper ul{
+    
+}
+
+.promo-icons-wrapper ul li {
+    line-height: 50px;
+    height: 50px;
+    width: calc(100% / 10);
+    box-sizing: border-box;
+    float: left;
+    text-align: center;
+}
+
+.promo-icons-wrapper ul li label{
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    line-height: 41px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: .3s;
+    border-radius: 10px;
+}
+.promo-icons-wrapper ul li input{
+    display: none;
+}
+
+
+.promo-icons-wrapper ul li input:checked + label,
+.promo-icons-wrapper ul li label:hover{
+    background: rgb(246,143,143);
+    background-image: -moz-linear-gradient( 0deg, rgb(246,145,145) 0%, rgb(233,88,88) 100%);
+    background-image: -webkit-linear-gradient( 0deg, rgb(246,145,145) 0%, rgb(233,88,88) 100%);
+    background-image: -ms-linear-gradient( 0deg, rgb(246,145,145) 0%, rgb(233,88,88) 100%);
+    color: white;
+    box-shadow: 0 0 10px -5px black;
+}
+
+.promo-icons-header{
+    font-size: 24px;
+    font-family: 'Avenir', sans-serif;
+    padding: 0 0 10px 15px;
+}
+
+h1.add_promo_page_header {
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Avenir', sans-serif;
+    padding: 67px 0;
+}
+
+.promo-submit-wrapper{
+    padding-top: 45px!important; 
+}

@@ -50,7 +50,7 @@
     <div class="menu_button"><a href="javascript:void(0)"><img src="/wp-content/themes/Avis.help/menu_button.png"></a></div>
   </div>
   
-  <div class="page_name"><?php the_title(); ?></div>
+  <div class="page_name"><a href="" class="go_back"><i class="fas fa-chevron-left"></i></a><?php the_title(); ?></div>
   <div class="nav-item text-nowrap nav-item-notifiation">
       <img src="/wp-content/themes/Avis.help/notification-icon-min.png">
       

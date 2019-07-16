@@ -83,10 +83,10 @@ $avis_lang = array(
     'send'                          => 'Send',
     'maximum_of_promocodes'         => 'You have reached maximum amount of promocodes',
     'new_promocode'                 => 'Create new promo code',
-    'create_name'                   => 'Create a name',
-    'desc_max'                      => 'Create a description (max 200 symbols)',
+    'create_name'                   => 'Enter a name',
+    'desc_max'                      => 'Enter a description (max 200 symbols)',
     'valid_for'                     => 'Valid for',
-    'add_icon'                      => 'Add an icon',
+    'add_icon'                      => 'Select an icon',
 
     /* ******************** chat page**************************** */
     'go_to_review'                  => 'GO TO REVIEW',
@@ -137,7 +137,7 @@ $avis_lang = array(
 
     /* ************************ Export ****************************** */
 
-    'export'                     => 'Export statistics',
+    'export'                   => 'Export statistics',
     'export_btn'               => 'Export',
     'export_mes'               => 'The file will be sent as soon as it will be ready. It takes from 5 to 30 minutes depending on the number of reviews',
     'export_xml'               => 'Download XML file',

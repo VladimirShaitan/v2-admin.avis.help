@@ -5,14 +5,19 @@ $avis_lang = array(
 
     'download_app' => 'Mot de passe oublié?',
 
-    'profile_form_caption'             => 'JPG et PNG uniquement, au moins 400 x 400 pixels',
-    'profile_form_email_email'         => 'Email*',
-    'profile_form_pass_placeholder'    => 'Mot de passe actuel*',
-    'profile_form_name_placeholder'    => 'Prénom*',
-    'profile_form_surname_placeholder' => 'Nom de famille*',
-    'profile_form_number_placeholder'  => 'Numéro de téléphone*',
+    'profile_form_caption'             => 'La photo sera utilisée sur la page de discussion avec vos clients.',
+    'profile_form_email_email'         => 'Email',
+    'profile_form_pass_placeholder'    => 'Tapez votre mot de passe',
+    'profile_form_new_pass'            => 'Entrez un nouveau mot de passe',
+    'profile_form_new_confirm_pass'    => 'Confirmer le nouveau mot de passe',
+    'profile_form_name_placeholder'    => 'Entrez le nom',
+    'profile_form_surname_placeholder' => 'Entrez le nom de famille',
+    'profile_form_number_placeholder'  => 'Entrez le numéro de contact',
     'profile_form_save'                =>  'Sauvegarder',
-    'profile_form_logout_btn'          => 'Connectez - Out',
+    'profile_form_logout_btn'          => 'Déconnexion',
+    'profile_form_change_pass'          => 'Changer le mot de passe',
+    'profile_form_continue'          => 'continuer',
+
 
     'login_title' =>'Plate-forme de communication client',
     'login_form_login' => 'Email',
@@ -28,32 +33,38 @@ $avis_lang = array(
     'sign_up_with'                   => 'Inscrivez-vous avec',
     'have_acc'                   => 'Avoir un compte?',
 
+    'status'  =>'Status',
     'number' =>'Nombre',
+    'date'       =>'Date',
+    'authorization'     =>'Autorisation',
+    'rating'            =>'Évaluation',
     'created_at' => 'Créé à',
     'viewed'      => 'Vu',
     'unviewed'   => 'Non examiné',
     'answered'    => 'Réponse',
     'unanswered' => 'Sans reponse',
-    'branch'    => 'Votre lieu',
+    'branch'    => 'Le lieu',
     'photo'     => 'Photo',
     'comment'   => 'Commentaire',
 
     'review' => 'Révision',
     'viewed_at' => 'Vu à',
-    'qr_type' => 'Type de QR',
-    'general_impression' => 'Impression générale',
+    'qr_type' => 'Catégorie QR',
+    'qr_name' => 'Nom QR',
+    'general_impression' => 'Le taux',
     'telephone' => 'Téléphone',
     'comment_text' => 'Commentaire',
+    'add_comment_text'      => 'Entrez un commentaire',
     'execution_status' => 'Statut',
     'new' => 'Nouveau',
     'in_progress' => 'En cours',
     'closed' => 'Fermée',
     'save' => 'Sauvegarder',
     'conversation' => 'Conversation',
-    'write_message' => 'Écrire un message',
+    'write_message' => 'Tapez un message',
     'go_to_conversation' => 'Aller à la conversation',
 
-    'rew_number' => 'La revue №',
+    'rew_number' => 'La revue #',
     'viewed_rew' => 'Vu',
     'unviewed_rew' => 'Non examiné',
     'unanswered_rew' => 'Sans reponse',
@@ -81,7 +92,9 @@ $avis_lang = array(
     'add_icon' => 'Ajouter une icône',
 
     'go_to_review' => 'Aller à revoir',
-    'invite_to_chat' => 'Inviter à tchater',
+    'invite_to_chat' => 'Inviter à Tchater',
+    'invite'            => 'Inviter',
+
 
 
     'delete_branches'  => 'Êtes-vous sûr de vouloir supprimer cet emplacement?',
@@ -91,6 +104,8 @@ $avis_lang = array(
     'address' => 'Adresse',
     'contact' => 'Contact',
     'add_branch' => 'Ajouter un lieu',
+    'edit'                      => 'modifier',
+    'download'                  => 'Télécharger',
 
     /* ************************ BILLING ************************* */
 

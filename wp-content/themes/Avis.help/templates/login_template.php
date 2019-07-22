@@ -28,7 +28,7 @@ get_header();
 						  </div>
 						  <div class="form-group profile_pass_input">
 						    <input type="password" name="password" class="form-control" placeholder="<?php echo $avis_lang['login_form_pass'];?>" autocomplete="off">
-						    <img src="/wp-content/themes/Avis.help/eye_hide.png">
+						    <img src="/wp-content/themes/Avis.help/img/eye_hide.png">
 						  </div>
 						  <div class="login-bottom">
 							  <div class="row m-0">
@@ -50,8 +50,8 @@ get_header();
 					<!-- </div> -->
 						<div class="text-center login-bold-text"><?php echo $avis_lang['login_form_or']; ?></div>
 						<div class="social-media-wrap">
-							<a href="#" class="avis_submit fb"><?php echo $avis_lang['login_form_login_social']; ?> <img src="/wp-content/themes/Avis.help/fb.png"></a>
-							<a href="#" class="avis_submit google"><?php echo $avis_lang['login_form_login_social']; ?> <img src="/wp-content/themes/Avis.help/google.png"></a>
+							<a href="#" class="avis_submit fb"><?php echo $avis_lang['login_form_login_social']; ?></a>
+							<a href="#" class="avis_submit google"><?php echo $avis_lang['login_form_login_social']; ?></a>
 						</div>
 						<div class="text-center login-bold-text"><?php echo $avis_lang['dont_have']; ?></div>
 						<div class="text-center sign-link"><a href="#"><?php echo $avis_lang['sign_up']; ?></a></div>

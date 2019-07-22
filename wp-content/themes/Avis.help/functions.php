@@ -73,19 +73,13 @@ function avis_init(){
 	// if($post->ID === 35){
 		wp_enqueue_style('modal_box', get_stylesheet_directory_uri(). '/css/venobox.min.css'); 
 	// }
-	if(get_page_template_slug() === $__TEMPLATESDIR.'table_page.php'){
+	// if(get_page_template_slug() === $__TEMPLATESDIR.'table_page.php'){
 		wp_enqueue_style('datatable', get_stylesheet_directory_uri(). '/css/datatables.min.css');
-	}
+	// }
 	wp_enqueue_style('style_update', get_stylesheet_directory_uri(). '/css/style_update.css');
 }	
 add_action('wp_head', 'ajaxurl');
 function ajaxurl() {
-	// if($_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https'){
-	// 	$aj_url = 'https://' . $_SERVER['SERVER_NAME'] . '/wp-admin/admin-ajax.php';
-	// } elseif($_SERVER['HTTP_X_FORWARDED_PROTO'] === 'http') {
-	// 	$aj_url = 'http://' . $_SERVER['SERVER_NAME'] . '/wp-admin/admin-ajax.php';
-	// }
-
     echo '<script type="text/javascript">var ajaxurl = "/wp-admin/admin-ajax.php";</script>';
 }
 add_action( 'wp_footer', 'avis_enqueue_scripts' );
@@ -113,9 +107,9 @@ function avis_enqueue_scripts(){
 
 	wp_enqueue_script('modal_box', get_stylesheet_directory_uri(). '/js/venobox.min.js'); 
 
-	if(get_page_template_slug() === $__TEMPLATESDIR.'table_page.php'){
+	// if(get_page_template_slug() === $__TEMPLATESDIR.'table_page.php'){
 		wp_enqueue_script('datatable', get_stylesheet_directory_uri(). '/js/datatables.min.js');
-	}
+	// }
 
 	if(get_page_template_slug() === $__TEMPLATESDIR.'chat_page_template.php' || get_page_template_slug() === $__TEMPLATESDIR.'review.php'){
 		wp_enqueue_script('stomp', get_stylesheet_directory_uri(). '/js/stomp.js');
@@ -125,8 +119,13 @@ function avis_enqueue_scripts(){
 	wp_enqueue_script('template-constructor', get_stylesheet_directory_uri(). '/js/template_parts_constructor.js'); 
 
 	wp_enqueue_script('script', get_stylesheet_directory_uri(). '/js/script.js');
-	if(get_page_template_slug() === $__TEMPLATESDIR.'promocode_main.php'){
-		wp_enqueue_script('datatable', get_stylesheet_directory_uri(). '/js/promocodes.js');
+	$promo_templates = array(
+		$__TEMPLATESDIR.'promocode_main.php',
+		$__TEMPLATESDIR.'promocode_add.php'
+	);
+
+	if(in_array(get_page_template_slug(), $promo_templates)){
+		wp_enqueue_script('promocodes', get_stylesheet_directory_uri(). '/js/promocodes.js');
 	}
 
 

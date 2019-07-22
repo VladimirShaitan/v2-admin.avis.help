@@ -31,10 +31,9 @@
   <div id="chat_eneable" class="row m-0">
     <div class="col-12 p-0">
 	      <div class="row m-0">
-	        <div class="acc-home-wrapper fw_page_wrp chat-wrp">
+	        <div class="fw_page_wrp chat-wrp">
             <div id="chat" class="chat-wrapper">
             	<div class="chat-header">
-            		<h4><?php echo $avis_lang['rew_number'];?> <?php echo $rev_id; ?></h4>
             		<a href="<?php echo $rev_link; ?>" target="_blank" class="avis_submit"><?php echo $avis_lang['go_to_review'];?></a>
             	</div>
               <div class="chat-body">

@@ -54,7 +54,7 @@
 		);
 
 		private $review = array(
-			'get_all' => '/api/v0/review/getReviews?isAuthorized=',
+			'get_all' => '/api/v0/review/getAllReviews',
             'get_single' => '/api/v0/review/getReview/',
             'get_rev_with_conversation' => '/api/v0/review/getReviewsWithConversation',
             'set_status' => '/api/v0/review/setStatus/',
@@ -154,8 +154,8 @@
     		return $result;
     	}
 
-    	public function get_all_reviews($authorized){
-    		$request_url = $this->api_url.$this->review['get_all'].$authorized;	
+    	public function get_all_reviews(){
+    		$request_url = $this->api_url.$this->review['get_all'];	
     		$result = $this->curl_request($request_url, $this->request_authorized_header);
     		return $result;
     	}

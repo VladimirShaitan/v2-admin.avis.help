@@ -126,21 +126,21 @@ if(qs('.checkboxes_wrapper input[type="checkbox"]') != null){
 if(qs('#load_chat_trigger') != null){
 	qs('#load_chat_trigger').onclick = function(e){
 		qs('#load_chat_trigger').parentElement.remove();
-		jQuery('#chat').show(500);
+		jQuery('#chat').fadeIn(700);
 		message_handler.chat_invite(e);
 	}
 }
 
 
+	// let tab_trnsl = {};
 
 if(qs('.table-template-wrapper') != null){
-	// let tab_trnsl = {};
 	let tab_trnsl;
 	let order;
 	if(lang === 'ru_RU'){
 		tab_trnsl = {
-	       	search: "Поиск:",
-	        lengthMenu:    "Показать _MENU_ элементов",
+	       	search: "",
+	        lengthMenu:    "_MENU_",
 	        info:           "Показано с  _START_ по _END_ из _TOTAL_ элементов",
 	        infoEmpty:      "",
 	        loadingRecords: "Загрузка",
@@ -160,8 +160,8 @@ if(qs('.table-template-wrapper') != null){
 	} else if(lang === 'fr_FR'){
 		tab_trnsl = {
 	        processing:     "Traitement en cours...",
-	        search:         "Rechercher&nbsp;:",
-	        lengthMenu:    "Afficher _MENU_ &eacute;l&eacute;ments",
+	        search:         "",
+	        lengthMenu:    "_MENU_",
 	        info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
 	        infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
 	        infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
@@ -175,7 +175,7 @@ if(qs('.table-template-wrapper') != null){
 	            next:       "Suivant",
 	            last:       "Dernier"
 	        },
-	        aria: {
+	        aria: {                                                                                               
 	            sortAscending:  ": activer pour trier la colonne par ordre croissant",
 	            sortDescending: ": activer pour trier la colonne par ordre décroissant"
 	        }
@@ -183,16 +183,16 @@ if(qs('.table-template-wrapper') != null){
     	order = 'asc';
 	} else {
 		tab_trnsl = {
-	       	search: "Search: ",
-	        lengthMenu:    "Show _MENU_ items",
+	       	search: "",
+	        lengthMenu:    "_MENU_",
 	        info:           "Shown from _START_ to _END_ of _TOTAL_ elements",
 	        infoEmpty:      "",
 	        loadingRecords: "Loading",
 	        emptyTable:     "No data in table",
 	        paginate: {
 	            first:      "First",
-	            previous:   "Previous",
-	            next:       "Next",
+	            previous:   "<",
+	            next:       ">",
 	            last:       "Last"
 	        },
 	        aria: {
@@ -205,9 +205,9 @@ if(qs('.table-template-wrapper') != null){
 
 	jQuery(document).ready(function() {
 	    jQuery('#table_reviews').DataTable( {
-	        "order": [[ 5, "desc" ]],
+	        "order": [[ 1, "desc" ]],
 	        "language": tab_trnsl,
-	        "aaSortingFixed": [[2, order], [0, 'dsc']]
+	        "aaSortingFixed": [[0, "desc"]]
 	    } )
 	} );
 
@@ -653,56 +653,32 @@ if(qs('.sidebar-sticky') != null){
 					}
 					window.close();
 				}
-				if(data.newAuthReviewCount != 0 || data.newNotAuthReviewCount != 0 || data.newConversationCount != 0) {
-					jQuery('.menu_button img').attr('src', '/wp-content/themes/Avis.help/menu_button-active.png');
+				if(data.allReview != 0 || data.newConversationCount != 0) {
+					jQuery('.menu_button img').attr('src', '/wp-content/themes/Avis.help/img/menu_button-active.png');
 				} else {
-					jQuery('.menu_button img').attr('src', '/wp-content/themes/Avis.help/menu_button.png');
+					jQuery('.menu_button img').attr('src', '/wp-content/themes/Avis.help/img/menu_button.png');
 				}
-
-				if(data.newAuthReviewCount != 0) {
-					if(qs('[data-menu-item-name="authorized_reviews"]') != null) {
-						qs('[data-menu-item-name="authorized_reviews"]').classList.remove('hidden');
-						qs('[data-menu-item-name="authorized_reviews"]').innerHTML = data.newAuthReviewCount;
-						jQuery('[data-menu-item-name="authorized_reviews"]').parent('a').addClass('circle');
-					} else if(qs('[data-menu-item-name="avis_identifié"]') != null) {
-						qs('[data-menu-item-name="avis_identifié"]').classList.remove('hidden');
-						qs('[data-menu-item-name="avis_identifié"]').innerHTML = data.newAuthReviewCount;
-						jQuery('[data-menu-item-name="avis_identifié"]').parent('a').addClass('circle');
-					} else if(qs('[data-menu-item-name="Авторизованные_отзывы"]') != null) {
-						qs('[data-menu-item-name="Авторизованные_отзывы"]').classList.remove('hidden');
-						qs('[data-menu-item-name="Авторизованные_отзывы"]').innerHTML = data.newAuthReviewCount;
-						jQuery('[data-menu-item-name="Авторизованные_отзывы"]').parent('a').addClass('circle');
+				if(data.allReview != 0){
+					if(qs('[data-menu-item-name="reviews"]') != null) {
+						qs('[data-menu-item-name="reviews"]').classList.remove('hidden');
+						qs('[data-menu-item-name="reviews"]').innerHTML = data.allReview;
+						jQuery('[data-menu-item-name="reviews"]').parent('a').addClass('circle');
+					} else if(qs('[data-menu-item-name="avis"]') != null) {
+						qs('[data-menu-item-name="avis"]').classList.remove('hidden');
+						qs('[data-menu-item-name="avis"]').innerHTML = data.allReview;
+						jQuery('[data-menu-item-name="avis"]').parent('a').addClass('circle');
+					} else if(qs('[data-menu-item-name="Отзывы"]') != null) {
+						qs('[data-menu-item-name="Отзывы"]').classList.remove('hidden');
+						qs('[data-menu-item-name="Отзывы"]').innerHTML = data.allReview;
+						jQuery('[data-menu-item-name="Отзывы"]').parent('a').addClass('circle');
 					}
 				} else {
-					if(qs('[data-menu-item-name="authorized_reviews"]') != null) {
-						qs('[data-menu-item-name="authorized_reviews"]').classList.add('hidden');
-					} else if(qs('[data-menu-item-name="avis_identifié"]') != null) {
-						qs('[data-menu-item-name="avis_identifié"]').classList.add('hidden');
-					} else if(qs('[data-menu-item-name="Авторизованные_отзывы"]') != null) {
-						qs('[data-menu-item-name="Авторизованные_отзывы"]').classList.add('hidden');
-					}
-				}
-				if(data.newNotAuthReviewCount != 0){
-					if(qs('[data-menu-item-name="anonymous_reviews"]') != null) {
-						qs('[data-menu-item-name="anonymous_reviews"]').classList.remove('hidden');
-						qs('[data-menu-item-name="anonymous_reviews"]').innerHTML = data.newNotAuthReviewCount;
-						jQuery('[data-menu-item-name="anonymous_reviews"]').parent('a').addClass('circle');
-					} else if(qs('[data-menu-item-name="avis_anonyme"]') != null) {
-						qs('[data-menu-item-name="avis_anonyme"]').classList.remove('hidden');
-						qs('[data-menu-item-name="avis_anonyme"]').innerHTML = data.newNotAuthReviewCount;
-						jQuery('[data-menu-item-name="avis_anonyme"]').parent('a').addClass('circle');
-					} else if(qs('[data-menu-item-name="Анонимные_отзывы"]') != null) {
-						qs('[data-menu-item-name="Анонимные_отзывы"]').classList.remove('hidden');
-						qs('[data-menu-item-name="Анонимные_отзывы"]').innerHTML = data.newNotAuthReviewCount;
-						jQuery('[data-menu-item-name="Анонимные_отзывы"]').parent('a').addClass('circle');
-					}
-				} else {
-					if(qs('[data-menu-item-name="anonymous_reviews"]') != null) {
-						qs('[data-menu-item-name="anonymous_reviews"]').classList.add('hidden');
-					} else if(qs('[data-menu-item-name="avis_anonyme"]') != null) {
-						qs('[data-menu-item-name="avis_anonyme"]').classList.add('hidden');
-					} else if(qs('[data-menu-item-name="Анонимные_отзывы"]') != null) {
-						qs('[data-menu-item-name="Анонимные_отзывы"]').classList.add('hidden');
+					if(qs('[data-menu-item-name="reviews"]') != null) {
+						qs('[data-menu-item-name="reviews"]').classList.add('hidden');
+					} else if(qs('[data-menu-item-name="avis"]') != null) {
+						qs('[data-menu-item-name="avis"]').classList.add('hidden');
+					} else if(qs('[data-menu-item-name="Отзывы"]') != null) {
+						qs('[data-menu-item-name="Отзывы"]').classList.add('hidden');
 					}
 				}
 				
@@ -967,17 +943,17 @@ if(qs('.home_page_loggedin') != null){
 }
 
 if(qs('.profile_pass_input') != null){
-  qs('.profile_pass_input img').onclick = function(){
+  jQuery('.profile_pass_input img').click(function(){
   //   this.parentElement.qs('input[type="password"]').type = 'text' 
     if(this.parentElement.qs('input').type === 'password' ){
       this.parentElement.qs('input').type = 'text';
-      this.src = '/wp-content/themes/Avis.help/eye_view.png'
+      this.src = '/wp-content/themes/Avis.help/img/eye_view.png'
     } else {
       this.parentElement.qs('input').type = 'password';
-      this.src = '/wp-content/themes/Avis.help/eye_hide.png'
+      this.src = '/wp-content/themes/Avis.help/img/eye_hide.png'
     }
 
-  }
+  })
 }
 
 
@@ -1058,10 +1034,29 @@ if(qs('.navbar-nav') != null){
 			qs('.nav-item-email').classList.add('open');
 		}
 	});
-	qs('.nav-item-notifiation').addEventListener('click', function(e){
+	qs('.nav-item-notifiation img').addEventListener('click', function(e){
 		jQuery('.notifiation-menu').slideToggle(300);
 	});
 }
 
+if(qs('.branches-wrap') != null){
+  jQuery('.branch-item').click(function(){
+  	if(jQuery('.full-branch-info-wrap').attr('id') === jQuery(this).attr('data-branch-item-id')) {
+  		jQuery(this).addClass('active');
+  	}
+  	// jQuery('.full-branch-info-wrap').attr('id', jQuery(this).attr('data-branch-item-id')).addClass('active');
+  	// (jQuery(this).attr('data-branch-item-id'));
+
+  })
+}
+
+
   jQuery('select').niceSelect();
 
+setTimeout(function() { 
+	jQuery('.dataTables_length select').niceSelect();
+ }, 1000);
+jQuery('.dataTables_length label select').change(function(){
+	// console.log(e.target.name);
+	jQuery('.dataTables_length .nice-select .list').toggleClass('open');
+});

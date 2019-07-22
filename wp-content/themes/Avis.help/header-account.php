@@ -47,15 +47,13 @@
 <nav class="navbar flex-md-nowrap p-0 account_navbar">
   <div class="site-logo">
     <?php the_custom_logo(); ?>
-    <div class="menu_button"><a href="javascript:void(0)"><img src="/wp-content/themes/Avis.help/menu_button.png"></a></div>
+    <div class="menu_button"><a href="javascript:void(0)"><img src="/wp-content/themes/Avis.help/img/menu_button.png"></a></div>
   </div>
   
   <div class="page_name"><a href="" class="go_back"><i class="fas fa-chevron-left"></i></a><?php the_title(); ?></div>
   <div class="nav-item text-nowrap nav-item-notifiation">
-      <img src="/wp-content/themes/Avis.help/notification-icon-min.png">
-      
-  </div>
-  <div class="notifiation-menu">
+      <img src="/wp-content/themes/Avis.help/img/notification-icon-min.png">
+     <div class="notifiation-menu">
         <p>
           <label class="switch" for="notif_rev">Reviews
             <input type="checkbox" id="notif_rev" name="notif_rev">
@@ -80,7 +78,8 @@
             <span class="slider"></span>
           </label>
         </p>
-    </div>
+    </div> 
+  </div>
   <ul class="navbar-nav">
     
     <li class="nav-item text-nowrap nav-item-email">
@@ -90,8 +89,8 @@
         <img width="50" height="50" src="<?php if(!empty($user_data->avatarUrl)) {echo $user_data->avatarUrl;} else { echo '/wp-content/uploads/2019/03/img-profile.png';} ?>" alt="<?php echo $user_data->username; ?>" title="<?php echo $user_data->username; ?>">    
     </li>
     <div class="profile-menu">
-        <a href="<?php if (get_locale() === 'fr_FR'){?> https://admin.avis.help/fr/profil<?php } elseif (get_locale() === 'ru_RU'){?> https://admin.avis.help/ru/profile-ru/<?php } else { ?> https://admin.avis.help/profile<?php };?>"><img src="/wp-content/themes/Avis.help/icon-profile.png"> Your profile</a>
-        <a id="logout" href="/logout/?lang=<?php echo explode('_', get_locale())[0] ?>"><img src="/wp-content/themes/Avis.help/icon-out.png"> Sign out</a>
+        <a href="<?php if (get_locale() === 'fr_FR'){?> /fr/profil<?php } elseif (get_locale() === 'ru_RU'){?> /ru/profile-ru/<?php } else { ?> /profile<?php };?>">Your profile</a>
+        <a id="logout" href="/logout/?lang=<?php echo explode('_', get_locale())[0] ?>">Sign out</a>
     </div>
   </ul>
   <div class="nav-item text-nowrap lang"><?php pll_the_languages(array('display_names_as'=>'slug','dropdown'=>1)); ?></div>

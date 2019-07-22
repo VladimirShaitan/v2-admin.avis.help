@@ -64,28 +64,34 @@ a.avis_submit_wrapper:hover{
 .promocode-table {
     border-left: 2px solid #fff;
     padding: 30px 25px;
+    background-color: #e1e1e1;
 }
 
 .add-promo-form-wrapper{
     display: flex;
-    /*align-items: center;*/
     justify-content: flex-end;
     height: 100%;
-}
-.add-promo-form-wrapper form {
-    width: 600px;
 }
 .add-promo-form-wrapper form input,
 .add-promo-form-wrapper form  textarea,
 .promo-icons-wrapper {
-    padding: 11px 20px;
+    padding: 15px 20px;
     border: none;
     width: 100%;
     border-radius: 16px;
     box-shadow: 0 0 8px -7px black;
     font-size: 22px;
     resize: none;
-    background-color: white
+    background-color: white;
+    font-size: 18px;
+    font-weight: 500;
+    box-shadow: 0px 7px 20px 0px rgba(0,0,0,.1);
+    color: #9b9b9b;
+}
+.add-promo-form-wrapper form input::placeholder,
+.add-promo-form-wrapper form  textarea::placeholder {
+     font-size: 18px;
+     color: #9b9b9b;
 }
 
 .add-promo-form-wrapper form  textarea{
@@ -105,14 +111,16 @@ a.avis_submit_wrapper:hover{
     padding: 10px;
     border-radius: 25px;
     font-size: 19px;
-    color: #595e6c
+    color: #9b9b9b;
 }
 
 .add-promo-form-wrapper form .vf {
     padding-left: 20px;
+    color: #9b9b9b;
+    font-weight: 500;
 }
 
-.promo-icons-wrapper{
+.promo-icons-wrapper, .add-promo-form-wrapper form {
     width: 600px
 }
 
@@ -127,25 +135,32 @@ a.avis_submit_wrapper:hover{
     box-sizing: border-box;
     float: left;
     text-align: center;
+    color: #000;
 }
 
-.promo-icons-wrapper ul li label{
-    width: 40px;
-    height: 40px;
+.promo-icons-wrapper ul li label,
+.table-icon-wrapper
+{
+    width: 35px;
+    height: 35px;
     margin: 0;
-    line-height: 41px;
+    line-height: 35px;
     font-size: 20px;
     cursor: pointer;
     transition: .3s;
     border-radius: 10px;
 }
+
+
+
 .promo-icons-wrapper ul li input{
     display: none;
 }
 
 
 .promo-icons-wrapper ul li input:checked + label,
-.promo-icons-wrapper ul li label:hover{
+.promo-icons-wrapper ul li label:hover,
+.table-icon-wrapper {
     background: rgb(246,143,143);
     background-image: -moz-linear-gradient( 0deg, rgb(246,145,145) 0%, rgb(233,88,88) 100%);
     background-image: -webkit-linear-gradient( 0deg, rgb(246,145,145) 0%, rgb(233,88,88) 100%);
@@ -154,19 +169,147 @@ a.avis_submit_wrapper:hover{
     box-shadow: 0 0 10px -5px black;
 }
 
+.table-icon-wrapper i{
+    font-size: 17px;
+}
+
+
 .promo-icons-header{
-    font-size: 24px;
+    font-size: 22px;
     font-family: 'Avenir', sans-serif;
     padding: 0 0 10px 15px;
 }
 
-h1.add_promo_page_header {
+h1.page_header {
     text-align: center;
-    font-size: 35px;
+    font-size: 28px;
     font-family: 'Avenir', sans-serif;
-    padding: 67px 0;
+    padding: 40px 0;
 }
 
-.promo-submit-wrapper{
-    padding-top: 45px!important; 
+
+#promocodes-table_wrapper .row:nth-child(2) .col-sm-12 {
+  height: calc(100vh - 210px);
+  overflow-y: scroll;
+  position: relative;
+}
+#promocodes-table_wrapper .row:nth-child(2) .col-sm-12::-webkit-scrollbar{
+    width: 4px;
+    height: 4px;
+  }
+#promocodes-table_wrapper .row:nth-child(2) .col-sm-12::-webkit-scrollbar-track{
+    background-color: #d7d7d7;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    background-clip: content-box;
+    border-radius: 20px;
+}
+#promocodes-table_wrapper .row:nth-child(2) .col-sm-12::-webkit-scrollbar-thumb{
+    background-color: #e95858;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-radius: 20px;
+}
+#promocodes-table thead tr th {
+    border: 0;
+    font-weight: 500;
+}
+#promocodes-table .fa-trash,
+#promocodes-table .fa-chevron-right {
+    color: #e95858;
+    cursor: pointer;
+}
+#promocodes-table tbody tr{
+    background-color: #ebebeb;
+}
+#promocodes-table tbody tr:nth-child(odd) {
+    background: white;
+}
+
+#promocodes-table tbody tr td{
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 16px;
+    vertical-align: middle;
+}
+#promocodes-table_wrapper.dataTables_wrapper div.dataTables_paginate {
+        padding-top: 0.85em;
+}
+.dataTables_info, .dataTables_paginate {
+    font-weight: 500;
+}
+.send-promo-form input{
+  width: 80%;
+  border: 0;
+  box-shadow: 0px 7px 20px 0px rgba(0,0,0,.1);
+  border-radius: 10px;
+  line-height: 1;
+  padding:20px 15px;
+  font-weight: 500;
+}
+.send-promo-form input::placeholder {
+    font-size: 18px;
+    color: #9b9b9b;
+    line-height: 1;
+}
+.promo-info {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    color: #575e6e;
+    font-size: 18px;
+    font-weight: 500;
+}
+.promo-info .promo-name,
+.promo-info .promo-description {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 7px 20px 0px rgba(0,0,0,.1);
+    border-radius: 10px;
+    line-height: 1;
+    padding:13.5px 15px;
+    background-color: #fff;
+}
+.promo-info .promo-description {
+    padding:13.5px 25px;
+    margin-top: 25px;
+    line-height: 1.2;
+}
+.promo-info .promo-name .table-icon-wrapper {
+    margin-right: 12px;
+}
+.promo-info .promo-lifetime {
+    text-align: left;
+    width: 75%;
+    margin-top: 50px;
+}
+@media(max-width: 1500px){
+
+    .promo-icons-wrapper ul{
+        height: 250px;
+        overflow-y: auto;
+    }
+
+    .promo-icons-wrapper ul::-webkit-scrollbar{
+        width: 3px;
+        height: 3px;
+    }
+    .promo-icons-wrapper ul::-webkit-scrollbar-thumb{
+        background: rgb(246,143,143);
+        background-image: -moz-linear-gradient( 0deg, rgb(246,145,145) 0%, rgb(233,88,88) 100%);
+        background-image: -webkit-linear-gradient( 0deg, rgb(246,145,145) 0%, rgb(233,88,88) 100%);
+        background-image: -ms-linear-gradient( 0deg, rgb(246,145,145) 0%, rgb(233,88,88) 100%);
+    }
+
+    .promo-icons-wrapper,
+    .add-promo-form-wrapper form {
+        width: 100%;
+    }
+    .promo-icons-wrapper ul li{
+        width: calc(100% / 8);
+    }
+    h1.add_promo_page_header{
+        padding: 20px 0
+    }
 }

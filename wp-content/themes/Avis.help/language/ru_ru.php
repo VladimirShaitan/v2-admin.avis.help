@@ -4,14 +4,18 @@ $avis_lang = array(
     'yes' => 'Да',
     'download_app' => 'Скачать приложение',
 
-    'profile_form_caption'             => 'Только JPG и PNG, не менее 400x400 пикселей',
-    'profile_form_email_email'         => 'Электронная почта*',
-    'profile_form_pass_placeholder'    => 'Текущий пароль*',
-    'profile_form_name_placeholder'    => 'Имя*',
-    'profile_form_surname_placeholder' => 'Фамилия*',
-    'profile_form_number_placeholder'  => 'Номер телефона*',
+    'profile_form_caption'             => 'Фотография будет использоваться на странице чата с вашими клиентами',
+    'profile_form_email_email'         => 'Электронная почта',
+    'profile_form_pass_placeholder'    => 'Введите ваш пароль',
+    'profile_form_new_pass'            => 'Введите новый пароль',
+    'profile_form_new_confirm_pass'    => 'Подтвердите новый пароль',
+    'profile_form_name_placeholder'    => 'Ввести имя',
+    'profile_form_surname_placeholder' => 'Ввести фамилию',
+    'profile_form_number_placeholder'  => 'Ввести контактный номер',
     'profile_form_save'                => 'Сохранить',
     'profile_form_logout_btn'          => 'Выйти',
+    'profile_form_change_pass'          => 'Изменить пароль',
+    'profile_form_continue'          => 'Продолжить',
 
     'login_title' =>'Платформа для общения с клиентами',
     'login_form_login' => 'Email',
@@ -27,7 +31,11 @@ $avis_lang = array(
     'sign_up_with'                   => 'Зарегестрироваться с помощью',
     'have_acc'                   => 'Есть аккаунт?',
 
+    'status'  =>'Status',
     'number'      =>'Номер',
+    'date'              =>'Дата',
+    'authorization'     =>'Авторизация',
+    'rating'            =>'Рейтинг',
     'created_at'  => 'Создан',
     'viewed'      => 'Просмотрен',
     'unviewed'   => 'Не просмотрено',
@@ -39,20 +47,22 @@ $avis_lang = array(
 
     'review' => 'Отзыв',
     'viewed_at' => 'Просмотрен',
-    'qr_type' => 'Тип QR',
-    'general_impression' => 'Общее впечатление',
-    'telephone' => 'Телефон',
+    'qr_type' => 'Категория QR',
+    'qr_name' => 'Название QR',
+    'general_impression' => 'Оценка',
+    'telephone' => 'Номер телефона',
     'comment_text' => 'Комментарий',
+    'add_comment_text'      => 'Введите комментарий',
     'execution_status' => 'Статус выполнения',
     'new' => 'Новый',
     'in_progress' => 'В процессе',
     'closed' => 'Решен',
     'save' => 'Сохранить',
     'conversation' => 'Чат',
-    'write_message' => 'Напишите сообщение',
+    'write_message' => 'Введите сообщение',
     'go_to_conversation' => 'Перейти в чат',
 
-    'rew_number' => 'Отзыв №',
+    'rew_number' => 'Отзыв #',
     'viewed_rew' => 'Да',
     'unviewed_rew' => 'Нет',
     'unanswered_rew' => 'Нет',
@@ -65,7 +75,7 @@ $avis_lang = array(
     'currency'   => 'Валюта',
 
     'your_promo_codes' => 'Ваши промо коды',
-    'send_your_promo_codes'         => 'Отправьте свои промо коды',
+    'send_your_promo_codes'         => 'Отправьте Промо Код',
     'select_your_promo_codes'         => 'Выберите промо код',
     'enter_phone'         => 'Введите номер телефона',
     'due_date'                    => 'Действителен',
@@ -80,7 +90,8 @@ $avis_lang = array(
     'add_icon' => 'Добавить иконку',
 
     'go_to_review' => 'Перейти к отзыву',
-    'invite_to_chat' => 'Пригласить в чат',
+    'invite_to_chat' => 'Пригласить в Чат',
+    'invite'                        => 'Пригласить',
 
 
     'delete_branches'  => 'Вы уверены, что хотите удалить этот филиал?',
@@ -90,6 +101,8 @@ $avis_lang = array(
     'address' => 'Адрес',
     'contact' => 'Контактное лицо',
     'add_branch' => 'Добавить филиал',
+    'edit'                      => 'Редактировать',
+    'download'                  => 'Скачать',
 
     /* ************************ BILLING ************************* */
 

@@ -5,14 +5,19 @@ $avis_lang = array(
     'yes'           => 'Yes',
     'download_app'  => 'Download our application',
 
-    'profile_form_caption'             => 'JPG and PNG only, at least 400x400 pixels',
-    'profile_form_email_email'         => 'Email*',
-    'profile_form_pass_placeholder'    => 'Current password*',
-    'profile_form_name_placeholder'    => 'Name*',
-    'profile_form_surname_placeholder' => 'Surname*',
-    'profile_form_number_placeholder'  => 'Telephone number*',
+    'profile_form_caption'             => 'The photo will be used on chat page with your clients',
+    'profile_form_email_email'         => 'Email',
+    'profile_form_pass_placeholder'    => 'Enter your password',
+    'profile_form_new_pass'            => 'Enter new password',
+    'profile_form_new_confirm_pass'    => 'Confirm new password',
+    'profile_form_name_placeholder'    => 'Enter Name',
+    'profile_form_surname_placeholder' => 'Enter Surname',
+    'profile_form_number_placeholder'  => 'Enter contact number',
     'profile_form_save'                =>  'SAVE',
-    'profile_form_logout_btn'          => 'Logout',
+    'profile_form_logout_btn'          => 'Sign out',
+    'profile_form_change_pass'         => 'Change password',
+    'profile_form_continue'            => 'continue',
+
 
     'login_title'               =>'Customer communication platform',
     'login_form_login'          => 'Email',
@@ -29,7 +34,11 @@ $avis_lang = array(
     'have_acc'                   => 'Have an account?',
 
 /*   table head values  */
+    'status'            =>'Status',
     'number'            =>'Number',
+    'date'              =>'Date',
+    'authorization'     =>'Authorization',
+    'rating'            =>'Rating',
     'created_at'        => 'Created at',
     'viewed'            => 'Viewed',
     'unviewed'          => 'Unviewed',
@@ -43,20 +52,22 @@ $avis_lang = array(
 
     'review'                => 'Review',
     'viewed_at'             => 'Viewed at',
-    'qr_type'               => 'QR type',
-    'general_impression'    => 'General impression',
+    'qr_type'               => 'QR category',
+    'qr_name'               => 'QR name',
+    'general_impression'    => 'Rate',
     'telephone'             => 'Telephone',
-    'comment_text'          => 'Comment text',
+    'comment_text'          => 'Comment',
+    'add_comment_text'      => 'Enter a comment',
     'execution_status'      => 'Execution status',
     'new'                   => 'New',
     'in_progress'           => 'In progress',
     'closed'                => 'Closed',
     'save'                  => 'Save',
     'conversation'          => 'Conversation',
-    'write_message'         => 'Write message',
+    'write_message'         => 'Type a message',
     'go_to_conversation'    => 'Go to conversation',
 
-    'rew_number' => 'Review №',
+    'rew_number' => 'Review #',
     'viewed_rew' => 'Viewed',
     'unviewed_rew' => 'Unviewed',
     'unanswered_rew' => 'Unanswered',
@@ -74,7 +85,7 @@ $avis_lang = array(
     /* ************** PROMOCODE ******************* */
 
     'your_promo_codes'              => 'Your promo codes',
-    'send_your_promo_codes'         => 'Send your promo codes',
+    'send_your_promo_codes'         => 'Send Promo Code',
     'select_your_promo_codes'       => 'Select a promo code',
     'enter_phone'                   => 'Enter phone number',
     'due_date'                      => 'Valid',
@@ -90,7 +101,8 @@ $avis_lang = array(
 
     /* ******************** chat page**************************** */
     'go_to_review'                  => 'GO TO REVIEW',
-    'invite_to_chat'                => 'Invite to chat',
+    'invite_to_chat'                => 'Invite to Chat',
+    'invite'                        => 'Invite',
 
 
     /* **************************   branches ************************/
@@ -101,6 +113,8 @@ $avis_lang = array(
     'address'                   => 'Address',
     'contact'                   => 'Contact person',
     'add_branch'                => 'Add a branch',
+    'edit'                      => 'Edit',
+    'download'                  => 'download',
 
     /* ************************ BILLING ************************* */
 
@@ -118,8 +132,8 @@ $avis_lang = array(
     'to'                        => 'To:',
     'week'                      => 'Week',
     'month'                     => 'Month',
-    'total-reviews'             => 'Total reviews',
-    'total-conversations'       => 'Total conversations',
+    'total-reviews'             => 'Reviews',
+    'total-conversations'       => 'Chats',
     'overall-rating'            => 'Overall rating',
     'general'                   => 'General',
     'cleaness'                  => 'Cleanliness ',

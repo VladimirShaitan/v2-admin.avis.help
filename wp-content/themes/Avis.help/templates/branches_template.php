@@ -4,7 +4,73 @@
   $branches = array_reverse($avis_helper->get_my_branches()); 
   $company = json_decode($avis_helper->get_organization());
 ?>
-   <div class="row m-0">
+  <div class="row m-0">
+    <div class="col-12 subtitle edit-top-wrapper company-edit">
+      <label>
+        <input type="file" form="company_name" name="profile-image" id="upload_image" multiple="false" accept="image/*">
+        <div class="add_photo" style="<?php if(!empty($company->logoUrl)){ ?>background-image: url(<?php echo $company->logoUrl; ?>); <?php } ?>"></div>
+      </label>
+      <input type="hidden" name="profile-image-hidden" form="company_name" class="add_photo_hidden">
+      <span><?php if(!empty($company)){ echo $company->name;} ?></span>
+    </div>
+  </div>
+
+  <div class="row m-0 full-height">
+    <div class="col-3 p-0 general-branches-wrap">
+      <div class="add-branch-wrap">
+        <a href="" class="avis_submit" class="avis_submit"><?php echo $avis_lang['add_branch'];?> +</a>
+      </div>
+      <div class="branches-wrap">
+        <div>
+          <?php foreach ($branches as $branch) { ?>
+            <div class="branch-item" data-branch-item-id="<?php echo $branch->id;?>">
+              <div class="branch-logo" style="<?php if(!empty($branch->logoUrl)){ ?>background-image:url(<?php echo $branch->logoUrl; ?>); <?php } ?>"></div>
+              <span><?php echo $branch->name; ?></span>
+            </div>
+          <?php } ?>
+        </div>
+      </div>
+    </div>
+    <div class="col-9 full-height">
+      <?php foreach ($branches as $branch) { ?>
+      <div class="full-branch-info-wrap" id="<?php echo $branch->id;?>">
+        <div class="branch-info-header">
+          <form data-branch-id="<?php echo $branch->id; ?>">
+            <label>
+              <div class="b_logo_img_wrapper">
+                <div class="branch_url" style="<?php if(!empty($branch->logoUrl)){ ?>background-image:url(<?php echo $branch->logoUrl; ?>); <?php } ?>"></div>
+              </div>
+              <input class="hidden" type="file" name="branch-logo" multiple="false" accept="image/*">
+            </label>
+            <?php wp_nonce_field( 'branch-logo', 'branch-logo_nonce' ); ?>
+          </form>
+          <span><?php echo $branch->name; ?></span>
+        </div>
+        <div class="branch-info-main">
+          <div><?php echo $branch->address; ?></div>
+          <div><?php echo $branch->contact; ?></div>
+          <div><?php echo $branch->phone; ?></div>
+        </div>
+        <div class="qr-wrap">
+          <?php foreach ($branch->qrCodes as $qr_code) { ?>
+          <div class="qr-item">
+            <div><?php echo localize_qr_type($qr_code->qrType); ?></div>
+            <div  class="caption"><?php echo $qr_code->humanReadableId; ?></div>
+            <div class="qr-img-wrapper">
+              <img width="100%" height="100%" draggable="false" src="<?php echo $qr_code->qrUrl; ?>">
+            </div>
+            <a href="<?php echo $qr_code->qrUrl; ?>" target="_blank" class="avis_submit"><?php echo $avis_lang['download'];?></a>         
+          </div>
+        <?php } ?>
+        </div>
+        <div class="branch-btns-wrap">
+          <a href="<?php echo $qr_code->qrUrl; ?>" target="_blank" class="avis_submit"><?php echo $avis_lang['edit'];?></a> 
+          <a href="<?php echo $qr_code->qrUrl; ?>" target="_blank" class="avis_submit"><?php echo $avis_lang['delete'];?></a> 
+        </div>
+      </div>
+      <?php } ?>
+    </div>
+  </div>
         <div id="branches-list-holder" class="col-8 p-l-0">
                 <div class="row edit-top-wrapper">
                   <div class="col-2">
@@ -114,6 +180,6 @@
               </form>
             </div>
         </div> 
-  </div>
+  
 
 <?php get_footer('account'); ?> 

@@ -8,11 +8,12 @@
   $chat_history = $avis_helper->getChatHistoryWeb($rev_coockie->rev_id);
   $promocodes = $avis_helper->get_user_promocodes();
   $viewed = $avis_helper->set_rev_viewed($rev_coockie->rev_id);
+  $anon_rev_arr = array(90,154,224);
 
   if(!empty($review_data->imageUrl)){
     $img = $review_data->imageUrl;
   } else {
-    $img = '/wp-content/uploads/2019/02/img_placehilder.png';
+    $img = '';
   }
 
 ?>
@@ -29,7 +30,12 @@
 	<?php //print_r($review_data);?>
 <!-- </pre> -->
   <div class="row m-0">
-    <div class="col-8 rew-wrap">
+    <?php  
+if(!in_array($post->ID, $anon_rev_arr)){ ?>
+    <div class="col-9 rew-wrap">
+      <?php } else { ?>
+      <div class="col-12 rew-wrap">
+      <?php } ?>
     	<div class="row m-0">
     		<div class="col-12 p-0">
     			<div class="rev-row time-row">
@@ -45,8 +51,8 @@
     				<div><?php echo $review_data->qrType ;?></div>
     			</div>
     			<div class="rev-row">
-    				<div>QR Name:</div>
-    				<div>Name 1</div>
+    				<div><?php echo $avis_lang['qr_name'];?>:</div>
+    				<div></div>
     			</div>
     			<div class="rev-row">
     				<div><?php echo $avis_lang['general_impression'];?>:</div>
@@ -64,15 +70,15 @@
     				<div><?php echo $avis_lang['photo'];?>:</div>
     				<div>
     					<a class="venobox" href="<?php echo $img; ?>">
-    					<img src="<?php echo $img; ?>" alt="<?php echo $review_data->message;?>" title="<?php echo $review_data->message;?>">
+    					<img src="<?php echo $img; ?>">
     					</a>
     				</div>
     			</div>
     			<div class="comment-wrap">
-    				<div class="subtitle">Your comment</div>
+    				<div class="subtitle"><?php echo $avis_lang['comment_text'];?></div>
     				<form id="add_coment">
 		                <div class="add-coment form-group">
-		                    <textarea name="comment" class="form-control" placeholder="<?php echo $avis_lang['comment_text'];?>"><?php echo $review_data->comment; ?></textarea>
+		                    <textarea name="comment" class="form-control" placeholder="<?php echo $avis_lang['add_comment_text'];?>"><?php echo $review_data->comment; ?></textarea>
 		                      <input type="submit" class="avis_submit submit_coment" value="<?php echo $avis_lang['save'];?>">
 		                </div>
 		            </form>
@@ -81,9 +87,8 @@
     	</div>
      </div>
 <?php  
-$anon_rev_arr = array(90,154,224);
 if(!in_array($post->ID, $anon_rev_arr)){ ?>
-      <div class="col-4 p-0">
+      <div class="col-3 p-0">
         <div class="row m-0 full-height">
           <div class="col-12 p-0 rev-chat-wrap">
             <div class="load_chat">
@@ -130,10 +135,7 @@ if(!in_array($post->ID, $anon_rev_arr)){ ?>
                 
                 <div class="chat-input">
                       <form id="send_message">
-                        <div class="closed add-promo-code">
-                          <div class="horizontal"></div>
-                          <div class="vertical"></div>
-                        </div>                    
+                        <div class="closed add-promo-code"></div>                    
                         <input type="text" name="" placeholder="<?php echo $avis_lang['write_message'];?>">
                         <input type="submit" name="" value="">
                       </form>

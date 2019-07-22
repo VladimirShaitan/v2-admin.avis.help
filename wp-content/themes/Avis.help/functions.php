@@ -66,17 +66,18 @@ function avis_init(){
 	wp_enqueue_style('fonts-avesome', 'https://use.fontawesome.com/releases/v5.7.2/css/all.css');
 	wp_enqueue_style('select', get_stylesheet_directory_uri() .'/css/nice-select.css');
 	wp_enqueue_style('bootstrap', get_stylesheet_directory_uri() .'/css/bootstrap.min.css');
+	wp_enqueue_style('intlTelInput', get_stylesheet_directory_uri(). '/css/intlTelInput.min.css');
 	wp_enqueue_style('main_style', get_stylesheet_directory_uri(). '/style.css');
+
 	if(get_page_template_slug() === $__TEMPLATESDIR.'home_page.php'){
 		wp_enqueue_style('date_picker', get_stylesheet_directory_uri().'/css/bootstrap-datepicker.standalone.min.css');
 	}
-	// if($post->ID === 35){
-		wp_enqueue_style('modal_box', get_stylesheet_directory_uri(). '/css/venobox.min.css'); 
-	// }
-	// if(get_page_template_slug() === $__TEMPLATESDIR.'table_page.php'){
-		wp_enqueue_style('datatable', get_stylesheet_directory_uri(). '/css/datatables.min.css');
-	// }
+
+	wp_enqueue_style('modal_box', get_stylesheet_directory_uri(). '/css/venobox.min.css'); 
 	wp_enqueue_style('style_update', get_stylesheet_directory_uri(). '/css/style_update.css');
+
+	wp_enqueue_style('datatable', get_stylesheet_directory_uri(). '/css/datatables.min.css');
+
 }	
 add_action('wp_head', 'ajaxurl');
 function ajaxurl() {
@@ -107,24 +108,28 @@ function avis_enqueue_scripts(){
 
 	wp_enqueue_script('modal_box', get_stylesheet_directory_uri(). '/js/venobox.min.js'); 
 
-	// if(get_page_template_slug() === $__TEMPLATESDIR.'table_page.php'){
-		wp_enqueue_script('datatable', get_stylesheet_directory_uri(). '/js/datatables.min.js');
-	// }
+	wp_enqueue_script('datatable', get_stylesheet_directory_uri(). '/js/datatables.min.js');
 
 	if(get_page_template_slug() === $__TEMPLATESDIR.'chat_page_template.php' || get_page_template_slug() === $__TEMPLATESDIR.'review.php'){
 		wp_enqueue_script('stomp', get_stylesheet_directory_uri(). '/js/stomp.js');
 		wp_enqueue_script('chat', get_stylesheet_directory_uri(). '/js/chat.js');		
 	}
 
+
 	wp_enqueue_script('template-constructor', get_stylesheet_directory_uri(). '/js/template_parts_constructor.js'); 
 
 	wp_enqueue_script('script', get_stylesheet_directory_uri(). '/js/script.js');
 	$promo_templates = array(
 		$__TEMPLATESDIR.'promocode_main.php',
-		$__TEMPLATESDIR.'promocode_add.php'
+		$__TEMPLATESDIR.'promocode_add.php',
+		$__TEMPLATESDIR.'promocode_send.php'
 	);
 
+
 	if(in_array(get_page_template_slug(), $promo_templates)){
+		// https://github.com/jackocnr/intl-tel-input#recommended-usage
+		wp_enqueue_script('utilsJs', get_stylesheet_directory_uri(). '/js/utils.js');
+		wp_enqueue_script('inpTel', get_stylesheet_directory_uri(). '/js/intlTelInput.min.js');
 		wp_enqueue_script('promocodes', get_stylesheet_directory_uri(). '/js/promocodes.js');
 	}
 

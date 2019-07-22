@@ -1039,24 +1039,34 @@ if(qs('.navbar-nav') != null){
 	});
 }
 
-if(qs('.branches-wrap') != null){
+if(qs('.branch-item') != null){
   jQuery('.branch-item').click(function(){
-  	if(jQuery('.full-branch-info-wrap').attr('id') === jQuery(this).attr('data-branch-item-id')) {
-  		jQuery(this).addClass('active');
-  	}
-  	// jQuery('.full-branch-info-wrap').attr('id', jQuery(this).attr('data-branch-item-id')).addClass('active');
-  	// (jQuery(this).attr('data-branch-item-id'));
-
+  	jQuery('.branch-item').removeClass('active');
+  	jQuery(this).addClass('active');
+  	let index = jQuery(this).index();
+  	console.log(index);
+  	jQuery('.full-branch-info-wrap').removeClass('active');
+  	jQuery('.full-branch-info-wrap').eq(index).addClass('active');
   })
+   jQuery('.branch-item').eq(0).click();
+}
+
+if(qs('.edit-wrap') != null) {
+	jQuery('.edit').click(function() {
+		jQuery(this).parents('.edit-wrap').children('.edit-menu').slideToggle();
+	})
+	jQuery('.delete').click(function(){
+		jQuery('.modal-company').fadeIn(400);
+	})
+	jQuery('.modal-company .close').click(function(){
+		jQuery('.modal-company').fadeOut(400);
+	})
 }
 
 
-  jQuery('select').niceSelect();
+
+jQuery('select').niceSelect();
 
 setTimeout(function() { 
 	jQuery('.dataTables_length select').niceSelect();
  }, 1000);
-jQuery('.dataTables_length label select').change(function(){
-	// console.log(e.target.name);
-	jQuery('.dataTables_length .nice-select .list').toggleClass('open');
-});

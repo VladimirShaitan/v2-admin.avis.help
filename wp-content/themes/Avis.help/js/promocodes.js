@@ -92,3 +92,24 @@ if(qs('#promocodes-table') != null){
  		})
  	})
  }
+
+ // send promocode 
+
+if(qs('#promocode-send-page') != null){
+
+	const prefCountries = {
+        RU: ['UA', 'BY', 'RU'],
+        UA: ['RU', 'BY', 'UA'],
+        GB: ['AU', 'CA', 'GB', 'IE', 'NZ', 'US'],
+        FR: ['AU', 'CA', 'GB', 'IE', 'NZ', 'US']
+    }
+
+	window.intlTelInput(qs('#send_promo_tel'), {
+		ignoredCountries: ['BA', 'CF', 'CD', 'DO', 'KP', 'MF', 'PM', 'VC', 'ST', 'GF', 'PF', 'MK', 'NC', 'AE', 'WF', 'CG', 'GQ'],
+		preferredCountries: prefCountries[current_page_lang.toUpperCase()],
+		initialCountry: current_page_lang.toUpperCase(),
+		placeholderNumberType: 'FIXED_LINE',
+		// separateDialCode: true,
+		
+	});
+} 

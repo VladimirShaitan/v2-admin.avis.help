@@ -1,5 +1,6 @@
 <?php
 $avis_lang = array(
+    'lang'          => 'gb',
 
     'not'           => 'Not',
     'yes'           => 'Yes',
@@ -104,17 +105,21 @@ $avis_lang = array(
     'invite_to_chat'                => 'Invite to Chat',
     'invite'                        => 'Invite',
 
+    /* ******************** company **************************** */
+    'enter_company_came'            => 'Enter Company Name',
+    'company_form_caption'            => 'The image will be displayed on your review page if Branch doesn\'t have a logo',
 
     /* **************************   branches ************************/
     'delete_branches'           => 'Are you sure that you want to delete this branch ?',
     'your_branch'               => 'New branch',
-    'c_phone'                   => 'Phone',
-    'name'                      => 'Name (will be displayed in chat)',
-    'address'                   => 'Address',
-    'contact'                   => 'Contact person',
+    'c_phone'                   => 'Enter contact number',
+    'name'                      => 'Enter Branch name',
+    'address'                   => 'Enter Branch address',
+    'contact'                   => 'Enter Admin name',
     'add_branch'                => 'Add a branch',
     'edit'                      => 'Edit',
     'download'                  => 'download',
+    'branch_form_caption'       => 'The image will be displayed on your review page',
 
     /* ************************ BILLING ************************* */
 
@@ -155,6 +160,12 @@ $avis_lang = array(
     'export_btn'               => 'Export',
     'export_mes'               => 'The file will be sent as soon as it will be ready. It takes from 5 to 30 minutes depending on the number of reviews',
     'export_xml'               => 'Download XML file',
+    
+    /* ************************ Notification ****************************** */
+
+    'notif_title'             => 'Urgent action required',
+    'notif_mes'               => 'Press button then you have fixed the issue',
+    'notif_btn'               => 'done',
 
     /* Tech messages */
 

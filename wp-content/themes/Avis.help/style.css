@@ -1896,8 +1896,9 @@ span.close_rm_br{
 .add_photo_profile:before,
 .b_logo_img_wrapper:before {
   content: '';
-  /*background-image: url(/wp-content/uploads/2019/03/plus.png);*/
-  background-size: contain;
+  background-image: url(/wp-content/themes/Avis.help/svg/photo.svg);
+  background-size: 55%;
+  background-position: center;
   background-repeat: no-repeat;
   width: 45px;
   height: 45px;
@@ -3114,6 +3115,7 @@ div.lang li.current-lang a {
   background-color: #d7d7d7;
   padding: 10px 15px;
   border-bottom: 2px solid #fff;
+  font-weight: 500;
 }
 .promo-id-wrap {
   padding: 40px 0 90px;
@@ -3478,7 +3480,7 @@ div.dataTables_wrapper div.dataTables_length label {
 /* PROFILE PAGE */
 
 .profile-wrap {
-  width: 40%;
+  width: 45%;
   margin: 0 auto;
   padding-top: 25px;
 }
@@ -3605,12 +3607,20 @@ div.dataTables_wrapper div.dataTables_length label {
   width: 23px;
 }
 /* COMPANY PAGE */
+.branches-row {
+  height: calc(100% - 117px);
+}
 .edit-top-wrapper.company-edit {
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
   color: #575e6e;
   font-weight: 500;
   margin-bottom: 0;
+}
+.edit-top-wrapper.company-edit div:first-child {
+  display: flex;
+  align-items: center;
 }
 .edit-top-wrapper.company-edit label {
   width: 85px;
@@ -3631,6 +3641,12 @@ div.dataTables_wrapper div.dataTables_length label {
 }
 .general-branches-wrap {
   background-color: #e1e1e1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-right: 2px solid #fff;
 }
 .add-branch-wrap {
   text-align: center;
@@ -3638,10 +3654,14 @@ div.dataTables_wrapper div.dataTables_length label {
 }
 .branches-wrap {
   padding: 15px 20px 20px 10px;
+  width: 100%;
 }
 .branches-wrap>div {
   overflow-y: scroll;
-  padding-top: 80px;
+  max-height: 360px;
+}
+.branches-wrap>div .branch-item:first-child {
+  margin-top: 80px;
 }
 .branches-wrap>div::-webkit-scrollbar{
     width: 4px;
@@ -3671,6 +3691,7 @@ div.dataTables_wrapper div.dataTables_length label {
   transition: .3s;
   color: #575e6e;
   font-weight: 500;
+  cursor: pointer;
 }
 .branch-item.active {
   margin-right: 0px;
@@ -3685,7 +3706,13 @@ div.dataTables_wrapper div.dataTables_length label {
 }
 .full-branch-info-wrap {
   padding-top: 15px;
+  display: none;
+  /*transition: 1s;*/
 }
+.full-branch-info-wrap.active {
+  display: block;
+}
+
 .branch-info-header {
   display: flex;
   align-items: center;
@@ -3725,7 +3752,195 @@ div.dataTables_wrapper div.dataTables_length label {
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
+  color: #fff;
 }
 .branch-btns-wrap a:first-child {
   margin-right: 20px;
+}
+.edit-wrap {
+  position: relative;
+  float: right;
+}
+.edit {
+  display: flex;
+  cursor: pointer;
+  padding: 10px 0;
+}
+.edit div {
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background-color: #a1a1a1;
+  margin-right: 4px;
+}
+.edit-menu {
+  display: none;
+  width: 175px;
+  position: absolute;
+  top: 10px;
+  left: -186px;
+  background-color: #ffffff;
+  padding: 5px 15px 15px;
+  font-size: 18px;
+  box-shadow: 0px 0px 7px rgba(0,0,0,0.2);
+
+}
+.edit-menu a,
+.edit-menu a:hover {
+  font-size: 16px;
+  color: #575e6e;
+  margin-top: 10px;
+  display: block;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+.modal-company .modal-window{
+  background-color: #ebebeb;
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+}
+.modal-company .modal-window .title {
+  font-weight: 600;
+  font-size: 22px;
+}
+.modal-company .modal-window .modal-body{
+  padding: 20px 20px 30px 20px;
+}
+.modal-company .modal-window .modal-body .close{
+  font-weight: 600;
+  color: #e95858;
+}
+.modal-company .modal-body form div {
+  text-align: center;
+}
+.company-wrap {
+  width: 50%;
+  padding-top: 0px;
+}
+.company-wrap form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.company-wrap input{
+  padding: 20px 15px;
+}
+.tel-wrapper {
+  width: 50%;
+  padding-right: 13px;
+}
+h1.page_header.add_branch {
+    padding: 40px 0 0;
+}
+/* TEAM PAGE */
+
+.team-wrap {
+    border-left: 2px solid #fff;
+    padding:0px;
+    background-color: #e1e1e1;
+}
+.team-wrap .subtitle {
+  background-color: #fff;
+  display: flex;
+}
+.team-wrap .subtitle .tab_title {
+  margin:0 20px;
+  color: #575e6e;
+  font-weight: 500;
+  position: relative;
+  transition: .3s;
+  cursor: pointer;
+}
+.team-wrap .subtitle .tab_title.active:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #e95858;
+  bottom: -11px;
+}
+.roles-wrap {
+  padding:35px 20px 20px 10px;
+  width: 100%;
+}
+.roles-wrap>div {
+  overflow-y: scroll;
+  max-height: 400px;
+  padding-bottom: 50px;
+}
+.roles-wrap>div::-webkit-scrollbar{
+    width: 4px;
+    height: 4px;
+  }
+.roles-wrap>div::-webkit-scrollbar-track{
+    background-color: #d7d7d7;
+    background: #d7d7d7;
+    border-left: 4px solid  #d7d7d7;
+    border-right: 4px solid  #d7d7d7;
+    background-clip: content-box;
+    border-radius: 20px;
+}
+.roles-wrap>div::-webkit-scrollbar-thumb{
+    background-color: #e95858;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-radius: 20px;
+}
+.role-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #d7d7d7;
+  padding:10px 15px;
+  margin-bottom: 15px;
+  margin-right: 20px;
+  transition: .3s;
+  color: #575e6e;
+  font-weight: 500;
+  cursor: pointer;
+}
+.add-role-wrap {
+    text-align: center;
+    padding: 35px 0 0;
+}
+.role-item .edit {
+  flex-direction: column;
+  padding: 0;
+}
+.role-item .edit div {
+  margin-bottom: 4px;
+ }
+ .role-item .edit div:last-child {
+  margin-bottom: 0px;
+ }
+ .branch-table {
+  display: flex;
+  padding: 30px 60px 30px 50px;
+  flex-wrap: wrap;
+ }
+.branch-table-item {
+  width: 40%;
+  background-color: #fff;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  padding: 10px 15px;
+ }
+ .branch_logo {
+  width: 54px;
+  height: 54px;
+  background-size: cover;
+  border-radius: 50%;
+  background-image: url(/wp-content/themes/Avis.help/img/logo.png);
+  margin-right: 10px;
+}
+.branch_info{
+  margin-left: 65px;
+}
+.members_count p span{
+  color: #e95858;
+  font-size: 40px;
+  font-weight: 600;
 }

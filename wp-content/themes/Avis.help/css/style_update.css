@@ -30,6 +30,12 @@
 
 /*promocodes*/
 
+.iti__flag {background-image: url("/wp-content/themes/Avis.help/img/flags.png");}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .iti__flag {background-image: url("/wp-content/themes/Avis.help/img/flags@2x.png");}
+}
+
 .promo-id-wrap form {
     display: flex;
     justify-content: center;
@@ -239,13 +245,26 @@ h1.page_header {
     font-weight: 500;
 }
 .send-promo-form input{
-  width: 80%;
+  width: 50%;
   border: 0;
   box-shadow: 0px 7px 20px 0px rgba(0,0,0,.1);
   border-radius: 10px;
   line-height: 1;
   padding:20px 15px;
   font-weight: 500;
+}
+form#send_promo {
+    width: 600px;
+}
+form#send_promo .iti.iti--allow-dropdown{
+    width: 100%
+}
+form#send_promo input{
+    width: 100%
+}
+.send-promo-filed-wrapper{
+    width: 100%;
+    text-align: center;
 }
 .send-promo-form input::placeholder {
     font-size: 18px;
@@ -283,6 +302,9 @@ h1.page_header {
     text-align: left;
     width: 75%;
     margin-top: 50px;
+}
+.iti__selected-flag{
+    padding: 0 6px 0 11px;
 }
 @media(max-width: 1500px){
 

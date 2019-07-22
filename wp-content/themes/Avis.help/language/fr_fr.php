@@ -1,5 +1,7 @@
 <?php
 $avis_lang = array(
+    'lang'          => 'fr',
+
     'not' => 'Non',
     'yes' => 'Oui',
 
@@ -95,17 +97,21 @@ $avis_lang = array(
     'invite_to_chat' => 'Inviter à Tchater',
     'invite'            => 'Inviter',
 
+    /* ******************** company **************************** */
+    'enter_company_came'            => 'Entrez le nom de l\'entreprise',
+    'company_form_caption'            => 'L\'image sera affichée sur votre page d\'avis si lieu n\'a pas de logoo',
 
 
     'delete_branches'  => 'Êtes-vous sûr de vouloir supprimer cet emplacement?',
     'your_branch' => 'Nouveau lieu',
-    'c_phone' => 'Téléphone',
-    'name' => 'Nom (sera affiché dans le chat)',
-    'address' => 'Adresse',
-    'contact' => 'Contact',
+    'c_phone' => 'Entrez le numéro de contact',
+    'name' => 'Entrez le nom du lieu',
+    'address' => 'Entrez l\'adresse du lieu',
+    'contact' => 'Entrez le nom de l\'administrateur',
     'add_branch' => 'Ajouter un lieu',
     'edit'                      => 'modifier',
     'download'                  => 'Télécharger',
+    'branch_form_caption'       => 'L\'image sera affichée sur votre page de révision',
 
     /* ************************ BILLING ************************* */
 
@@ -146,6 +152,13 @@ $avis_lang = array(
     'export_btn'               => 'Exportation',
     'export_mes'               => 'Le fichier sera envoyé dès qu\'il sera prêt. Cela prend de 5 à 30 minutes selon le nombre d\'avis',
     'export_xml'               => 'Télécharger le fichier XML',
+
+    /* ************************ Notification ****************************** */
+
+    'notif_title'             => 'Action urgente requise',
+    'notif_mes'               => 'Appuyez sur le bouton alors vous avez résolu le problème',
+    'notif_btn'               => 'terminé',
+
     /* Tech messages */
 
     'success_send_promo_mob' => 'Сode promo a été envoyé avec succès',

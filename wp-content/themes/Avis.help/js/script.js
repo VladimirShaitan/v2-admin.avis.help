@@ -425,85 +425,87 @@ if(qs('.branches-list-holder') != null){
 
 
 //promocode page
-let add_promocode = new eventFormSetter('#create-shortcode', 'add_promocode', template_constructor.add_promocode);
-if(qs('.promocode-items') != null){
-	qs('.all-promocodes').addEventListener('click', function(e){
-		if(e.target.classList.contains('del_promocode')){
-			let del_promocode_data = {
-				action: 'delete_promocode', 
-				promocode_id: e.target.getAttribute('data-promocode-id'),
-			};
+// let add_promocode = new eventFormSetter('#create-shortcode', 'add_promocode', template_constructor.add_promocode);
+// if(qs('.promocode-items') != null){
+	// qs('.all-promocodes').addEventListener('click', function(e){
+	// 	if(e.target.classList.contains('del_promocode')){
+	// 		let del_promocode_data = {
+	// 			action: 'delete_promocode', 
+	// 			promocode_id: e.target.getAttribute('data-promocode-id'),
+	// 		};
 
-			jQuery.post(ajaxurl, del_promocode_data, function(data){
-					// console.log(data);
-					if(data != ''){
-						e.target.parentFinder('promocode-item').style.opacity = 0;
-						setTimeout(function(){
-							e.target.parentFinder('promocode-item').remove();	
-						}, 300);
+	// 		jQuery.post(ajaxurl, del_promocode_data, function(data){
+	// 				// console.log(data);
+	// 				if(data != ''){
+	// 					e.target.parentFinder('promocode-item').style.opacity = 0;
+	// 					setTimeout(function(){
+	// 						e.target.parentFinder('promocode-item').remove();	
+	// 					}, 300);
 
-						promocodes_cuont--;
-			            if(promocodes_cuont < 4){
-			            	if(!qs('.promocodes_warning').classList.contains('hidden')){
-				                qs('.promocodes_warning').classList.add('hidden');
-				            }
+	// 					promocodes_cuont--;
+	// 		            if(promocodes_cuont < 4){
+	// 		            	if(!qs('.promocodes_warning').classList.contains('hidden')){
+	// 			                qs('.promocodes_warning').classList.add('hidden');
+	// 			            }
 
-			                qsa('#create-shortcode input').forEach(function(item){item.removeAttribute('disabled', 'disabled')});
-			            } 
-			            qs('.promocodes-count').innerHTML = promocodes_cuont;
+	// 		                qsa('#create-shortcode input').forEach(function(item){item.removeAttribute('disabled', 'disabled')});
+	// 		            } 
+	// 		            qs('.promocodes-count').innerHTML = promocodes_cuont;
 
-					} else {
-						alert('There was an error while removing promocode')
-					}
+	// 				} else {
+	// 					alert('There was an error while removing promocode')
+	// 				}
 
-			});
-		}
-	})
+	// 		});
+	// 	}
+	// })
 
-	qs('#send_promocode_number').addEventListener('submit', function(e){
-		e.preventDefault();
-		var loader = this.qs('.fake_disable');
-		loader.classList.remove('hidden');
-		ajax_handler({action: 'send_promocode_on_phone', data:jQuery(this).serialize()}, (data) => {
-			loader.classList.add('hidden');
-			this.qs('[name="recipient"]').value = '';
-			this.qs('.send_promo_message').innerHTML = data.message_loc;
-			this.qs('.send_promo_message').classList.remove('hidden');
+	// qs('#send_promocode_number').addEventListener('submit', function(e){
+	// 	e.preventDefault();
+	// 	var loader = this.qs('.fake_disable');
+	// 	loader.classList.remove('hidden');
+	// 	ajax_handler({action: 'send_promocode_on_phone', data:jQuery(this).serialize()}, (data) => {
+	// 		loader.classList.add('hidden');
+	// 		this.qs('[name="recipient"]').value = '';
+	// 		this.qs('.send_promo_message').innerHTML = data.message_loc;
+	// 		this.qs('.send_promo_message').classList.remove('hidden');
 
-			jQuery(this.qs('.promocode-more')).slideUp();
+	// 		jQuery(this.qs('.promocode-more')).slideUp();
 
-			setTimeout(() => {
-				this.qs('.send_promo_message').classList.add('hidden');
-				this.qs('.send_promo_message').innerHTML = '';
-			}, 2000);
+	// 		setTimeout(() => {
+	// 			this.qs('.send_promo_message').classList.add('hidden');
+	// 			this.qs('.send_promo_message').innerHTML = '';
+	// 		}, 2000);
 
-		})
-	});
-	qs('#send_promocode_number [name="recipient"]').addEventListener('click', function(e){
-		if(!this.value){this.value = '+380'}
-		jQuery(this.form.qs('.promocode-more')).slideDown();
-	} )
+	// 	})
+	// });
+
+	
+	// qs('#send_promocode_number [name="recipient"]').addEventListener('click', function(e){
+	// 	if(!this.value){this.value = '+380'}
+	// 	jQuery(this.form.qs('.promocode-more')).slideDown();
+	// } )
 
 
-	if(qs('.all-promocodes') != null){
-	 	qs('.all-promocodes').addEventListener('click', function(e){
-	 		console.log(e.target);
-	 		let promoparent = e.target.parentFinder('promocode-item');
-	 		jQuery(promoparent).children('.promocode-more').slideToggle();
-	 		jQuery(promoparent).children('.promo-prview-wrapper').children('.promocode-open').toggleClass('active');
-	 	})
-	 }
+// 	if(qs('.all-promocodes') != null){
+// 	 	qs('.all-promocodes').addEventListener('click', function(e){
+// 	 		console.log(e.target);
+// 	 		let promoparent = e.target.parentFinder('promocode-item');
+// 	 		jQuery(promoparent).children('.promocode-more').slideToggle();
+// 	 		jQuery(promoparent).children('.promo-prview-wrapper').children('.promocode-open').toggleClass('active');
+// 	 	})
+// 	 }
 
-	if(qs('.promocode-item-select') != null){
-	 	qs('.promocode-item-select').addEventListener('click', function(e){
-	 		console.log(e.target);
-	 		let promoselectparent = e.target.parentFinder('all-promocodes');
-	 		jQuery(promoselectparent).children('.promocode-more').slideToggle();
-	 		jQuery(promoselectparent).children('.promo-prview-wrapper').children('.promocode-open').toggleClass('active');
-	 	})
-	 }
+// 	if(qs('.promocode-item-select') != null){
+// 	 	qs('.promocode-item-select').addEventListener('click', function(e){
+// 	 		console.log(e.target);
+// 	 		let promoselectparent = e.target.parentFinder('all-promocodes');
+// 	 		jQuery(promoselectparent).children('.promocode-more').slideToggle();
+// 	 		jQuery(promoselectparent).children('.promo-prview-wrapper').children('.promocode-open').toggleClass('active');
+// 	 	})
+// 	 }
 
-}
+// }
 //promocode page
 //company page
 if(qs('#company_name') !=  null){

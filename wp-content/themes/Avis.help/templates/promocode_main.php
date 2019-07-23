@@ -5,10 +5,11 @@
 get_header('account');
  $icons = json_decode(file_get_contents(get_stylesheet_directory().'/css/icons.json')); 
  $promocodes = array_reverse($avis_helper->get_user_promocodes());
+ $send_promo_url = get_cur_loc_url(277);
 ?>  
-<!-- <pre>
-  <?php // print_r($promocodes); ?>
-</pre> -->
+<!--  <pre>
+  <?php //  print_r($promocodes); ?>
+</pre>  -->
 <script type="text/javascript">
   let promocodes_cuont = <?php echo count($promocodes); ?>
 </script>
@@ -17,13 +18,16 @@ get_header('account');
           <div class="subtitle">Apply Promo Code</div>
           <div class="promo-id-wrap text-center">
             <div class="promo-id-title">Enter Promo Code ID</div>
-            <form>
-              <input type="text" name="" placeholder="—">
-              <input type="text" name="" placeholder="—">
-              <input type="text" name="" placeholder="—">
-              <input type="text" name="" placeholder="—">
-              <input type="text" name="" placeholder="—">
+            <form class="apply-promocode">
+              <span></span>
+              <input type="text" name="" maxlength="1" placeholder="—">
+              <input type="text" name="" maxlength="1" placeholder="—">
+              <input type="text" name="" maxlength="1" placeholder="—">
+              <input type="text" name="" maxlength="1" placeholder="—">
+              <input class="last_apply_inp" type="text" maxlength="1" name="" placeholder="—">
+              <span></span>
             </form>
+            <input type="text" class="hidden fake-apply">
             <input type="submit" name="promo-id" value="APPLY" class="avis_submit">
           </div>
         </div>
@@ -44,7 +48,7 @@ get_header('account');
                 </thead>  
                 <tbody>
                   <?php foreach ($promocodes as $promocode) { ?>
-                    <tr>
+                    <tr class="row-<?php echo $promocode->id; ?>">
                       <td>
                         <div class="table-icon-wrapper text-center">
                           <i class="fas fa-<?php echo $promocode->iconCode; ?>"></i>
@@ -52,8 +56,16 @@ get_header('account');
                       </td>
                       <td><?php echo $promocode->name; ?></td>
                       <td><?php echo $promocode->lifeTime; ?></td> 
-                      <td class="text-right"><i class="fas fa-trash"></i></td>
-                      <td><i class="fas fa-chevron-right"></i></td>
+                      <td class="text-right">
+                        <span class="delete_promo" data-promo-id="<?php echo $promocode->id; ?>">
+                          <i class="fas fa-trash"></i>
+                        </span>
+                      </td>
+                      <td>
+                        <a href="<?php echo $send_promo_url.'&promocode_id='.$promocode->id; ?>">
+                          <i class="fas fa-chevron-right"></i>
+                        </a>
+                      </td>
                     </tr>
                   <?php } ?>
                 </tbody>  

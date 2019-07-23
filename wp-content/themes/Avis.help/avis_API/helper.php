@@ -43,6 +43,7 @@
 			'add' => '/api/v0/promocode/add', 
 			'delete' => '/api/v0/promocode/delete/',
 			'get_user_promocodes' => '/api/v0/promocode/getAll',
+            'get_promocode_by_id' => '/api/v0/promocode/getOnePromo',
             'send_prmocode_mob' => '/api/v0/promocode/send'
 
 		);
@@ -248,14 +249,7 @@
 
         public function get_branch_stats($branch_id, $from, $to, $qrType, $type){
 
-            // if($qrType){
-                $url = $this->api_url.$this->branches['get_stats'].$branch_id.'?from='.$from.'&to='.$to.'&qrType='.$qrType.'&type='.$type;
-            // } else {
-            //     $url = $this->api_url.$this->branches['get_stats'].$branch_id.'?from='.$from.'&to='.$to.'&type='.$type;
-            // }
-
-            // print_r($url );
-            // wp_die();
+            $url = $this->api_url.$this->branches['get_stats'].$branch_id.'?from='.$from.'&to='.$to.'&qrType='.$qrType.'&type='.$type;
             
             $result = $this->curl_request($url, $this->request_authorized_header, false);
             
@@ -279,12 +273,19 @@
             return $result;
         }
 
+        public function get_promocode_by_id($id){
+            $url = $this->api_url.$this->promocodes['get_promocode_by_id'].'?promoId='.$id;
+            $result = $this->curl_request($url, $this->request_authorized_header);
+            return $result;
+        }
+
 
         public function register($register_data){
             $url = $this->api_url.$this->auth['register_user'];
             $result = $this->curl_request($url, $this->request_headers, $register_data, 'post');
             return $result;
         }
+
 
 
     }

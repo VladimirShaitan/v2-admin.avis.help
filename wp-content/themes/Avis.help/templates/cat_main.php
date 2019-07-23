@@ -1,132 +1,116 @@
 <?php 
-/*Template Name: Team page*/
-  get_header('account'); 
-
+/* Template name: CTA main */
+  get_header('account');  
   $branches = array_reverse($avis_helper->get_my_branches()); 
   $company = json_decode($avis_helper->get_organization());
 ?>
 
-
-  <div class="row m-0 full-height">
-    <div class="col-3 p-0 ">
-      <div class="subtitle"><?php echo $avis_lang['list_of_roles'];?></div>
-      <div class="add-role-wrap">
-        <a href="" class="avis_submit"><?php echo $avis_lang['add_role'];?> +</a>
-      </div>
-      <div class="roles-wrap">
+<div class="modal-overlay modal-company">
+  <div class="modal-window">
+    <div class="modal-body">
+      <span class="close">&times;</span>
+      <p class="title">ARE YOU ABSOLUTELY SURE?</p>
+      <p>This action <b>CANNOT</b> be undone. <br>
+      This will permanently delete (<b><?php if(!empty($company)){ echo $company->name;} ?></b>). </p>
+      <p>Please type below <b>DELETE</b> to confirm.</p>
+      <form id="delete_form">
+        <input type="text" name="delete_text">
         <div>
-            <div class="role-item">
-              <span>Role</span>
-              <div class="edit-wrap">
-                <div class="edit">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-                <div class="edit-menu">
-                  <a class="delete"><?php echo $avis_lang['delete'];?></a>
-                  <a href=""><?php echo $avis_lang['edit'];?></a>
-                </div>
-              </div>
-            </div>
-            <div class="role-item">
-              <span>Role</span>
-              <div class="edit-wrap">
-                <div class="edit">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-                <div class="edit-menu">
-                  <a class="delete"><?php echo $avis_lang['delete'];?></a>
-                  <a href=""><?php echo $avis_lang['edit'];?></a>
-                </div>
-              </div>
-            </div>
-            <div class="role-item">
-              <span>Role</span>
-              <div class="edit-wrap">
-                <div class="edit">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-                <div class="edit-menu">
-                  <a class="delete"><?php echo $avis_lang['delete'];?></a>
-                  <a href=""><?php echo $avis_lang['edit'];?></a>
-                </div>
-              </div>
-            </div>
-            <div class="role-item">
-              <span>Role</span>
-              <div class="edit-wrap">
-                <div class="edit">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-                <div class="edit-menu">
-                  <a class="delete"><?php echo $avis_lang['delete'];?></a>
-                  <a href=""><?php echo $avis_lang['edit'];?></a>
-                </div>
-              </div>
-            </div>
-            <div class="role-item">
-              <span>Role</span>
-              <div class="edit-wrap">
-                <div class="edit">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-                <div class="edit-menu">
-                  <a class="delete"><?php echo $avis_lang['delete'];?></a>
-                  <a href=""><?php echo $avis_lang['edit'];?></a>
-                </div>
-              </div>
-            </div>
-            <div class="role-item">
-              <span>Role</span>
-              <div class="edit-wrap">
-                <div class="edit">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-                <div class="edit-menu">
-                  <a class="delete"><?php echo $avis_lang['delete'];?></a>
-                  <a href=""><?php echo $avis_lang['edit'];?></a>
-                </div>
-              </div>
-            </div>
+          <input type="submit" name="delete_submit" value="<?php echo $avis_lang['delete'];?>" class="avis_submit">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+  <div class="row m-0">
+    <div class="col-12 subtitle edit-top-wrapper company-edit">
+      <div>
+        <label>
+          <input type="file" form="company_name" name="profile-image" id="upload_image" multiple="false" accept="image/*">
+          <div class="add_photo" style="<?php if(!empty($company->logoUrl)){ ?>background-image: url(<?php echo $company->logoUrl; ?>); <?php } ?>"></div>
+        </label>
+        <input type="hidden" name="profile-image-hidden" form="company_name" class="add_photo_hidden">
+        <span><?php if(!empty($company)){ echo $company->name;} ?></span>
+      </div>
+      <div class="edit-wrap">
+        <div class="edit">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="edit-menu">
+          <a class="delete"><?php echo $avis_lang['delete'];?></a>
+          <a href="">Edit content</a>
         </div>
       </div>
     </div>
-    <div class="col-9 full-height team-wrap">
-      <div class="subtitle">
-        <div class="tab_title active"><?php echo $avis_lang['branches'];?></div>
-        <div class="tab_title "><?php echo $avis_lang['members'];?></div>
+  </div>
+
+  <div class="row m-0 branches-row">
+    <div class="col-3 p-0 general-branches-wrap">
+      <div class="add-branch-wrap">
+        <a href="" class="avis_submit" class="avis_submit"><?php echo $avis_lang['add_branch'];?> +</a>
       </div>
-      <div class="branch-table">
-      	<div> 
-	      <?php foreach ($branches as $branch) { ?>
-	      <div class="branch-table-item" id="<?php echo $branch->id;?>">
-	        <div class="branch-info-header">
-	            <div class="branch_logo" style="<?php if(!empty($branch->logoUrl)){ ?>background-image:url(<?php echo $branch->logoUrl; ?>); <?php } ?>"></div>
-	            <div class="branch_info">
-			        <span class="branch_name"><?php echo $branch->name; ?></span>
-			        <span><?php echo $branch->address; ?></span>
-			        <span><?php echo $branch->phone; ?></span>
-			    </div>
-	        </div>
-	        <div class="members_count">
-	          <p><span>6</span> <?php echo $avis_lang['members'];?></p>
-	        </div>
-	        <a href="" class="avis_submit"><?php echo $avis_lang['add_member'];?> +</a>
-	      </div>
-	      <?php } ?>
-      	</div>
+      <div class="branches-wrap">
+        <div>
+          <?php foreach ($branches as $branch) { ?>
+            <div class="branch-item" data-branch-item-id="<?php echo $branch->id;?>">
+              <div class="branch-logo" style="<?php if(!empty($branch->logoUrl)){ ?>background-image:url(<?php echo $branch->logoUrl; ?>); <?php } ?>"></div>
+              <span><?php echo $branch->name; ?></span>
+            </div>
+          <?php } ?>
+        </div>
       </div>
+    </div>
+    <div class="col-9">
+      <?php foreach ($branches as $branch) { ?>
+      <div class="full-branch-info-wrap" id="<?php echo $branch->id;?>">
+        <div class="edit-wrap">
+        <div class="edit">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="edit-menu">
+          <a class="delete"><?php echo $avis_lang['delete'];?></a>
+          <a href="">Edit content</a>
+        </div>
+      </div>
+        <div class="branch-info-header">
+          <form data-branch-id="<?php echo $branch->id; ?>">
+            <label>
+              <div class="b_logo_img_wrapper">
+                <div class="branch_url" style="<?php if(!empty($branch->logoUrl)){ ?>background-image:url(<?php echo $branch->logoUrl; ?>); <?php } ?>"></div>
+              </div>
+              <input class="hidden" type="file" name="branch-logo" multiple="false" accept="image/*">
+            </label>
+            <?php wp_nonce_field( 'branch-logo', 'branch-logo_nonce' ); ?>
+          </form>
+          <span><?php echo $branch->name; ?></span>
+        </div>
+        <div class="branch-info-main">
+          <div><?php echo $branch->address; ?></div>
+          <div><?php echo $branch->contact; ?></div>
+          <div><?php echo $branch->phone; ?></div>
+        </div>
+        <div class="qr-wrap">
+          <?php foreach ($branch->qrCodes as $qr_code) { ?>
+          <div class="qr-item">
+            <div><?php echo localize_qr_type($qr_code->qrType); ?></div>
+            <div  class="caption"><?php echo $qr_code->humanReadableId; ?></div>
+            <div class="qr-img-wrapper">
+              <img width="100%" height="100%" draggable="false" src="<?php echo $qr_code->qrUrl; ?>">
+            </div>
+            <a href="<?php echo $qr_code->qrUrl; ?>" target="_blank" class="avis_submit"><?php echo $avis_lang['download'];?></a>         
+          </div>
+        <?php } ?>
+        </div>
+        <div class="branch-btns-wrap">
+          <a href="" class="avis_submit"><?php echo $avis_lang['edit'];?></a> 
+          <a class="avis_submit delete"><?php echo $avis_lang['delete'];?></a> 
+        </div>
+      </div>
+      <?php } ?>
     </div>
   </div>
       <!--   <div id="branches-list-holder" class="col-8 p-l-0">

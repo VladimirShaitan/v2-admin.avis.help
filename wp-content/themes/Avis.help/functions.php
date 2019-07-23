@@ -149,28 +149,6 @@ function login_user(){
 	$page_url = get_cur_loc_url(get_option('page_on_front'));
 	parse_str($_POST['log_info'], $log_arr);
 
-	// if(isset($log_arr['remember'])){
-	// 	$remember = true;
-	// } else {
-	// 	$remember = false;
-	// }
-
-
-
-	// $creds = array(
-	// 	'user_login'    => $log_arr['email'],
- //        'user_password' => $log_arr['password'],
- //        'remember'      => $remember
-	// );	
-
-	
-	
-
-
-	// if(is_wp_error(wp_signon( $creds, true ))){
-	// 	echo false;
-	// } else { 
-
 		// avis_API login
 		$arr_avis_credentials = array('password' => $log_arr['password'], 'usernameOrEmail' => $log_arr['email']);
 		$avis_cookies = $avis_helper->authenticate_user(json_encode($arr_avis_credentials));
@@ -184,10 +162,7 @@ function login_user(){
 
 
 		print_r(json_encode(array('url' => $page_url)));
-	// }
-
-	// print_r('asdЫasda');
-	// wp_die();
+	
 	wp_die();
 }
 
@@ -231,27 +206,11 @@ add_action('wp_ajax_add_branch', 'add_branch');
 add_action('wp_ajax_nopriv_add_branch', 'add_branch');
 function add_branch(){
 	global $avis_helper;
-	// $default_img = '';
-	///mnt/data/home/248108.cloudwaysapps.com/rxhdrqftax/public_html/wp-content/uploads/2019/06/logo-2.png
 	parse_str($_POST['form_data'], $branch_data );
 	if(!empty($branch_data['file'])){
 		$curl_file = $avis_helper->makeCurlFile($branch_data['file']);
 		$branch_data['file'] = $curl_file;
 	} 
-	// else {
-	// 	$curl_file = $avis_helper->makeCurlFile($default_img);
-	// 	$branch_data['file'] = $curl_file;
-	// }
-
-
-	// foreach ($branch_data as $name => $val) {
-	// 	if(empty($val)){
-	// 		print_r(json_encode(array('passed' => false, 'field' => $name)));
-	// 		break;
-	// 		return false;
-	// 		wp_die();
-	// 	}
-	// }
 	$new_branch = $avis_helper->register_branch($branch_data);
 	print_r($new_branch);
 	wp_die();
@@ -337,18 +296,9 @@ function add_company(){
 	} else {
 		$data = array(
 	     	'name'	=> $_POST['company_name']
-	        // 'file'  => $curl_file
 	    );
 
 	}
-
-
- //    print_r(array(
- //    	'post' => $_POST,
- //    	'data' => $data
- //    ));
-	// wp_die();
-
 
 	$result = $avis_helper->update_organization($data);
 	print_r($result);
@@ -384,13 +334,6 @@ add_action('wp_ajax_update_profile', 'update_profile');
 add_action('wp_ajax_nopriv_update_profile', 'update_profile');
 function update_profile(){
 	global $avis_helper;
-	// user_avatar_update
-
-
-	// $file =  & $_FILES['profile-image'];
- //    $overrides = [ 'test_form' => false ];
- //    $movefile = wp_handle_upload($file, $overrides );
-   
 
     $user_info = array(
     	'email' => $_POST['email'],
@@ -400,8 +343,6 @@ function update_profile(){
     	'password'	=> $_POST['password']
     );
 
- //    print_r(json_encode($user_info));
-	// wp_die();
 
     $info_update = $avis_helper->user_info_update(json_encode($user_info));
     $result = array(
@@ -409,12 +350,6 @@ function update_profile(){
     	'info'	 => $info_update
     );
 	
-
-	// $result = $avis_helper->update_organization($data);
-	// print_r($result);
-	// wp_die();	
-
-
 	print_r($result);
 	wp_die();
 }
@@ -467,14 +402,9 @@ add_action('wp_ajax_nopriv_get_stats', 'avis_get_stats');
 function avis_get_stats(){
 	global $avis_helper;
 	parse_str($_POST['form_data'], $form_data);
-	
-	// print_r($form_data);
-	// wp_die();
-
 
 	$qr_type =  $form_data['rating-type'];
 
-	// if($form_data['rating-type'] != 'overall'){ $qr_type = $form_data['rating-type']; }
 
 	if($form_data['branch'] === 'OVERALL'){
 		$r_type = $form_data['branch'];

@@ -173,5 +173,14 @@ $avis_lang = array(
     'reg_form_email'        => 'Email',
     'reg_form_phone'        => 'Téléphone',
     'reg-error'             => 'Une erreur s\'est produite lors de l\'inscription',
-    'reg-success'           => 'Vous avez été enregistré avec succès'
+    'reg-success'           => 'Vous avez été enregistré avec succès',
+
+        /* ************************ TEAM ****************************** */
+
+    'list_of_roles'          => 'Liste des rôles',
+    'branches'               => 'Vos lieux',
+    'members'                => 'Membres',
+    'add_role'               => 'Ajouter un rôle',
+    'add_member'             => 'Ajouter un membre',
+    'new_role'               => 'Nouveau rôle',
 );

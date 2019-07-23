@@ -181,5 +181,16 @@ $avis_lang = array(
     'reg_form_email'        => 'Email',
     'reg_form_phone'        => 'Phone',
     'reg-error'             => 'An error occurred while registration',
-    'reg-success'           => 'You were successfully registered'
+    'reg-success'           => 'You were successfully registered',
+
+
+    /* ************************ TEAM ****************************** */
+
+    'list_of_roles'          => 'List of roles',
+    'branches'               => 'Branches',
+    'members'                => 'Members',
+    'add_role'               => 'Add a role',
+    'add_member'             => 'Add a member',
+    'new_role'               => 'New role',
+
 );

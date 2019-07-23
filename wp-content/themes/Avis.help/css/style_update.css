@@ -36,6 +36,12 @@
   .iti__flag {background-image: url("/wp-content/themes/Avis.help/img/flags@2x.png");}
 }
 
+
+#promocodes-table .fa-trash {
+    pointer-events: none
+}
+
+.delete_promo{cursor: pointer}
 .promo-id-wrap form {
     display: flex;
     justify-content: center;
@@ -111,7 +117,7 @@ a.avis_submit_wrapper:hover{
 }
 
 
-.add-promo-form-wrapper form input[name=lifetime] {
+.add-promo-form-wrapper form input[name=lifeTime] {
     width: 74px;
     text-align: center;
     padding: 10px;
@@ -227,10 +233,13 @@ h1.page_header {
 }
 #promocodes-table tbody tr{
     background-color: #ebebeb;
+    transition: .3s ;
+    transition-property: transform;
 }
 #promocodes-table tbody tr:nth-child(odd) {
     background: white;
 }
+
 
 #promocodes-table tbody tr td{
     font-weight: 500;
@@ -260,7 +269,8 @@ form#send_promo .iti.iti--allow-dropdown{
     width: 100%
 }
 form#send_promo input{
-    width: 100%
+    width: 100%;
+    border: 2px solid white;
 }
 .send-promo-filed-wrapper{
     width: 100%;
@@ -289,6 +299,7 @@ form#send_promo input{
     line-height: 1;
     padding:13.5px 15px;
     background-color: #fff;
+    border: 2px solid white;
 }
 .promo-info .promo-description {
     padding:13.5px 25px;
@@ -306,6 +317,20 @@ form#send_promo input{
 .iti__selected-flag{
     padding: 0 6px 0 11px;
 }
+#promocode-send-page{
+    position: relative;
+}
+.send-number-loader{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(235, 235, 235, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2
+}
+
 @media(max-width: 1500px){
 
     .promo-icons-wrapper ul{

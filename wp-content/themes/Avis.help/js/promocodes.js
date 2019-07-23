@@ -71,6 +71,48 @@ if(qs('#promocodes-table') != null){
 			"ordering": false,
 		});
 	})
+
+	// Delete promocode
+	qs('#promocodes-table').addEventListener('click', function(e){
+		if(e.target.classList.contains('delete_promo')){
+			let del_promocode_data = {
+				action: 'delete_promocode', 
+				promocode_id: e.target.getAttribute('data-promo-id'),
+			};
+			let current_row = e.target.parentFinder('row-'+del_promocode_data.promocode_id); 
+
+			jQuery.post(ajaxurl, del_promocode_data, (data) => {
+				if(data === 'Success'){
+					current_row.style.transform = 'translateX(200%)';
+					setTimeout(function(){
+						current_row.style.position = 'absolute';
+						current_row.style.right = '200%';
+					}, 150)
+					setTimeout(function(){
+						current_row.remove();
+					}, 300)
+
+				}
+			})
+		}
+	});
+
+	// Nice select fix
+	setTimeout(function(){
+		qs('#promocodes-table_wrapper label').onclick = function() {return false}
+	}, 500)
+
+	// apply promocode 
+
+	qs('.apply-promocode').addEventListener('keydown', function(e){
+		if(e.target.value.length > 0 ){
+			e.target.nextElementSibling.focus();
+		} else {
+			e.target.previousElementSibling.focus();
+		}
+	})
+
+
 }
 
 
@@ -83,6 +125,7 @@ if(qs('#promocodes-table') != null){
  			action: 'add_promocode',
  			form_data: jQuery(this).serialize()
  		}
+ 		console.log(promoData);
  		jQuery.post(ajaxurl, promoData, function(resp){
  			let responce = JSON.parse(resp);
  			console.log(responce);
@@ -109,7 +152,32 @@ if(qs('#promocode-send-page') != null){
 		preferredCountries: prefCountries[current_page_lang.toUpperCase()],
 		initialCountry: current_page_lang.toUpperCase(),
 		placeholderNumberType: 'FIXED_LINE',
-		// separateDialCode: true,
+		formatOnDisplay: true,
+		hiddenInput: 'recipient',
 		
 	});
+
+
+	qs('#send_promo').addEventListener('submit', function(e){
+		e.preventDefault();
+		qs('.send-number-loader').classList.remove('hidden');
+
+		ajax_handler({action: 'send_promocode_on_phone', data:jQuery(this).serialize()}, (data) => {
+			qs('.send-number-loader').classList.add('hidden');
+			if(data.success){
+				location.href = '/promocodes/';
+			} else {
+				let blocks = qsa('.promo-info .promo-name, .promo-info .promo-description, form#send_promo input');
+				blocks.forEach((item) => {
+					item.style.borderColor = '#e95858'
+				})
+			}
+
+			console.log(data);
+		})
+
+	});
+
+
+
 } 

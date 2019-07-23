@@ -1,7 +1,14 @@
 <?php 
 // Template name: Promocode send
-get_header('account');
+ if(empty($_GET['promocode_id'])){
+    wp_safe_redirect('/promocodes/');
+ }
+ get_header('account');
+ $promocode_data = json_decode($avis_helper->get_promocode_by_id($_GET['promocode_id']));
 ?>
+<!-- <pre>
+  <?php // print_r($promocode_data); ?>
+</pre> -->
       <div id="promocode-send-page" class="row m-0 full-height">
         <!-- full-height -->
         <div class="col-12">
@@ -10,31 +17,39 @@ get_header('account');
         <div class="col-6">
           <div class="promo-info">
             <div class="promo-name">
-              <div class="table-icon-wrapper text-center"><i class="fas fa-hand-middle-finger"></i></div>
-              <span id="promo_name">Name</span>
+              <div class="table-icon-wrapper text-center"><i class="fas fa-<?php echo $promocode_data->message->iconCode; ?>"></i></div>
+              <span id="promo_name"><?php echo $promocode_data->message->name; ?></span>
             </div>
             <div class="promo-description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              <?php echo $promocode_data->message->description; ?>
             </div>
             <div class="promo-lifetime">
-              <?php echo $avis_lang['valid_for']; ?> <span>30</span> <?php echo $avis_lang['days']; ?>
+              <?php echo $avis_lang['valid_for']; ?> <span><?php echo $promocode_data->message->lifeTime; ?></span> <?php echo $avis_lang['days']; ?>
             </div>
           </div>
         </div>
         <div class="col-6 text-left">
           <form id="send_promo" class="send-promo-form">
-             <input type="tel" name="send_promo_tel" id="send_promo_tel">   
-            </form>
+             <input type="tel"  id="send_promo_tel"> 
+             <!-- pattern="[\+][0-9]+" -->
+             <input type="hidden" name="promocode_id" value="<?php echo $_GET['promocode_id']; ?>">
+          </form>
         </div>
         <div class="col-12 text-center p-0 promo-submit-wrapper">
             <input type="submit" form="send_promo" name="" value="<?php echo $avis_lang['send']; ?>" class="avis_submit">
         </div>
+
+        <div class="send-number-loader hidden">
+          <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        </div>
       </div>
+
 
 
 <!-- page settings -->
 <script>
-    let current_page_lang = '<?php echo $avis_lang["lang"]; ?>'
+    let current_page_lang = '<?php echo $avis_lang["lang"]; ?>';
+    let promo_id = '<?php echo $_GET['promocode_id']; ?>';
 </script>
 
 <?php get_footer('account'); ?> 

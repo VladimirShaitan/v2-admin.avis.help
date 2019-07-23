@@ -23,7 +23,7 @@ get_header('account');
         			</div>
         			<div class="vf">
         				<span><?php echo $avis_lang['valid_for']; ?></span>
-        				<input type="text" required value="30" name="lifetime">
+        				<input type="text" required value="30" name="lifeTime">
         				<span><?php echo $avis_lang['days']; ?></span>
         			</div>
         		</form>
@@ -35,7 +35,7 @@ get_header('account');
         		<ul class="list-unstyled clearfix m-0">
         			<?php foreach ( $icons as  $icon) { ?>
 	                  <li class="promocode-item">
-	                    <input form="add-promocode-form" type="radio" <?php if($icon === $icons[0]){echo 'checked';}?> id="promocode-<?php echo $icon; ?>" value="<?php echo $icon; ?>" name="promocode_id" required>
+	                    <input form="add-promocode-form" type="radio" <?php if($icon === $icons[0]){echo 'checked';}?> id="promocode-<?php echo $icon; ?>" value="<?php echo $icon; ?>" name="icon" required>
 	                    <label for="promocode-<?php echo $icon; ?>">
 	                    <div class="promo-prview-wrapper">
 	                      <div>

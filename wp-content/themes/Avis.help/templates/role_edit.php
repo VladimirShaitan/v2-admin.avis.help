@@ -1,12 +1,12 @@
 <?php 
-// Template name: Add role
+// Template name: Edit role
 get_header('account');
 ?>
 
       <div class="row m-0">
       	<!-- full-height -->
       	<div class="col-12">
-	  		<h1 class="page_header"><?php echo $avis_lang['new_role']; ?></h1>
+	  		<h1 class="page_header"><?php echo $avis_lang['edit_role']; ?></h1>
       	</div>
         <div class="col-12 text-center">
           <div class="add_role_wrap">
@@ -14,7 +14,7 @@ get_header('account');
              <input type="text" name="role_name" id="role_name" placeholder="<?php echo $avis_lang['enter_role_name']; ?>">
              <p class="select-permissions"><?php echo $avis_lang['select_permissions']; ?>:</p>
              <div class="row permissions-row">
-              <div class="col-4 p-0">
+               <div class="col-4 p-0">
                 <label><input type="checkbox" name="permissions"><div class="check"></div> <?php echo $avis_lang['statistics']; ?></label>
                 <label><input type="checkbox" name="permissions"><div class="check"></div> <?php echo $avis_lang['review']; ?></label>
                 <label><input type="checkbox" name="permissions"><div class="check"></div> <?php echo $avis_lang['company']; ?></label>
@@ -35,7 +35,7 @@ get_header('account');
             </div>
         </div>
         <div class="col-12 text-center p-0 promo-submit-wrapper">
-        	<input type="submit" form="add_role" name="" value="<?php echo $avis_lang['save']; ?>" class="avis_submit">
+        	<input type="submit" form="add_role" name="" value="<?php echo $avis_lang['update']; ?>" class="avis_submit">
         </div>
       </div>
 

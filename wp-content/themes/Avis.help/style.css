@@ -772,8 +772,9 @@ opacity: 0;
     margin-left: 5px;
     position: relative;
     top: -3px;
-    width: 15px;
-    height: 15px;
+    width: 17px;
+    height: 17px;
+    line-height: 17px;
     display: inline-block;
     font-size: 11px;
     font-weight: bold;
@@ -2170,7 +2171,9 @@ div.lang li.current-lang a {
     background-size: cover;
     border-radius: 50%;
     cursor: pointer;
-    background-image: url(/wp-content/themes/Avis.help/img/logo.png);
+    background-image: url(/wp-content/themes/Avis.help/img/profile_img.png);
+    position: relative;
+    margin: 10px;
 }
 .nps{
   margin-bottom: 10px;
@@ -3471,6 +3474,8 @@ div.dataTables_wrapper div.dataTables_length label {
   border-radius: 10px;
   line-height: 1;
   padding:20px 15px;
+  font-weight: 500;
+  color: #575e6e;
 }
 .full-width-form input::placeholder {
      font-size: 18px;
@@ -3652,22 +3657,26 @@ div.dataTables_wrapper div.dataTables_length label {
   text-align: center;
   padding: 20px 0 0;
 }
-.branches-wrap {
+.branches-wrap,
+.cta-wrap {
   padding: 15px 20px 20px 10px;
   width: 100%;
 }
-.branches-wrap>div {
+.branches-wrap>div,
+.cta-wrap>div {
   overflow-y: scroll;
   max-height: 360px;
 }
 .branches-wrap>div .branch-item:first-child {
   margin-top: 80px;
 }
-.branches-wrap>div::-webkit-scrollbar{
+.branches-wrap>div::-webkit-scrollbar,
+.cta-wrap>div::-webkit-scrollbar{
     width: 4px;
     height: 4px;
   }
-.branches-wrap>div::-webkit-scrollbar-track{
+.branches-wrap>div::-webkit-scrollbar-track,
+.cta-wrap>div::-webkit-scrollbar-track{
     background-color: #d7d7d7;
     background: #d7d7d7;
     border-left: 4px solid  #d7d7d7;
@@ -3675,7 +3684,8 @@ div.dataTables_wrapper div.dataTables_length label {
     background-clip: content-box;
     border-radius: 20px;
 }
-.branches-wrap>div::-webkit-scrollbar-thumb{
+.branches-wrap>div::-webkit-scrollbar-thumb,
+.cta-wrap>div::-webkit-scrollbar-thumb{
     background-color: #e95858;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
@@ -3718,6 +3728,11 @@ div.dataTables_wrapper div.dataTables_length label {
   align-items: flex-start;
   color: #575e6e;
   font-weight: 500;
+  
+}
+.full-branch-info-wrap .branch-info-header{
+  font-size: 22px;
+  align-items: center;
 }
 .branch-info-main {
   margin-left: 140px;
@@ -3844,22 +3859,32 @@ h1.page_header.add_branch {
   background-color: #fff;
   display: flex;
 }
-.team-wrap .subtitle .tab_title {
+.team-wrap .subtitle .team_tab_title {
   margin:0 20px;
   color: #575e6e;
   font-weight: 500;
   position: relative;
-  transition: .3s;
   cursor: pointer;
 }
-.team-wrap .subtitle .tab_title.active:after {
-  content: '';
+.team-wrap .subtitle .team_tab_title:after {
+	transition: .3s;
+	content: '';
   display: block;
   position: absolute;
   width: 100%;
-  height: 3px;
+  height: 4px;
+  background-color: transparent;
+  bottom: -12px;
+}
+.team-wrap .subtitle .team_tab_title.active:after {
   background-color: #e95858;
-  bottom: -11px;
+}
+.team_tab_item {
+	display: none;
+	padding: 0 35px 0 40px;
+}
+.team_tab_item.active {
+	display: block;
 }
 .roles-wrap {
   padding:35px 20px 20px 10px;
@@ -3871,12 +3896,14 @@ h1.page_header.add_branch {
   padding-bottom: 50px;
 }
 .roles-wrap>div::-webkit-scrollbar,
-.branch-table>div::-webkit-scrollbar{
+.branch-table>div::-webkit-scrollbar,
+#roles-table_wrapper .row:nth-child(2) .col-sm-12::-webkit-scrollbar{
     width: 4px;
     height: 4px;
   }
 .roles-wrap>div::-webkit-scrollbar-track,
-.branch-table>div::-webkit-scrollbar-track{
+.branch-table>div::-webkit-scrollbar-track,
+#roles-table_wrapper .row:nth-child(2) .col-sm-12::-webkit-scrollbar-track{
     background-color: #d7d7d7;
     background: #d7d7d7;
     border-left: 4px solid  #d7d7d7;
@@ -3885,7 +3912,8 @@ h1.page_header.add_branch {
     border-radius: 20px;
 }
 .roles-wrap>div::-webkit-scrollbar-thumb,
-.branch-table>div::-webkit-scrollbar-thumb{
+.branch-table>div::-webkit-scrollbar-thumb,
+#roles-table_wrapper .row:nth-child(2) .col-sm-12::-webkit-scrollbar-thumb{
     background-color: #e95858;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
@@ -3920,7 +3948,7 @@ h1.page_header.add_branch {
  }
  .branch-table {
   /*display: flex;*/
-  padding: 25px 40px 30px 50px;
+  padding: 25px 0 30px;
   /*flex-wrap: wrap;*/
  }
   .branch-table>div{
@@ -3971,4 +3999,246 @@ h1.page_header.add_branch {
   font-size: 40px;
   font-weight: 600;
   margin-right: 5px;
+}
+.permissions-row {
+  margin: 0 auto;
+}
+.permissions-row label {
+  display: block;
+  position: relative;
+  text-align: left;
+  padding-left: 40px;
+  cursor: pointer;
+  color: #575e6e;
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+.permissions-row input[type="checkbox"]{
+  display: none;
+}
+.permissions-row label .check {
+  position: absolute;
+  left: 1px;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #959595;
+  transition: .3s;
+  cursor: pointer;
+}
+.permissions-row label input:checked+.check {
+  background-color: #e95858;
+  border: 2px solid #e95858;
+}
+.add_role_wrap {
+  width:50%;
+  margin: 0 auto 40px;
+}
+.add_role_wrap .full-width-form input{
+  width: 100%;
+}
+.select-permissions {
+  color: #575e6e;
+  font-weight: 500;
+  text-align: left;
+  font-size: 18px;
+  margin:30px 0 25px;
+}
+.add_member_wrap {
+  margin-bottom: 70px;
+}
+.add_member_wrap .full-width-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.add_member_wrap .full-width-form input,
+.add_member_wrap .full-width-form .nice-select{
+  width: 80%;
+  margin-bottom: 30px;
+}
+.add_member_wrap .full-width-form .nice-select{
+  border: unset;
+  font-weight: 500;
+  color: #9b9b9b;
+  padding: 20px 15px;
+  line-height: 1;
+  height: unset;
+  font-size: 18px;
+  box-shadow: 0px 7px 20px 0px rgba(0,0,0,.1);
+  border-radius: 10px;
+}
+.add_member_wrap .full-width-form .nice-select:after {
+    border-bottom: 2px solid #e95858;
+    border-right: 2px solid #e95858;
+    right: 7px;
+    width: 10px;
+    height: 10px;
+    transition: all 0.3s ease;
+    top: 35%;
+    right: 5%;
+    margin-top: 0;
+}
+.add_member_wrap .full-width-form .nice-select .list {
+    width: 100%;
+    top: 85%;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: unset;
+}
+.add_member_wrap .full-width-form .nice-select .list li {
+  border-bottom: 2px solid  #f5f5f5;
+  padding: 10px 15px;
+}
+.add_member_wrap .full-width-form  .nice-select .list .option.selected {
+  color: #575e6e;
+  font-weight: 600;
+  background-color: #fff;
+}
+.role-permissions {
+  color: #575e6e;
+  font-weight: 500;
+  text-align: left;
+  font-size: 18px;
+}
+.permissions-member-row .permissions-item{
+  display: flex;
+  color: #575e6e;
+  font-weight: 500;
+  text-align: left;
+  font-size: 18px;
+}
+.permissions-member-row .permissions-item .auth_circle {
+  background-color: #47b978;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+.team-branch-wrap {
+  border-left:2px solid #fff;
+  background-color: #e1e1e1;
+}
+.team-branch-wrap .subtitle{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 15px 20px;
+}
+.team-branch-wrap .branch-info-wrap {
+  display: flex;
+}
+.team-branch-wrap .branch_info{
+  display: flex;
+  padding-top: 35px;
+  margin-left: 10px;
+  text-align: left;
+}
+.branch_url:before {
+  content: '';
+  display: block;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  right: -8.5px;
+  top: -8.5px;
+  position: absolute;
+}
+.roles-table-wrap {
+	padding:  20px 0;
+}
+.roles-table-wrap-inner>.avis_submit {
+	margin-bottom: 25px;
+}
+.roles-table-wrap table.dataTable{
+	margin-top: 0px !important;
+}
+.roles-table-wrap table.dataTable thead th {
+    padding: 10px .75rem !important;
+    vertical-align: top;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.roles-table-wrap table.dataTable td {
+	background-color: #d7d7d7;
+	border-bottom: 10px solid #e1e1e1;
+	font-weight: 500;
+}
+.roles-table-wrap table.dataTable td.controlers a:first-child {
+	margin-right: 25px;
+}
+.roles-table-wrap table.dataTable td.controlers i{
+	color: #e95858;
+}
+#roles-table_wrapper .row:first-child .col-md-6:nth-child(2) {
+	-ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+#roles-table_wrapper .row:nth-child(2) .col-sm-12 {
+	overflow-y: scroll;
+    max-height: 400px;
+    -ms-flex: 0 0 98%;
+    flex: 0 0 98%;
+    padding: 0  25px 0 15px;
+    max-width: 98%;
+}
+#roles-table_wrapper div.dataTables_filter label {
+	width: 100%;
+	position: relative;
+	margin-bottom: 15px;
+}
+#roles-table_wrapper div.dataTables_filter label:before {
+	position: absolute;
+	content: '';
+	width: 17px;
+	height: 17px;
+	display: block;
+	background-image: url(/wp-content/themes/Avis.help/svg/search.svg);
+	background-size: cover;
+	top: 13px;
+    left: 40px;
+}
+#roles-table_wrapper div.dataTables_filter input[type="search"] {
+	width: 92%;
+	border-radius: 22px;
+	background-color: #ffffff;
+	padding: 7px 20px 7px 47px;
+	font-size: 18px;
+	height: unset;
+	border: 0;
+	margin-left: 20px;
+}
+#roles-table_wrapper div.dataTables_filter input[type="search"]:focus {
+	outline: 0;
+	box-shadow: 0;
+	border: 0;
+}
+#roles-table_wrapper div.dataTables_filter input[type="search"]::-webkit-input-placeholder {
+  color: #e0e0e0;
+}
+#roles-table_wrapper div.dataTables_filter input[type="search"]::-moz-placeholder {
+  color: #e0e0e0;
+}
+#roles-table_wrapper div.dataTables_filter input[type="search"]:-ms-input-placeholder {
+  color: #e0e0e0;
+}
+#roles-table_wrapper div.dataTables_filter input[type="search"]:-moz-placeholder {
+  color: #e0e0e0;
+}
+#roles-table_wrapper div.dataTables_filter input[type="search"]::-ms-clear {  display: none; width : 0; height: 0; }
+#roles-table_wrapper div.dataTables_filter input[type="search"]::-ms-reveal {  display: none; width : 0; height: 0; }
+#roles-table_wrapper div.dataTables_filter input[type="search"]::-webkit-search-decoration,
+#roles-table_wrapper div.dataTables_filter input[type="search"]::-webkit-search-cancel-button,
+#roles-table_wrapper div.dataTables_filter input[type="search"]::-webkit-search-results-button,
+#roles-table_wrapper div.dataTables_filter input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+/* CTA */
+.general-cta-wrap {
+	background-color: #e1e1e1;
+  height: 100%;
+  /*display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;*/
+  border-right: 2px solid #fff;
 }

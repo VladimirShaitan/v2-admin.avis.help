@@ -175,7 +175,7 @@ $avis_lang = array(
     'reg-error'             => 'Une erreur s\'est produite lors de l\'inscription',
     'reg-success'           => 'Vous avez été enregistré avec succès',
 
-        /* ************************ TEAM ****************************** */
+    /* ************************ TEAM ****************************** */
 
     'list_of_roles'          => 'Liste des rôles',
     'branches'               => 'Vos lieux',
@@ -183,4 +183,24 @@ $avis_lang = array(
     'add_role'               => 'Ajouter un rôle',
     'add_member'             => 'Ajouter un membre',
     'new_role'               => 'Nouveau rôle',
+    'enter_role_name'        => 'Entrez le nom du rôle',
+    'update'                 => 'Mettre à jour',
+    'edit_role'               => 'Modifier un rôle',
+    'select_permissions'     => 'Sélectionnez les autorisations',
+    'statistics'             => 'Statistiques',
+    'review'                 => 'La revue',
+    'company'                => 'Entreprise',
+    'promo_codes'            => 'Code de promo',
+    'billing'                => 'Facturation',
+    'chats'                  => 'Chats',
+    'cta'                    => 'CTA',
+    'survey'                 => 'Sondage',
+    'landing'                => 'Atterrissage',
+    'new_member'             => 'Nouveau membre',
+    'select_role'             => 'Sélectionnez un rôle',
+    'member_email'             => 'Entrer l\'email du membre',
+    'member_name'             => 'Entrez le nom du membre',
+    'edit_member'             => 'Editer un membre',
+    'role'                      => 'Rôle',
+    'role_table_name'           => 'Nom',
 );

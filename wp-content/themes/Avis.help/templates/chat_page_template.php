@@ -16,9 +16,7 @@
 
    $avis_helper->set_rev_viewed($review->id);
 ?>
-<!-- <pre>
-  <?php // print_r($review);?>
-</pre> -->
+
 <script>
   const topic = '<?php echo $chat_history->topic; ?>';
   const rev_id = '<?php echo $rev_coockie->rev_id; ?>';

@@ -104,28 +104,124 @@
     </div>
     <div class="col-9 full-height team-wrap">
       <div class="subtitle">
-        <div class="tab_title active"><?php echo $avis_lang['branches'];?></div>
-        <div class="tab_title "><?php echo $avis_lang['members'];?></div>
+        <div class="team_tab_title"><?php echo $avis_lang['branches'];?></div>
+        <div class="team_tab_title"><?php echo $avis_lang['members'];?></div>
       </div>
-      <div class="branch-table">
-      	<div> 
-	      <?php foreach ($branches as $branch) { ?>
-	      <div class="branch-table-item" id="<?php echo $branch->id;?>">
-	        <div class="branch-info-header">
-	            <div class="branch_logo" style="<?php if(!empty($branch->logoUrl)){ ?>background-image:url(<?php echo $branch->logoUrl; ?>); <?php } ?>"></div>
-	            <div class="branch_info">
-			        <span class="branch_name"><?php echo $branch->name; ?></span>
-			        <span><?php echo $branch->address; ?></span>
-			        <span><?php echo $branch->phone; ?></span>
-			    </div>
-	        </div>
-	        <div class="members_count">
-	          <p><span>6</span> <?php echo $avis_lang['members'];?></p>
-	        </div>
-	        <a href="" class="avis_submit"><?php echo $avis_lang['add_member'];?> +</a>
-	      </div>
-	      <?php } ?>
-      	</div>
+      <div class="team_tab_item">
+        <div class="branch-table">
+        	<div> 
+  	      <?php foreach ($branches as $branch) { ?>
+  	      <div class="branch-table-item" id="<?php echo $branch->id;?>">
+  	        <div class="branch-info-header">
+  	            <div class="branch_logo" style="<?php if(!empty($branch->logoUrl)){ ?>background-image:url(<?php echo $branch->logoUrl; ?>); <?php } ?>"></div>
+  	            <div class="branch_info">
+  			        <span class="branch_name"><?php echo $branch->name; ?></span>
+  			        <span><?php echo $branch->address; ?></span>
+  			        <span><?php echo $branch->phone; ?></span>
+  			    </div>
+  	        </div>
+  	        <div class="members_count">
+  	          <p><span>6</span> <?php echo $avis_lang['members'];?></p>
+  	        </div>
+  	        <a href="" class="avis_submit"><?php echo $avis_lang['add_member'];?> +</a>
+  	      </div>
+  	      <?php } ?>
+        	</div>
+        </div>
+      </div>
+
+      <div class="team_tab_item">
+        <div class="roles-table-wrap">
+          <div class="roles-table-wrap-inner">
+            <a href="" class="avis_submit"><?php echo $avis_lang['add_member'];?> +</a>
+            <table id="roles-table" class="table table-hover">
+              <thead>
+                <tr>
+                  <th><?php echo $avis_lang['role'];?></th>
+                  <th><?php echo $avis_lang['role_table_name'];?></th>
+                  <th>EMAIL</th>
+                  <th><?php echo $avis_lang['status'];?></th>
+                  <th><?php echo $avis_lang['branches'];?></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Super admin</td>
+                  <td>Anna Smith</td>
+                  <td>asmith@gmail.com</td>
+                  <td><div class="status_circle"></div></td>
+                  <td></td>
+                  <td class="controlers"><a href=""><i class="fas fa-pencil-alt"></i></a> <a href=""><i class="fas fa-trash"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Super admin</td>
+                  <td>Anna Smith</td>
+                  <td>asmith@gmail.com</td>
+                  <td><div class="status_circle"></div></td>
+                  <td></td>
+                  <td class="controlers"><a href=""><i class="fas fa-pencil-alt"></i></a> <a href=""><i class="fas fa-trash"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Super admin</td>
+                  <td>Anna Smith</td>
+                  <td>asmith@gmail.com</td>
+                  <td><div class="status_circle"></div></td>
+                  <td></td>
+                  <td class="controlers"><a href=""><i class="fas fa-pencil-alt"></i></a> <a href=""><i class="fas fa-trash"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Super admin</td>
+                  <td>Anna Smith</td>
+                  <td>asmith@gmail.com</td>
+                  <td><div class="status_circle"></div></td>
+                  <td></td>
+                  <td class="controlers"><a href=""><i class="fas fa-pencil-alt"></i></a> <a href=""><i class="fas fa-trash"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Super admin</td>
+                  <td>Anna Smith</td>
+                  <td>asmith@gmail.com</td>
+                  <td><div class="status_circle"></div></td>
+                  <td></td>
+                  <td class="controlers"><a href=""><i class="fas fa-pencil-alt"></i></a> <a href=""><i class="fas fa-trash"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Super admin</td>
+                  <td>Anna Smith</td>
+                  <td>asmith@gmail.com</td>
+                  <td><div class="status_circle"></div></td>
+                  <td></td>
+                  <td class="controlers"><a href=""><i class="fas fa-pencil-alt"></i></a> <a href=""><i class="fas fa-trash"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Super admin</td>
+                  <td>Anna Smith</td>
+                  <td>asmith@gmail.com</td>
+                  <td><div class="status_circle"></div></td>
+                  <td></td>
+                  <td class="controlers"><a href=""><i class="fas fa-pencil-alt"></i></a> <a href=""><i class="fas fa-trash"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Super admin</td>
+                  <td>Anna Smith</td>
+                  <td>asmith@gmail.com</td>
+                  <td><div class="status_circle"></div></td>
+                  <td></td>
+                  <td class="controlers"><a href=""><i class="fas fa-pencil-alt"></i></a> <a href=""><i class="fas fa-trash"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Super admin</td>
+                  <td>Anna Smith</td>
+                  <td>asmith@gmail.com</td>
+                  <td><div class="status_circle"></div></td>
+                  <td></td>
+                  <td class="controlers"><a href=""><i class="fas fa-pencil-alt"></i></a> <a href=""><i class="fas fa-trash"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>

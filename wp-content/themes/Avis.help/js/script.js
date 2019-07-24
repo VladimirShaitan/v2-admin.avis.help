@@ -1064,6 +1064,17 @@ if(qs('.edit-wrap') != null) {
 		jQuery('.modal-company').fadeOut(400);
 	})
 }
+if(qs('.team_tab_title') != null){
+  jQuery('.team_tab_title').click(function(){
+  	jQuery('.team_tab_title').removeClass('active');
+  	jQuery(this).addClass('active');
+  	let index = jQuery(this).index();
+  	console.log(index);
+  	jQuery('.team_tab_item').removeClass('active');
+  	jQuery('.team_tab_item').eq(index).addClass('active');
+  })
+   jQuery('.team_tab_title').eq(0).click();
+}
 
 
 
@@ -1072,3 +1083,31 @@ jQuery('select').niceSelect();
 setTimeout(function() { 
 	jQuery('.dataTables_length select').niceSelect();
  }, 1000);
+
+if(qs('#roles-table') != null) {
+	let tab_roles_trnsl;
+	if(lang === 'ru_RU'){
+		tab_roles_trnsl = {
+	       	search: "",
+	       	searchPlaceholder: "Поиск",
+	    }
+	} else if(lang === 'fr_FR'){
+		tab_roles_trnsl = {
+	        search:         "",
+	        searchPlaceholder: "Chercher",
+    	}
+	} else {
+		tab_roles_trnsl = {
+	       	search: "",
+	       	searchPlaceholder: "Search",
+		}
+ 	}
+	jQuery('#roles-table').DataTable( {
+		"bInfo":false, 
+		"paging": false,
+		"language": tab_roles_trnsl,
+		"ordering": false,
+	} )
+}
+
+	    

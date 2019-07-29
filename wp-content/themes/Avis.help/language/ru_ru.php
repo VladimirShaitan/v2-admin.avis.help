@@ -50,7 +50,9 @@ $avis_lang = array(
     'review' => 'Отзыв',
     'viewed_at' => 'Просмотрен',
     'qr_type' => 'Категория QR',
+    'qrtype'               => 'Тип QR',
     'qr_name' => 'Название QR',
+    'add_qr' => 'Добавить QR',
     'general_impression' => 'Оценка',
     'telephone' => 'Номер телефона',
     'comment_text' => 'Комментарий',
@@ -200,4 +202,25 @@ $avis_lang = array(
     'edit_member'             => 'Изменить участника',
     'role'                      => 'Роль',
     'role_table_name'           => 'Имя',
+
+     /* ************************ CTA ****************************** */
+    'reaction_time'           => 'Время реакции (ср.)',
+    'clicked'           => 'Нажатий',
+    'min'           => 'мин',
+
+     /* ************************ QR ****************************** */
+    'new_qr'           => 'Новый QR',
+    'select_qr'           => 'Выбрать тип QR',
+    'opinion'           => 'Отзыв',
+    'landing_page'           => 'Landing Page',
+    'call_to_action'           => 'Call to Action',
+    'soon'           => 'Скоро будет доступно',
+    'filter' => 'Фильтр по филиалам',
+    'add_qr_cat'             => 'Добавить или выбрать категорию QR',
+    'add_qr_category'        => 'Добавить категорию QR',
+    'add_qr_name'            => 'Введите название QR',
+    'add_qr_question'        => 'Введите вопрос (не более 600 символов)',
+    'add_select_qr_answers'  => 'Добавьте или выберете вопрос',
+    'add_qr_answers'         => 'Добавьте вариант ответа',
+    'edit_qr'                 => 'Редактировать QR', 
 );

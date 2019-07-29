@@ -71,6 +71,8 @@ function avis_init(){
 
 	if(get_page_template_slug() === $__TEMPLATESDIR.'home_page.php'){
 		wp_enqueue_style('date_picker', get_stylesheet_directory_uri().'/css/bootstrap-datepicker.standalone.min.css');
+
+		wp_enqueue_style('jqx.base', get_stylesheet_directory_uri(). '/css/jqx.base.css'); 
 	}
 
 	wp_enqueue_style('modal_box', get_stylesheet_directory_uri(). '/css/venobox.min.css'); 
@@ -87,13 +89,15 @@ add_action( 'wp_footer', 'avis_enqueue_scripts' );
 function avis_enqueue_scripts(){
 	global $post;
 	$__TEMPLATESDIR = 'templates/';
+
+
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('TweenMax', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js');
 	wp_enqueue_script('vue', 'https://cdn.jsdelivr.net/npm/vue');
 	wp_enqueue_script('select', get_stylesheet_directory_uri(). '/js/jquery.nice-select.min.js');
-	wp_enqueue_script( 'avis_api', get_styleshet_directory_uri() . '/js/avis_scripts.js', array( 'jquery' ));
+	wp_enqueue_script('avis_api', get_styleshet_directory_uri() . '/js/avis_scripts.js', array( 'jquery' ));
 	wp_enqueue_script('bootstrap', get_stylesheet_directory_uri(). '/js/bootstrap.min.js');
-	wp_enqueue_script('helper', get_stylesheet_directory_uri(). '/js/helper.js');
+
 	wp_enqueue_script('moment', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/en-gb.js' );
 	if(get_page_template_slug() === $__TEMPLATESDIR.'home_page.php'){
 		wp_enqueue_script('feather-icons', get_stylesheet_directory_uri() . '/js/chart/feather.min.js'); 
@@ -103,6 +107,11 @@ function avis_enqueue_scripts(){
 		wp_enqueue_script('counter', get_stylesheet_directory_uri(). '/js/counter.js');
 		wp_enqueue_script('dashboard', get_stylesheet_directory_uri(). '/js/chart/dashboard.js'); 
 		wp_enqueue_script('date_picker', get_stylesheet_directory_uri(). '/js/bootstrap-datepicker.min.js');
+
+		wp_enqueue_script('jqxcore', get_stylesheet_directory_uri(). '/js/jqxcore.js');
+		wp_enqueue_script('jqxdatetimeinput', get_stylesheet_directory_uri(). '/js/jqxdatetimeinput.js');
+		wp_enqueue_script('jqxcalendar', get_stylesheet_directory_uri(). '/js/jqxcalendar.js');
+		wp_enqueue_script('globalize', get_stylesheet_directory_uri(). '/js/globalize.js');
 	}
 
 
@@ -115,23 +124,41 @@ function avis_enqueue_scripts(){
 		wp_enqueue_script('chat', get_stylesheet_directory_uri(). '/js/chat.js');		
 	}
 
+	// Core js
 
-	wp_enqueue_script('template-constructor', get_stylesheet_directory_uri(). '/js/template_parts_constructor.js'); 
-
-	wp_enqueue_script('script', get_stylesheet_directory_uri(). '/js/script.js');
-	$promo_templates = array(
-		$__TEMPLATESDIR.'promocode_main.php',
-		$__TEMPLATESDIR.'promocode_add.php',
-		$__TEMPLATESDIR.'promocode_send.php'
-	);
+		wp_enqueue_script('helper', get_stylesheet_directory_uri(). '/js/helper.js');
+		wp_enqueue_script('template-constructor', get_stylesheet_directory_uri(). '/js/template_parts_constructor.js'); 
+		wp_enqueue_script('script', get_stylesheet_directory_uri(). '/js/script.js');
 
 
-	if(in_array(get_page_template_slug(), $promo_templates)){
-		// https://github.com/jackocnr/intl-tel-input#recommended-usage
-		wp_enqueue_script('utilsJs', get_stylesheet_directory_uri(). '/js/utils.js');
-		wp_enqueue_script('inpTel', get_stylesheet_directory_uri(). '/js/intlTelInput.min.js');
-		wp_enqueue_script('promocodes', get_stylesheet_directory_uri(). '/js/promocodes.js');
-	}
+	// Promocodes page
+
+		$promo_templates = array(
+			$__TEMPLATESDIR.'promocode_main.php',
+			$__TEMPLATESDIR.'promocode_add.php',
+			$__TEMPLATESDIR.'promocode_send.php'
+		);
+
+		if(in_array(get_page_template_slug(), $promo_templates)){
+			// https://github.com/jackocnr/intl-tel-input#recommended-usage
+			wp_enqueue_script('utilsJs', get_stylesheet_directory_uri(). '/js/utils.js');
+			wp_enqueue_script('inpTel', get_stylesheet_directory_uri(). '/js/intlTelInput.min.js');
+			wp_enqueue_script('promocodes', get_stylesheet_directory_uri(). '/js/promocodes.js');
+		}
+
+
+	// Registration
+
+		if(get_page_template_slug() === $__TEMPLATESDIR.'registration.php'){
+			wp_enqueue_script('registration', get_stylesheet_directory_uri(). '/js/pages/registration.js');
+		}
+
+	// Login 
+
+		if(get_page_template_slug() === $__TEMPLATESDIR.'login_template.php'){
+			wp_enqueue_script('registration', get_stylesheet_directory_uri(). '/js/pages/login.js');
+		}
+
 
 
 
@@ -150,18 +177,22 @@ function login_user(){
 	parse_str($_POST['log_info'], $log_arr);
 
 		// avis_API login
-		$arr_avis_credentials = array('password' => $log_arr['password'], 'usernameOrEmail' => $log_arr['email']);
-		$avis_cookies = $avis_helper->authenticate_user(json_encode($arr_avis_credentials));
-		$cookies = array(
-		  	'avis_token' => $avis_cookies->accessToken,
-		  	'u_id'	=> $avis_cookies->id,
-		  	'token_type' => $avis_cookies->tokenType
-		 );
-		setcookie("avis_auth", base64_encode(json_encode($cookies)), time() + 864000, '/', null, false, TRUE); 
+		$arr_avis_credentials = array('password' => $log_arr['password'], 'email' => $log_arr['email']);
+		$login_info = $avis_helper->authenticate_user(json_encode($arr_avis_credentials));
+		// $cookies = array(
+		//   	'avis_token' => $avis_cookies->accessToken,
+		//   	'u_id'	=> $avis_cookies->userId
+		//  );
+		// print_r(json_encode($cookies));
+		setcookie("avis_auth", base64_encode(json_encode($login_info)), time() + 864000, '/', null, false, TRUE); 
 		// avis_API login
 
-
-		print_r(json_encode(array('url' => $page_url)));
+		$login_info['redirect_url'] = $page_url; 
+		print_r(json_encode($login_info));
+		// print_r(json_encode(array(
+		// 	'url' => $page_url,
+		// 	'responce' => $avis_cookies
+		// )));
 	
 	wp_die();
 }

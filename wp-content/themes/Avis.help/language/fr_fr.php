@@ -52,7 +52,9 @@ $avis_lang = array(
     'review' => 'Révision',
     'viewed_at' => 'Vu à',
     'qr_type' => 'Catégorie QR',
+    'qrtype'               => 'Type de QR',
     'qr_name' => 'Nom QR',
+    'add_qr' => 'Ajouter un code QR',
     'general_impression' => 'Le taux',
     'telephone' => 'Téléphone',
     'comment_text' => 'Commentaire',
@@ -203,4 +205,26 @@ $avis_lang = array(
     'edit_member'             => 'Editer un membre',
     'role'                      => 'Rôle',
     'role_table_name'           => 'Nom',
+
+     /* ************************ CTA ****************************** */
+    'reaction_time'           => 'Temps de réaction (moyen)',
+    'clicked'           => 'Cliqué',
+    'min'           => 'min',
+
+     /* ************************ QR ****************************** */
+    'new_qr'           => 'Nouveau QR',
+    'select_qr'           => 'Sélectionnez un type de QR',
+    'opinion'           => 'Opinion',
+    'landing_page'           => 'Page de destination',
+    'call_to_action'           => 'Appel à l\'action',
+    'soon'           => 'Bientôt disponible',
+    'filter' => 'Filtrer par lieux',
+    'add_qr_cat'             => 'Ajouter ou sélectionner une catégorie QR',
+    'add_qr_category'        => 'Ajouter une catégorie QR',
+    'add_qr_name'            => 'Entrez le nom de la QR',
+    'add_qr_question'        => 'Entrez une question (max 600 symboles)',
+    'add_select_qr_answers'  => 'Ajouter ou sélectionner une réponse',
+    'add_qr_answers'         => 'Ajouter une réponse',
+    'edit_qr'                 => 'Modifier QR', 
+
 );

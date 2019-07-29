@@ -1,5 +1,6 @@
 let temp_data = {};
 
+
 if(qs('.account_side_menu')!= null){
 let acc_menu = qs('.account_side_menu');
 	acc_menu.addEventListener('mouseover', function(e){
@@ -58,13 +59,29 @@ if(qs('.calendar') != null){
 
 }
 
-
+	if(qs('#new_calendar') != null){
+	    jQuery("#new_calendar").jqxDateTimeInput({ width: 250, height: 25,  selectionMode: 'range', animationType: 'fade', formatString: 'dd/mm/yy'});
+	    jQuery("#new_calendar").on('change', function (event) {
+	        var selection = jQuery("#new_calendar").jqxDateTimeInput('getRange'); 
+	        if (selection.from != null) {
+	            jQuery("#selection").html("<div>From: " + selection.from.toLocaleDateString() + " <br/>To: " + selection.to.toLocaleDateString() + "</div>");
+	        
+	        }
+	    });
+	     
+	    var date1 = new Date(); 
+	    date1.setFullYear(2017, 7, 7);
+	    var date2 = new Date();
+	    date2.setFullYear(2017, 7, 15);
+	    jQuery("#new_calendar").jqxDateTimeInput('setRange', date1, date2);
+    }
 
 if(qs('.venobox') != null ){
 	jQuery(document).ready(function(){
 	    jQuery('.venobox').venobox(); 
 	});
 }
+
 if(qs('.add-promo-code') != null) {
 	jQuery('.add-promo-code').click(function(){
 		if (jQuery('.promo-code-wrapper').hasClass('active')) {
@@ -211,6 +228,16 @@ if(qs('.table-template-wrapper') != null){
 	    } )
 	} );
 
+	jQuery(document).ready(function() {
+	    jQuery('#table_qr').DataTable( {
+	        "ordering": false,
+	        "language": tab_trnsl,
+	    } )
+	} );
+
+	setTimeout(function(){
+		qs('.dataTables_wrapper label').onclick = function() {return false}
+	}, 500)
 	
 }
  if(qs('.billing-page-wrapper') != null){
@@ -232,35 +259,6 @@ if(qs('.table-template-wrapper') != null){
  		}
 	}) 
  }
-
-
-class Login {
-	constructor(form_id, e_name){
-		this.form_id = form_id;
-		this.event_name = e_name;
-		if(qs(form_id) != null){
-			this.set_event();	
-		}
-	}
-	set_event(){
-		let current = this
-		qs(this.form_id).addEventListener(this.event_name, function(e){
-			e.preventDefault();
-			let login_data = {
-				action:'login_user',
-			 	log_info: jQuery(current.form_id).serialize()
-			 }
-			ajax_handler(login_data, current.callback)
-		})
-
-	};
-	callback(data){
-		// console.log(data.url);
-		window.location.href = data.url;
-	}
-}
-let login = new Login('#login-form', 'submit');
-
 
 
 
@@ -411,102 +409,11 @@ if(qs('.branches-list-holder') != null){
 		    }
 
 		});
-		// qs('#branches-list-holder').addEventListener('submit', function(e){
-		// 	e.preventDefault();
-
-
-
-
-		// })
 	}
 
 
 }
 
-
-//promocode page
-// let add_promocode = new eventFormSetter('#create-shortcode', 'add_promocode', template_constructor.add_promocode);
-// if(qs('.promocode-items') != null){
-	// qs('.all-promocodes').addEventListener('click', function(e){
-	// 	if(e.target.classList.contains('del_promocode')){
-	// 		let del_promocode_data = {
-	// 			action: 'delete_promocode', 
-	// 			promocode_id: e.target.getAttribute('data-promocode-id'),
-	// 		};
-
-	// 		jQuery.post(ajaxurl, del_promocode_data, function(data){
-	// 				// console.log(data);
-	// 				if(data != ''){
-	// 					e.target.parentFinder('promocode-item').style.opacity = 0;
-	// 					setTimeout(function(){
-	// 						e.target.parentFinder('promocode-item').remove();	
-	// 					}, 300);
-
-	// 					promocodes_cuont--;
-	// 		            if(promocodes_cuont < 4){
-	// 		            	if(!qs('.promocodes_warning').classList.contains('hidden')){
-	// 			                qs('.promocodes_warning').classList.add('hidden');
-	// 			            }
-
-	// 		                qsa('#create-shortcode input').forEach(function(item){item.removeAttribute('disabled', 'disabled')});
-	// 		            } 
-	// 		            qs('.promocodes-count').innerHTML = promocodes_cuont;
-
-	// 				} else {
-	// 					alert('There was an error while removing promocode')
-	// 				}
-
-	// 		});
-	// 	}
-	// })
-
-	// qs('#send_promocode_number').addEventListener('submit', function(e){
-	// 	e.preventDefault();
-	// 	var loader = this.qs('.fake_disable');
-	// 	loader.classList.remove('hidden');
-	// 	ajax_handler({action: 'send_promocode_on_phone', data:jQuery(this).serialize()}, (data) => {
-	// 		loader.classList.add('hidden');
-	// 		this.qs('[name="recipient"]').value = '';
-	// 		this.qs('.send_promo_message').innerHTML = data.message_loc;
-	// 		this.qs('.send_promo_message').classList.remove('hidden');
-
-	// 		jQuery(this.qs('.promocode-more')).slideUp();
-
-	// 		setTimeout(() => {
-	// 			this.qs('.send_promo_message').classList.add('hidden');
-	// 			this.qs('.send_promo_message').innerHTML = '';
-	// 		}, 2000);
-
-	// 	})
-	// });
-
-	
-	// qs('#send_promocode_number [name="recipient"]').addEventListener('click', function(e){
-	// 	if(!this.value){this.value = '+380'}
-	// 	jQuery(this.form.qs('.promocode-more')).slideDown();
-	// } )
-
-
-// 	if(qs('.all-promocodes') != null){
-// 	 	qs('.all-promocodes').addEventListener('click', function(e){
-// 	 		console.log(e.target);
-// 	 		let promoparent = e.target.parentFinder('promocode-item');
-// 	 		jQuery(promoparent).children('.promocode-more').slideToggle();
-// 	 		jQuery(promoparent).children('.promo-prview-wrapper').children('.promocode-open').toggleClass('active');
-// 	 	})
-// 	 }
-
-// 	if(qs('.promocode-item-select') != null){
-// 	 	qs('.promocode-item-select').addEventListener('click', function(e){
-// 	 		console.log(e.target);
-// 	 		let promoselectparent = e.target.parentFinder('all-promocodes');
-// 	 		jQuery(promoselectparent).children('.promocode-more').slideToggle();
-// 	 		jQuery(promoselectparent).children('.promo-prview-wrapper').children('.promocode-open').toggleClass('active');
-// 	 	})
-// 	 }
-
-// }
-//promocode page
 //company page
 if(qs('#company_name') !=  null){
 	qs('#company_name').addEventListener('submit', function(e){
@@ -592,16 +499,6 @@ if(qs('#edit-profile') != null){
 
 	})
 
-
-
-	// function get_profile(){
-	// 	ajax_handler({action: 'get_avis_profile'}, function(data){	
-	// 		qs('.add_photo_profile').style.backgroundImage = 'url('+data.avatarUrl+')';
-	// 		qs('.user-logo img').src = data.avatarUrl;
-	// 	});
-	// }
-
-
 }
 
 
@@ -643,18 +540,18 @@ if(qs('#add_coment')){
 //counter's 
 if(qs('.sidebar-sticky') != null){
 	let old_data;
-	ping_revs();
-	setInterval(ping_revs, 5000);
+	// ping_revs();
+	// setInterval(ping_revs, 5000);
 	function ping_revs(){
 
 		ajax_handler({action: 'branch_get_statistic'}, function(data){
 			if(JSON.stringify(old_data) != JSON.stringify(data)){
-				if(data.error != undefined){
-					if(qs('#lout') != null){
-						qs('#lout').click();
-					}
-					window.close();
-				}
+				// if(data.error != undefined){
+				// 	if(qs('#lout') != null){
+				// 		qs('#lout').click();
+				// 	}
+				// 	window.close();
+				// }
 				if(data.allReview != 0 || data.newConversationCount != 0) {
 					jQuery('.menu_button img').attr('src', '/wp-content/themes/Avis.help/img/menu_button-active.png');
 				} else {
@@ -715,7 +612,7 @@ if(qs('.sidebar-sticky') != null){
 
 
 	}
-	ping_revs();
+	// ping_revs();
 }
 
 // home page
@@ -758,24 +655,7 @@ if(qs('.home_page_loggedin') != null){
 					qs('.nps-item.'+ item + ' .nps-procent').innerHTML = data.npsResponse[item]+'%';
 					qs('.nps-item.'+ item + ' .progress').style.height = data.npsResponse[item]+'%';
 				} else if (item === 'nps') {
-					var loc_ov_mark = 0
-					var count = 0;
-					if(data.npsResponse[item] > 0){
-						loc_ov_mark = data.npsResponse[item]+1	
-					} else {
-						loc_ov_mark = data.npsResponse[item]-1
-					}
-
-					setInterval(function(){
-							if(count != loc_ov_mark){
-								qs('#overall_mark').innerHTML = count;
-								if(loc_ov_mark > 0){
-										count++;
-								} else {
-									count--;
-								}
-							}
-					}, 50);
+						qs('#overall_mark').innerHTML = data.npsResponse[item];
 
 				}
 
@@ -960,48 +840,6 @@ if(qs('.profile_pass_input') != null){
 
 
 
-
-
-
-// Vue.component("stat-circle", {
-//   template: "#stat-circle",
-//   props: ["percentage"]
-// });
-
-// new Vue(
-// {
-//   el: "#nps",
-//   mounted: function() {
-//     var $statCircle = document.querySelectorAll(".stat-circle circle");
-//     for (var i = 0; i < $statCircle.length; i++) {
-//       var p = parseFloat($statCircle[i].dataset.percentage);
-//       var off = -51 -((51 / 100) * p);
-//       new TweenMax.to($statCircle[i], 3, {
-//         strokeDashoffset: off
-//       });
-//     }
-//   }
-// });
-
-// Vue.component("rating-circle", {
-//   template: "#rating-circle"
-// });
-
-// let star_circle = new Vue(
-// {
-//   el: "#rating",
-//   mounted: function() {
-//     var $ratingCircle = document.querySelectorAll(".rating-circle circle");
-//     for (var i = 0; i < $ratingCircle.length; i++) {
-//       var p = 80;
-//       var off = -51 -((51 / 100) * p);
-//       new TweenMax.to($ratingCircle[i], 2, {
-//         strokeDashoffset: off
-//       });
-//     }
-//   }
-// });
-
 if(qs('.export') != null){
 	qs('.export .avis_submit').addEventListener('click', function(e){
 		jQuery('.modal-overlay.modal-export').fadeIn(400);
@@ -1016,16 +854,6 @@ if(qs('.modal-notification') != null){
 		jQuery('.modal-overlay.modal-notification').fadeOut(400);
 	});
 }
-
-// Vue.component('v-select', VueSelect.VueSelect)
-
-// new Vue({
-//   el: '.select',
-//   data: {
-//     options: []
-//   }
-// })
-
 
 if(qs('.navbar-nav') != null){
 	qs('.navbar-nav').addEventListener('click', function(e){
@@ -1082,7 +910,7 @@ jQuery('select').niceSelect();
 
 setTimeout(function() { 
 	jQuery('.dataTables_length select').niceSelect();
- }, 1000);
+ }, 300);
 
 if(qs('#roles-table') != null) {
 	let tab_roles_trnsl;
@@ -1110,4 +938,5 @@ if(qs('#roles-table') != null) {
 	} )
 }
 
-	    
+
+

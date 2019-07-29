@@ -64,13 +64,11 @@
                     <div class="row m-0">
                       <div class="calendars-wrap">
                         <label class="calendar calendar-from">
-                          <!-- <span class="calendar-caption"><?php echo $avis_lang['from'];?></span> -->
                           <input class="date_filter_fake_input" autocomplete="off" type="text" name="filter-date-from-fake" readonly placeholder="<?php echo $avis_lang['from'];?>">
                           <input type="hidden" name="filter-date-from">
                         </label>
                       <span class="calendar-line">-</span>
                         <label class="calendar calendar-to">
-                          <!-- <span class="calendar-caption"><?php echo $avis_lang['to'];?></span> -->
                           <input class="date_filter_fake_input" autocomplete="off" type="text" name="filter-date-to-fake" readonly placeholder="<?php echo $avis_lang['to'];?>">
                           <input type="hidden" name="filter-date-to">
                         </label>
@@ -78,19 +76,25 @@
                     </div>
                   </div> 
                   </div>
-
-
-                  <div class="submit_btn_wrapper text-center hidden">
-                    <input class=" text-uppercase" type="submit" name="submit-search" value="Search">
-                  </div>
-                     <select class="custom_select" name="rating-type" form="branch-revs-filter">
+       
+                  <select class="custom_select" name="rating-type" form="branch-revs-filter">
                       <option value="OVERALL"><?php echo $avis_lang['overall-rating'] ?></option>
                       <option value="GENERAL"><?php echo $avis_lang['general'] ?></option>
                       <option value="CLEANNESS"><?php echo $avis_lang['cleaness'] ?></option>
                       <option value="SERVICE"><?php  echo $avis_lang['service'] ?></option>
                     </select>
+
+                  <div class="submit_btn_wrapper text-center hidden">
+                    <input class=" text-uppercase" type="submit" name="submit-search" value="Search">
+                  </div>
+                     
                 </form>
               </div>
+
+
+                             <div id='new_calendar'>
+        </div>
+        <div id='selection'></div>
 
 
   <div class="row m-0 home_page_loggedin">
@@ -153,10 +157,14 @@
             <h4>Rating</h4>
              <div class="row text-center">
                     <div class="col-5">
-                      <div class="counters total_revs">0</div>
-                      <span class="caption"><?php echo $avis_lang['total-reviews'];?></span>
-                      <div class="counters total_convs">0</div>
-                      <span class="caption"><?php echo $avis_lang['total-conversations'];?></span>
+                      <a href="/authorized-reviews/">
+                        <div class="counters total_revs">0</div>
+                        <span class="caption"><?php echo $avis_lang['total-reviews'];?></span>
+                      </a>
+                      <a href="/conversations/">
+                        <div class="counters total_convs">0</div>
+                        <span class="caption"><?php echo $avis_lang['total-conversations'];?></span>
+                      </a>
                     </div>    
                     <div class="col-6">
                       <div class="progress progress-rating" id="progress-rating">

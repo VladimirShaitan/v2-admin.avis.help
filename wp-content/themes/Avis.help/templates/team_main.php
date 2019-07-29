@@ -11,7 +11,7 @@
     <div class="col-3 p-0 ">
       <div class="subtitle"><?php echo $avis_lang['list_of_roles'];?></div>
       <div class="add-role-wrap">
-        <a href="" class="avis_submit"><?php echo $avis_lang['add_role'];?> +</a>
+        <a href="/team/new-role/" class="avis_submit"><?php echo $avis_lang['add_role'];?> +</a>
       </div>
       <div class="roles-wrap">
         <div>
@@ -123,7 +123,7 @@
   	        <div class="members_count">
   	          <p><span>6</span> <?php echo $avis_lang['members'];?></p>
   	        </div>
-  	        <a href="" class="avis_submit"><?php echo $avis_lang['add_member'];?> +</a>
+  	        <a href="/team/new-member/" class="avis_submit"><?php echo $avis_lang['add_member'];?> +</a>
   	      </div>
   	      <?php } ?>
         	</div>
@@ -133,7 +133,7 @@
       <div class="team_tab_item">
         <div class="roles-table-wrap">
           <div class="roles-table-wrap-inner">
-            <a href="" class="avis_submit"><?php echo $avis_lang['add_member'];?> +</a>
+            <a href="/team/new-member/" class="avis_submit"><?php echo $avis_lang['add_member'];?> +</a>
             <table id="roles-table" class="table table-hover">
               <thead>
                 <tr>

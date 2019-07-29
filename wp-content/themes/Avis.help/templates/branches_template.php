@@ -40,7 +40,7 @@
         </div>
         <div class="edit-menu">
           <a class="delete"><?php echo $avis_lang['delete'];?></a>
-          <a href="">Edit content</a>
+          <a href="/create-company/">Edit content</a>
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@
   <div class="row m-0 branches-row">
     <div class="col-3 p-0 general-branches-wrap">
       <div class="add-branch-wrap">
-        <a href="" class="avis_submit" class="avis_submit"><?php echo $avis_lang['add_branch'];?> +</a>
+        <a href="/company/add-branch/" class="avis_submit" class="avis_submit"><?php echo $avis_lang['add_branch'];?> +</a>
       </div>
       <div class="branches-wrap">
         <div>
@@ -73,7 +73,7 @@
         </div>
         <div class="edit-menu">
           <a class="delete"><?php echo $avis_lang['delete'];?></a>
-          <a href="">Edit content</a>
+          <a href="/company/add-branch/">Edit content</a>
         </div>
       </div>
         <div class="branch-info-header">
@@ -104,9 +104,16 @@
             <a href="<?php echo $qr_code->qrUrl; ?>" target="_blank" class="avis_submit"><?php echo $avis_lang['download'];?></a>         
           </div>
         <?php } ?>
+        <div class="qr-item">
+            <div>test</div>
+            <div  class="caption">test</div>
+            <div class="qr-img-wrapper">
+            </div>
+            <a href="<?php echo $qr_code->qrUrl; ?>" target="_blank" class="avis_submit"><?php echo $avis_lang['download'];?></a>         
+          </div>
         </div>
         <div class="branch-btns-wrap">
-          <a href="" class="avis_submit"><?php echo $avis_lang['edit'];?></a> 
+          <a href="/company/add-branch/" class="avis_submit"><?php echo $avis_lang['edit'];?></a> 
           <a class="avis_submit delete"><?php echo $avis_lang['delete'];?></a> 
         </div>
       </div>

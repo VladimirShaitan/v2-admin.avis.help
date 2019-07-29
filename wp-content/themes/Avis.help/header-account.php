@@ -2,6 +2,11 @@
   if(empty(json_decode(base64_decode($_COOKIE['avis_auth']))->avis_token)){
     wp_safe_redirect('/logout/?lang='.explode('_', get_locale())[0]);
   };
+echo '<pre>';
+  print_r(base64_decode($_COOKIE['avis_auth']));
+echo '</pre>';
+
+
 ?>
 <!DOCTYPE html>
 <html class="" <?php language_attributes(); ?>>

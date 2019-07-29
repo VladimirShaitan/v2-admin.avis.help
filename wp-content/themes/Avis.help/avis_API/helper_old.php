@@ -8,74 +8,68 @@
 					"accept: */*",
 					"Content-Type: application/json",
                     "Connection: close",
-					"Authorization:".$this->avis_creds->avis_token
+					"Authorization:".$this->avis_creds->token_type.' '.$this->avis_creds->avis_token
 				);
 
                 $this->request_authorized_header_file = array(
                     "accept: */*",
                     "Content-Type: multipart/form-data",
                     "Connection: close",
-                    "Authorization:".$this->avis_creds->avis_token
+                    "Authorization:".$this->avis_creds->token_type.' '.$this->avis_creds->avis_token
                 );
 			}
 	   }
 
-        private $api_version = 'v1';
-        private $api_url = 'https://avistest.eu-west-3.elasticbeanstalk.com/api/';
-
-        private $request_headers = array("accept: */*", "Content-Type: application/json", "Connection: close");
+    	private $api_url = 'https://qrticket-env.pymmzmsf4z.eu-west-3.elasticbeanstalk.com';
+    	private $request_headers = array("accept: */*", "Content-Type: application/json", "Connection: close");
         private $request_headers_file = array("accept: */*", "Content-Type: multipart/form-data");
 
-        public function api_url_constructor($key){
-            return $this->api_url.$this->api_version.$key;
-        }
-
 		private $auth = array(
-			'auth_user' => '/auth/login', 
-			'register_user' => '/auth/signup'
+			'auth_user' => '/api/v0/auth/signin', 
+			'register_user' => '/api/v0/auth/signup'
 		);
 
 		private $branches = array(
-			'get_my_branches' => '/branch/getMyBranches', 
-			'register_branch' => '/branch/register_branch',
-			'delete_branch' => '/branch/deleteBranch/',
-            'get_statistic' => '/branch/getStatistic',
-            'get_stats' => '/branch/getStats/',
-            'save_logo' => '/branch/update_branch_avatar'
+			'get_my_branches' => '/api/v0/branch/getMyBranches', 
+			'register_branch' => '/api/v0/branch/register_branch',
+			'delete_branch' => '/api/v0/branch/deleteBranch/',
+            'get_statistic' => '/api/v0/branch/getStatistic',
+            'get_stats' => '/api/v0/branch/getStats/',
+            'save_logo' => '/api/v0/branch/update_branch_avatar'
 		);
 
 
 		private $promocodes = array(
-			'add' => '/promocode/add', 
-			'delete' => '/promocode/delete/',
-			'get_user_promocodes' => '/promocode/getAll',
-            'get_promocode_by_id' => '/promocode/getOnePromo',
-            'send_prmocode_mob' => '/promocode/send'
+			'add' => '/api/v0/promocode/add', 
+			'delete' => '/api/v0/promocode/delete/',
+			'get_user_promocodes' => '/api/v0/promocode/getAll',
+            'get_promocode_by_id' => '/api/v0/promocode/getOnePromo',
+            'send_prmocode_mob' => '/api/v0/promocode/send'
 
 		);
 
 		private $user = array(
-			'info_update' => '/user/user/update',
-			'avatar_update' => '/user/user/updateAvatar',
-            'me' => '/user/user/me'
+			'info_update' => '/api/v0/user/user/update',
+			'avatar_update' => '/api/v0/user/user/updateAvatar',
+            'me' => '/api/v0/user/user/me'
 		);
 
 		private $review = array(
-			'get_all' => '/review/getAllReviews',
-            'get_single' => '/review/getReview/',
-            'get_rev_with_conversation' => '/review/getReviewsWithConversation',
-            'set_status' => '/review/setStatus/',
-            'set_viewed' => '/review/setViewed/',
-            'add_comment' => '/review/addComment/'
+			'get_all' => '/api/v0/review/getAllReviews',
+            'get_single' => '/api/v0/review/getReview/',
+            'get_rev_with_conversation' => '/api/v0/review/getReviewsWithConversation',
+            'set_status' => '/api/v0/review/setStatus/',
+            'set_viewed' => '/api/v0/review/setViewed/',
+            'add_comment' => '/api/v0/review/addComment/'
 		);
 
         private $chat = array(
-            'chat_history' => '/chat/getChatHistoryWeb/'
+            'chat_history' => '/api/v0/chat/getChatHistoryWeb/'
         );
 
         private $organization = array (
-            'update_organization' => '/organization/updateOrganization',
-            'get' => '/organization/getOrganization'
+            'update_organization' => '/api/v0/organization/updateOrganization',
+            'get' => '/api/v0/organization/getOrganization'
         );
 
     	public function curl_request($api_url, $req_headers, $data = false, $method = false){  
@@ -113,11 +107,9 @@
 
 
     	public function authenticate_user($user_credentials){ 
-    		$request_url = $this->api_url_constructor($this->auth['auth_user']);
+    		$request_url = $this->api_url.$this->auth['auth_user'];
 			$request_result = $this->curl_request($request_url, $this->request_headers, $user_credentials, 'post');
-            // print_r($request_result);
     		return json_decode($request_result);
-            // return false;
     	}
 
     	public function get_my_branches(){

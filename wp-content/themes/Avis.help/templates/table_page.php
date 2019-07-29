@@ -24,6 +24,14 @@ if($page_type === '1') {
 	          	<?php if($page_type === 'conv') { ?>
 	          	<a href="/conversations/invite-to-chat/" class="avis_submit invite_chat_btn"><?php echo $avis_lang['invite_to_chat'];?></a>
 	          	<?php }; ?>
+			  <div class="cta-subtitle">
+		        <select id="table-select-filter" >
+		          <option value=""><?php echo $avis_lang['filter'];?></option>
+		        	<?php foreach ($data as $review) { ?>
+			          <option value="<?php echo $review->branch; ?>"><?php echo $review->branch; ?></option>
+			        <?php } ?>  
+		        </select>
+		       </div>
 	          	<table id="table_reviews" class="table table-hover">
 	          		<thead>
 	          			<tr>

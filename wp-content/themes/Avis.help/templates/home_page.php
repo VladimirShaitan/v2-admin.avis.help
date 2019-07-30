@@ -141,7 +141,7 @@
             </div>
 
             <div class="new-home-wrap">
-            <h4>Rating</h4>
+            <h4><?php echo $avis_lang['rating'];?></h4>
              <div class="row text-center">
                     <div class="col-5">
                       <a href="/authorized-reviews/">

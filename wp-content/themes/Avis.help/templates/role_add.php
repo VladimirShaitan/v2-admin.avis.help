@@ -13,7 +13,7 @@ get_header('account');
         	<form id="add_role" class="full-width-form">
              <input type="text" name="role_name" id="role_name" placeholder="<?php echo $avis_lang['enter_role_name']; ?>">
               <select>
-                <option>Select a branch</option>
+                <option><?php echo $avis_lang['select_branch']; ?></option>
                 <option>Branch 1</option>
                 <option>Branch 2</option>
                 <option>Branch 3</option>

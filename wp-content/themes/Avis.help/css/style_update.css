@@ -225,6 +225,7 @@ h1.page_header {
 #promocodes-table thead tr th {
     border: 0;
     font-weight: 500;
+    text-transform: uppercase;
 }
 #promocodes-table .fa-trash,
 #promocodes-table .fa-chevron-right {

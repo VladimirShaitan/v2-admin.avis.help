@@ -15,9 +15,9 @@ get_header('account');
 </script>
       <div class="row m-0 full-height">
         <div class="col-3 p-0">
-          <div class="subtitle">Apply Promo Code</div>
+          <div class="subtitle"><?php echo $avis_lang['apply_promo']; ?></div>
           <div class="promo-id-wrap text-center">
-            <div class="promo-id-title">Enter Promo Code ID</div>
+            <div class="promo-id-title"><?php echo $avis_lang['enter_promo_id']; ?></div>
             <form class="apply-promocode">
               <span></span>
               <input type="text" name="" maxlength="1" placeholder="—">
@@ -28,20 +28,20 @@ get_header('account');
               <span></span>
             </form>
             <input type="text" class="hidden fake-apply">
-            <input type="submit" name="promo-id" value="APPLY" class="avis_submit">
+            <input type="submit" name="promo-id" value="<?php echo $avis_lang['apply']; ?>" class="avis_submit">
           </div>
         </div>
         <div class="col-9 full-height promocode-table">
           <a class="avis_submit_wrapper" href="<?php echo get_cur_loc_url(253); ?>">
-            <div class="avis_submit invite_chat_btn">ADD PROMO CODE +</div>
+            <div class="avis_submit invite_chat_btn"><?php echo $avis_lang['add_promo']; ?> +</div>
           </a>
 
             <table id="promocodes-table" class="table table-hover">
                 <thead>
                   <tr>
                     <th></th>
-                    <th>NAME</th>
-                    <th>VALID FOR</th> 
+                    <th><?php echo $avis_lang['name_promo']; ?></th>
+                    <th><?php echo $avis_lang['valid_for']; ?></th> 
                     <th></th>
                     <th></th>
                   </tr>

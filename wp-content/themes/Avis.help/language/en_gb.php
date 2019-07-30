@@ -101,6 +101,11 @@ $avis_lang = array(
     'desc_max'                      => 'Enter a description (max 200 symbols)',
     'valid_for'                     => 'Valid for',
     'add_icon'                      => 'Select an icon',
+    'apply_promo'                   => 'Apply promo code',
+    'enter_promo_id'                => 'Enter Promo code ID',
+    'apply'                  		=> 'Apply',
+    'add_promo'                   	=> 'Add promo code',
+    'name_promo'                  		=> 'Name',
 
     /* ******************** chat page**************************** */
     'go_to_review'                  => 'GO TO REVIEW',
@@ -204,6 +209,7 @@ $avis_lang = array(
     'update'                 => 'Update',
     'edit_role'              => 'Edit a role',
     'select_permissions'     => 'Select permissions',
+    'permissions'     		 => 'Permissions',
     'statistics'             => 'Statistics',
     'review'                 => 'Review',
     'company'                => 'Company',

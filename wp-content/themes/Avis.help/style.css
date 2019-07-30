@@ -3890,7 +3890,7 @@ div.dataTables_wrapper div.dataTables_length label {
   padding-right: 13px;
 }
 h1.page_header.add_branch {
-    padding: 40px 0 0;
+    padding: 30px 0 0;
 }
 /* TEAM PAGE */
 
@@ -4076,10 +4076,12 @@ h1.page_header.add_branch {
 }
 .add_role_wrap {
   width:50%;
-  margin: 0 auto 40px;
+  margin: 0 auto 20px;
 }
-.add_role_wrap .full-width-form input{
+.add_role_wrap .full-width-form input,
+.add_role_wrap .full-width-form .nice-select{
   width: 100%;
+  margin-bottom: 30px;
 }
 .select-permissions {
   color: #575e6e;
@@ -4107,7 +4109,8 @@ h1.page_header.add_branch {
 .add_member_wrap .full-width-form input.not-edit {
   color: #9b9b9b;
 }
-.add_member_wrap .full-width-form .nice-select{
+.add_member_wrap .full-width-form .nice-select,
+.add_role_wrap .full-width-form .nice-select{
   border: unset;
   font-weight: 500;
   color: #9b9b9b;
@@ -4118,7 +4121,8 @@ h1.page_header.add_branch {
   box-shadow: 0px 7px 20px 0px rgba(0,0,0,.1);
   border-radius: 10px;
 }
-.add_member_wrap .full-width-form .nice-select:after {
+.add_member_wrap .full-width-form .nice-select:after,
+.add_role_wrap .full-width-form .nice-select:after {
     border-bottom: 2px solid #e95858;
     border-right: 2px solid #e95858;
     right: 7px;
@@ -4129,7 +4133,8 @@ h1.page_header.add_branch {
     right: 5%;
     margin-top: 0;
 }
-.add_member_wrap .full-width-form .nice-select .list {
+.add_member_wrap .full-width-form .nice-select .list,
+.add_role_wrap .full-width-form .nice-select .list{
     width: 100%;
     top: 85%;
     border-radius: 0px 0px 5px 5px;
@@ -4137,7 +4142,8 @@ h1.page_header.add_branch {
     max-height: 200px;
     overflow-y: scroll;
 }
-.add_member_wrap .full-width-form .nice-select .list li {
+.add_member_wrap .full-width-form .nice-select .list li,
+.add_role_wrap .full-width-form .nice-select .list li{
   border-bottom: 2px solid  #f5f5f5;
   padding: 10px 15px;
 }

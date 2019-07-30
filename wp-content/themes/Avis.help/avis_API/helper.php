@@ -1,17 +1,24 @@
 <?php 
     class avis_helper{
 
+        private $settings = array(
+            'version' => 'v1',
+            'url' => 'https://avistest.eu-west-3.elasticbeanstalk.com/api/',
+            'request_headers' => array("accept: */*", "Content-Type: application/json", "Connection: close"),
+            'request_headers_file' => array("accept: */*", "Content-Type: multipart/form-data"),
+        );
+
 	   function __construct() {
 	       	if(!empty($_COOKIE['avis_auth'])){
 				$this->avis_creds = json_decode(base64_decode(stripslashes($_COOKIE['avis_auth'])));
-				$this->request_authorized_header = array(
+				$this->settings['request_authorized_header'] = array(
 					"accept: */*",
 					"Content-Type: application/json",
                     "Connection: close",
 					"Authorization:".$this->avis_creds->accessToken
 				);
 
-                $this->request_authorized_header_file = array(
+                $this->settings['request_authorized_header_file'] = array(
                     "accept: */*",
                     "Content-Type: multipart/form-data",
                     "Connection: close",
@@ -20,88 +27,37 @@
 			}
 	   }
 
-        private $api_version = 'v1';
-        private $api_url = 'https://avistest.eu-west-3.elasticbeanstalk.com/api/';
-
-        private $request_headers = array("accept: */*", "Content-Type: application/json", "Connection: close");
-        private $request_headers_file = array("accept: */*", "Content-Type: multipart/form-data");
-
-        public function api_url_constructor($key){
-            return $this->api_url.$this->api_version.$key;
-        }
-
-		private $auth = array(
-			'auth_user' => '/auth/login', 
-			'register_user' => '/auth/signup'
-		);
-
-		private $branches = array(
-			'get_my_branches' => '/branch/getMyBranches', 
-			'register_branch' => '/branch/register_branch',
-			'delete_branch' => '/branch/deleteBranch/',
-            'get_statistic' => '/branch/getStatistic',
-            'get_stats' => '/branch/getStats/',
-            'save_logo' => '/branch/update_branch_avatar'
-		);
+        // private $api_version = 'v1';
+        // private $api_url = 'https://avistest.eu-west-3.elasticbeanstalk.com/api/';
+        // private $request_headers = array("accept: */*", "Content-Type: application/json", "Connection: close");
+        // private $request_headers_file = array("accept: */*", "Content-Type: multipart/form-data");
 
 
-		private $promocodes = array(
-			'add' => '/promocode/add', 
-			'delete' => '/promocode/delete/',
-			'get_user_promocodes' => '/promocode/getAll',
-            'get_promocode_by_id' => '/promocode/getOnePromo',
-            'send_prmocode_mob' => '/promocode/send'
 
-		);
 
-		private $user = array(
-			'info_update' => '/user/user/update',
-			'avatar_update' => '/user/user/updateAvatar',
-            'me' => '/user/user/me'
-		);
-
-		private $review = array(
-			'get_all' => '/review/getAllReviews',
-            'get_single' => '/review/getReview/',
-            'get_rev_with_conversation' => '/review/getReviewsWithConversation',
-            'set_status' => '/review/setStatus/',
-            'set_viewed' => '/review/setViewed/',
-            'add_comment' => '/review/addComment/'
-		);
-
-        private $chat = array(
-            'chat_history' => '/chat/getChatHistoryWeb/'
-        );
-
-        private $organization = array (
-            'update_organization' => '/organization/updateOrganization',
-            'get' => '/organization/getOrganization'
-        );
-
-    	public function curl_request($api_url, $req_headers, $data = false, $method = false){  
-    	// if ($method = true) => POST
-    		$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, $api_url);
-			curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-			if($method === 'post'){
-				curl_setopt($ch, CURLOPT_POST, true);
+        public function curl_request($api_url, $req_headers, $data = false, $method = false){  
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $api_url);
+            curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+            if($method === 'post'){
+                curl_setopt($ch, CURLOPT_POST, true);
                 if($data){
                     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
                 }
-			} elseif($method === 'delete'){
-				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
-			} elseif($method === 'patch'){
-				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PATCH');
-				if($data){
+            } elseif($method === 'delete'){
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+            } elseif($method === 'patch'){
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PATCH');
+                if($data){
                     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
                 }
-			}
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $req_headers);
-			return curl_exec($ch);
-    	}
+            }
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $req_headers);
+            return curl_exec($ch);
+        }
 
         public function makeCurlFile($file){
             $mime = mime_content_type($file);
@@ -111,14 +67,100 @@
             return $output;
         }
 
+        public function api_url_constructor($key){
+            return $this->api_url.$this->api_version.$key;
+        }
 
-    	public function authenticate_user($user_credentials){ 
+        private $path_list = array(
+            'auth' => array(
+                'auth_user' => '/auth/login', 
+                'register_user' => '/auth/signup'
+            ),
+            'branches' => array(),
+            'promocodes' => array(),
+            'user' => array(),
+            'review' => array(),
+            'chat' => array(),
+            'organization' => array(),
+        );
+
+		// private $auth = array(
+		// 	'auth_user' => '/auth/login', 
+		// 	'register_user' => '/auth/signup'
+		// );
+
+		// private $branches = array(
+		// 	'get_my_branches' => '/branch/getMyBranches', 
+		// 	'register_branch' => '/branch/register_branch',
+		// 	'delete_branch' => '/branch/deleteBranch/',
+  //           'get_statistic' => '/branch/getStatistic',
+  //           'get_stats' => '/branch/getStats/',
+  //           'save_logo' => '/branch/update_branch_avatar'
+		// );
+
+
+		// private $promocodes = array(
+		// 	'add' => '/promocode/add', 
+		// 	'delete' => '/promocode/delete/',
+		// 	'get_user_promocodes' => '/promocode/getAll',
+  //           'get_promocode_by_id' => '/promocode/getOnePromo',
+  //           'send_prmocode_mob' => '/promocode/send'
+
+		// );
+
+		// private $user = array(
+		// 	'info_update' => '/user/user/update',
+		// 	'avatar_update' => '/user/user/updateAvatar',
+  //           'me' => '/user/user/me'
+		// );
+
+		// private $review = array(
+		// 	'get_all' => '/review/getAllReviews',
+  //           'get_single' => '/review/getReview/',
+  //           'get_rev_with_conversation' => '/review/getReviewsWithConversation',
+  //           'set_status' => '/review/setStatus/',
+  //           'set_viewed' => '/review/setViewed/',
+  //           'add_comment' => '/review/addComment/'
+		// );
+
+        // private $chat = array(
+        //     'chat_history' => '/chat/getChatHistoryWeb/'
+        // );
+
+        // private $organization = array (
+        //     'update_organization' => '/organization/updateOrganization',
+        //     'get' => '/organization/getOrganization'
+        // );
+
+
+
+
+    	public function authenticate_user($user_credentials) { 
     		$request_url = $this->api_url_constructor($this->auth['auth_user']);
 			$request_result = $this->curl_request($request_url, $this->request_headers, $user_credentials, 'post');
-            // print_r($request_result);
     		return json_decode($request_result);
-            // return false;
     	}
+
+
+        public function api_get($api_path){
+            $request_url = $this->api_url_constructor($this->auth['auth_user']);
+        }
+
+
+
+        public function get_all_reviews() {
+            $request_url = $this->api_url.$this->review['get_all']; 
+            $result = $this->curl_request($request_url, $this->request_authorized_header);
+            return $result;
+        }
+
+
+
+
+
+
+
+
 
     	public function get_my_branches(){
     		$request_url = $this->api_url.$this->branches['get_my_branches'];
@@ -160,12 +202,6 @@
     	public function upadte_user_info($user_info){
     		$request_url = $this->api_url.$this->user['info_update'];
     		$result = $this->curl_request($request_url, $this->request_authorized_header, $user_info, 'patch');
-    		return $result;
-    	}
-
-    	public function get_all_reviews(){
-    		$request_url = $this->api_url.$this->review['get_all'];	
-    		$result = $this->curl_request($request_url, $this->request_authorized_header);
     		return $result;
     	}
 

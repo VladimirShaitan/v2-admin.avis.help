@@ -1,12 +1,8 @@
 <?php 
-  if(empty(json_decode(base64_decode($_COOKIE['avis_auth']))->avis_token)){
+  if(empty(json_decode(base64_decode($_COOKIE['avis_auth']))->accessToken)){
     wp_safe_redirect('/logout/?lang='.explode('_', get_locale())[0]);
   };
-echo '<pre>';
-  print_r(base64_decode($_COOKIE['avis_auth']));
-echo '</pre>';
-
-
+  $user_data = json_decode(base64_decode($_COOKIE['avis_auth']));
 ?>
 <!DOCTYPE html>
 <html class="" <?php language_attributes(); ?>>
@@ -19,6 +15,7 @@ echo '</pre>';
   <?php wp_head(); ?>
   <script type="text/javascript">
     let lang = '<?php echo get_locale();?>';
+    let er_lang = '<?php echo substr(get_locale(), 0, 2); ?>';
     const lang_tr = '<?php echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); ?>';
   </script>
     <?php 
@@ -40,10 +37,7 @@ echo '</pre>';
       const fr = '<?php echo $fr; ?>';
     </script>
 </head>
-<?php
-  global $avis_helper;
-  $user_data = json_decode($avis_helper->get_my_info());
- ?>
+
 <body <?php body_class(); ?>>
   <a class="hidden" id="fr_loc" href="<?php echo $fr;?>"></a>
   <a class="hidden" id="ru_loc" href="<?php echo $ru;?>"></a>

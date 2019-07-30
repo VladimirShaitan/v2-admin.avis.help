@@ -1,0 +1,23 @@
+{
+	"en" : {
+		"login" : {
+			"creds": "Login or password are incorrect",
+			"email": "Email is required",
+			"password": "Password is required"
+		}
+	},
+	"fr" : {
+		"login" : {
+			"creds": "Le login ou le mot de passe sont incorrects",
+			"email": "Email est requis",
+			"password": "Mot de passe requis"
+		}
+	},
+	"ru" : {
+		"login" : {
+			"creds": "Логин или пароль неверны",
+			"email": "Введите Email",
+			"password": "Введите пароль"
+		}
+	}
+}

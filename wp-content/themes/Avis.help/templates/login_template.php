@@ -24,12 +24,13 @@ get_header();
 					<!-- <div class="login_form"> -->
 						<form id="login-form" autocomplete="off">
 						  <div class="form-group">
-						    <input type="text"  autofocus class="form-control" name="email" placeholder="<?php echo $avis_lang['login_form_login']; ?>" autocomplete="off">
+						    <input type="text"  autofocus data-validation="email" class="form-control" name="email" placeholder="<?php echo $avis_lang['login_form_login']; ?>" autocomplete="off">
 						  </div>
 						  <div class="form-group profile_pass_input">
-						    <input type="password" name="password" class="form-control" placeholder="<?php echo $avis_lang['login_form_pass'];?>" autocomplete="off">
+						    <input type="password" name="password"  data-validation="password" class="form-control" placeholder="<?php echo $avis_lang['login_form_pass'];?>" autocomplete="off">
 						    <img src="/wp-content/themes/Avis.help/img/eye_hide.png">
 						  </div>
+						  <div class="error-login"></div>
 						  <div class="login-bottom">
 							  <div class="row m-0">
 								  <div class="col-6 p-0 custom-col">

@@ -9,7 +9,7 @@
   <div class="modal-window">
     <div class="modal-body">
       <span class="close">&times;</span>
-      <p class="title">ARE YOU ABSOLUTELY SURE?</p>
+      <p class="title"><?php echo $avis_lang['are_you_sure'];?></p>
       <p>This action <b>CANNOT</b> be undone. <br>
       This will permanently delete (<b><?php if(!empty($company)){ echo $company->name;} ?></b>). </p>
       <p>Please type below <b>DELETE</b> to confirm.</p>

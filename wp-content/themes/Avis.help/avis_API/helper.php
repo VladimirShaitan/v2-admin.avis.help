@@ -8,14 +8,14 @@
 					"accept: */*",
 					"Content-Type: application/json",
                     "Connection: close",
-					"Authorization:".$this->avis_creds->avis_token
+					"Authorization:".$this->avis_creds->accessToken
 				);
 
                 $this->request_authorized_header_file = array(
                     "accept: */*",
                     "Content-Type: multipart/form-data",
                     "Connection: close",
-                    "Authorization:".$this->avis_creds->avis_token
+                    "Authorization:".$this->avis_creds->accessToken
                 );
 			}
 	   }

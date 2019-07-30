@@ -21,10 +21,10 @@ $avis_lang = array(
     'profile_form_continue'          => 'continuer',
 
 
-    'login_title' =>'Plate-forme de communication client',
+    'login_title' =>'Plateforme de communication client',
     'login_form_login' => 'Email',
     'login_form_pass'  => 'Mot de passe',
-    'login_form_remember' => 'Se souvenir du mot de passe',
+    'login_form_remember' => 'Souviens-toi de moi',
     'login_form_login_btn' => 'S\'identifier',
     'login_form_login_social' => 'Connectez-vous avec',
     'login_form_forgot_pass' => 'Mot de passe oublié?',
@@ -45,7 +45,7 @@ $avis_lang = array(
     'unviewed'   => 'Non examiné',
     'answered'    => 'Réponse',
     'unanswered' => 'Sans reponse',
-    'branch'    => 'Le lieu',
+    'branch'    => 'Votre lieu',
     'photo'     => 'Photo',
     'comment'   => 'Commentaire',
 
@@ -95,13 +95,15 @@ $avis_lang = array(
     'valid_for' => 'Valable',
     'add_icon' => 'Ajouter une icône',
 
-    'go_to_review' => 'Aller à revoir',
-    'invite_to_chat' => 'Inviter à Tchater',
+    'go_to_review' => 'Aller à la critique',
+    'invite_to_chat' => 'Inviter à discuter',
     'invite'            => 'Inviter',
 
     /* ******************** company **************************** */
     'enter_company_came'            => 'Entrez le nom de l\'entreprise',
-    'company_form_caption'            => 'L\'image sera affichée sur votre page d\'avis si lieu n\'a pas de logoo',
+    'company_form_caption'            => 'L\'image sera affichée sur votre page d\'avis si lieu n\'a pas de logo',
+    'save_name'            => 'Enregistrer le nom',
+    'are_you_sure'            => 'ÊTES-VOUS ABSOLUMENT SÛR?',
 
 
     'delete_branches'  => 'Êtes-vous sûr de vouloir supprimer cet emplacement?',
@@ -132,13 +134,17 @@ $avis_lang = array(
     'week'                      => 'Semaine',
     'month'                     => 'Mois',
     'total-reviews'             => 'Commentaire',
-    'total-conversations'       => 'Total conversations',
+    'total-conversations'       => 'Les conversations',
     'overall-rating'            => 'Note globale',
     'general'                   => 'Général',
-    'cleaness'                  => 'Netteté',
-    'service'                   => 'Service',
+    'cleaness'                  => 'Propreté',
+    'service'                   => 'Un service',
     'your-stats'                => 'Vos stats',
-    'branches_ov'               => 'Toutes les branches',
+    'branches_ov'               => 'Tous les lieux',
+    'select'                    => 'Sélectionner',
+    'select_rating'             => 'Sélectionnez la note',
+    'your_profile'              => 'Votre profil',
+    'search'                    => 'Chercher',
 
     /* ************************ NPS ****************************** */
 
@@ -150,9 +156,9 @@ $avis_lang = array(
 
 /* ************************ Export ****************************** */
 
-    'export'                     => 'Statistiques d\'exportation',
+    'export'                   => 'Statistiques d\'exportation',
     'export_btn'               => 'Exportation',
-    'export_mes'               => 'Le fichier sera envoyé dès qu\'il sera prêt. Cela prend de 5 à 30 minutes selon le nombre d\'avis',
+    'export_mes'               => 'Le fichier sera envoyé dès qu\'il sera généré. Cela prend de 5 à 30 minutes selon la quantité de commentaires. La période pour laquelle le fichier sera formé est sélectionnée dans le calendrier de la page d\'accueil.',
     'export_xml'               => 'Télécharger le fichier XML',
 
     /* ************************ Notification ****************************** */
@@ -225,6 +231,7 @@ $avis_lang = array(
     'add_qr_question'        => 'Entrez une question (max 600 symboles)',
     'add_select_qr_answers'  => 'Ajouter ou sélectionner une réponse',
     'add_qr_answers'         => 'Ajouter une réponse',
-    'edit_qr'                 => 'Modifier QR', 
+    'edit_qr'                 => 'Modifier QR',   
+    'sort'                   => 'Trier',  
 
 );

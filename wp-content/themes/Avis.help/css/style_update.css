@@ -330,6 +330,24 @@ form#send_promo input{
     justify-content: center;
     z-index: 2
 }
+.error-login {
+    opacity: 0;
+    color: #ec6363;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    height: 25px
+}
+.error-login.show{
+    opacity: 1
+}
+.login_form_wrapper form.error_login_form input.form-control,
+.login_form_wrapper form input.form-control.error{
+    border-color: #ec6363;
+}
+form.error_login_form  .error-login {
+    opacity: 1
+}
 
 @media(max-width: 1500px){
 

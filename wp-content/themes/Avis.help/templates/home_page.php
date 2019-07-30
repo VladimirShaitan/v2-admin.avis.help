@@ -62,17 +62,7 @@
                   </div>
                   <div class="caledars_wrapper">
                     <div class="row m-0">
-                      <div class="calendars-wrap">
-                        <label class="calendar calendar-from">
-                          <input class="date_filter_fake_input" autocomplete="off" type="text" name="filter-date-from-fake" readonly placeholder="<?php echo $avis_lang['from'];?>">
-                          <input type="hidden" name="filter-date-from">
-                        </label>
-                      <span class="calendar-line">-</span>
-                        <label class="calendar calendar-to">
-                          <input class="date_filter_fake_input" autocomplete="off" type="text" name="filter-date-to-fake" readonly placeholder="<?php echo $avis_lang['to'];?>">
-                          <input type="hidden" name="filter-date-to">
-                        </label>
-                      </div>    
+                      <div id='new_calendar'></div>
                     </div>
                   </div> 
                   </div>
@@ -92,9 +82,6 @@
               </div>
 
 
-                             <div id='new_calendar'>
-        </div>
-        <div id='selection'></div>
 
 
   <div class="row m-0 home_page_loggedin">

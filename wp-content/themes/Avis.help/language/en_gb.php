@@ -59,7 +59,7 @@ $avis_lang = array(
     'add_qr' => 'Add QR code',
     'general_impression'    => 'Rate',
     'telephone'             => 'Telephone',
-    'comment_text'          => 'Comment',
+    'comment_text'          => 'Comment text',
     'add_comment_text'      => 'Enter a comment',
     'execution_status'      => 'Execution status',
     'new'                   => 'New',
@@ -110,6 +110,8 @@ $avis_lang = array(
     /* ******************** company **************************** */
     'enter_company_came'            => 'Enter Company Name',
     'company_form_caption'            => 'The image will be displayed on your review page if Branch doesn\'t have a logo',
+    'save_name'            => 'Save name',
+    'are_you_sure'            => 'ARE YOU ABSOLUTELY SURE?',
 
     /* **************************   branches ************************/
     'delete_branches'           => 'Are you sure that you want to delete this branch ?',
@@ -147,6 +149,10 @@ $avis_lang = array(
     'service'                   => 'Service',
     'your-stats'                => 'Your stats',
     'branches_ov'               => 'All branches',
+    'select'                    => 'Select',
+    'select_rating'             => 'Select rating',
+    'your_profile'              => 'Your profile',
+    'search'                    => 'Search',
 
 
     /* ************************ NPS ****************************** */
@@ -160,7 +166,7 @@ $avis_lang = array(
 
     'export'                   => 'Export statistics',
     'export_btn'               => 'Export',
-    'export_mes'               => 'The file will be sent as soon as it will be ready. It takes from 5 to 30 minutes depending on the number of reviews',
+    'export_mes'               => 'The file will be sent as soon as it is generated. It takes from 5 to 30 minutes depending on the quantity of the reviews. The period for which the file will be formed is selected in the calendar on the home page.',
     'export_xml'               => 'Download XML file',
     
     /* ************************ Notification ****************************** */
@@ -235,4 +241,5 @@ $avis_lang = array(
     'add_select_qr_answers'  => 'Add or select an Answer',
     'add_qr_answers'         => 'Add an Answer',
     'edit_qr'                => 'Edit QR',  
+    'sort'                   => 'Sort',  
 );

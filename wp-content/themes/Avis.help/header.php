@@ -1,4 +1,10 @@
-<?php select_lang_first_load(); ?>
+
+<?php
+    if(!empty($_COOKIE['avis_auth'])){
+        wp_safe_redirect('/');
+    };
+    select_lang_first_load();
+?>
 <!DOCTYPE html>
 <html class="" <?php language_attributes(); ?>>
 <head>
@@ -46,6 +52,7 @@
     </script>
 	<script type="text/javascript">
     	let lang = '<?php echo get_locale();?>';
+        let er_lang = '<?php echo substr(get_locale(), 0, 2); ?>';
     	const lang_tr = '<?php echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); ?>';
   	</script>
 		<?php 

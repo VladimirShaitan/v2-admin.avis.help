@@ -1,3 +1,8 @@
+let error_messages = {};
+jQuery.getJSON(window.location.protocol + '//' + window.location.hostname + '/wp-content/themes/Avis.help/language/errors.json', function(resp){
+	error_messages = resp;
+})
+
 let temp_data = {};
 
 
@@ -60,19 +65,19 @@ if(qs('.calendar') != null){
 }
 
 	if(qs('#new_calendar') != null){
-	    jQuery("#new_calendar").jqxDateTimeInput({ width: 250, height: 25,  selectionMode: 'range', animationType: 'fade', formatString: 'dd/mm/yy'});
+	    jQuery("#new_calendar").jqxDateTimeInput({ width: 250, height: 25,  selectionMode: 'range', animationType: 'fade', formatString: 'dd/MM/yy'});
 	    jQuery("#new_calendar").on('change', function (event) {
 	        var selection = jQuery("#new_calendar").jqxDateTimeInput('getRange'); 
-	        if (selection.from != null) {
-	            jQuery("#selection").html("<div>From: " + selection.from.toLocaleDateString() + " <br/>To: " + selection.to.toLocaleDateString() + "</div>");
+	        // if (selection.from != null) {
+	        //     jQuery("#selection").html("<div>From: " + selection.from.toLocaleDateString() + " <br/>To: " + selection.to.toLocaleDateString() + "</div>");
 	        
-	        }
+	        // }
 	    });
 	     
 	    var date1 = new Date(); 
-	    date1.setFullYear(2017, 7, 7);
+	    date1.setFullYear(2019, 6, 7);
 	    var date2 = new Date();
-	    date2.setFullYear(2017, 7, 15);
+	    date2.setFullYear(2019, 6, 15);
 	    jQuery("#new_calendar").jqxDateTimeInput('setRange', date1, date2);
     }
 

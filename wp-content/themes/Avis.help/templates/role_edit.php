@@ -12,6 +12,12 @@ get_header('account');
           <div class="add_role_wrap">
         	<form id="add_role" class="full-width-form">
              <input type="text" name="role_name" id="role_name" placeholder="<?php echo $avis_lang['enter_role_name']; ?>">
+             <select>
+                <option><?php echo $avis_lang['select_branch']; ?></option>
+                <option>Branch 1</option>
+                <option>Branch 2</option>
+                <option>Branch 3</option>
+              </select>
              <p class="select-permissions"><?php echo $avis_lang['select_permissions']; ?>:</p>
              <div class="row permissions-row">
                <div class="col-4 p-0">

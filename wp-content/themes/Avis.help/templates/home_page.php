@@ -3,7 +3,7 @@
   get_header('account');  
   global $avis_helper;
   $branches = $avis_helper->get_my_branches();
-  $user_info = json_decode($avis_helper->get_my_info());
+  // $user_info = json_decode($avis_helper->get_my_info());
 ?>
 <div class="modal-overlay modal-export">
   <div class="modal-window">
@@ -144,11 +144,11 @@
             <h4><?php echo $avis_lang['rating'];?></h4>
              <div class="row text-center">
                     <div class="col-5">
-                      <a href="/authorized-reviews/">
+                      <a href="<?php if (get_locale() === 'fr_FR'){?> /fr/avis<?php } elseif (get_locale() === 'ru_RU'){?> /ru/reviews-ru/<?php } else { ?> /reviews<?php };?>">
                         <div class="counters total_revs">0</div>
                         <span class="caption"><?php echo $avis_lang['total-reviews'];?></span>
                       </a>
-                      <a href="/conversations/">
+                      <a href="<?php if (get_locale() === 'fr_FR'){?> /fr/conversation<?php } elseif (get_locale() === 'ru_RU'){?> /ru/conversations-ru/<?php } else { ?> /conversations<?php };?>">
                         <div class="counters total_convs">0</div>
                         <span class="caption"><?php echo $avis_lang['total-conversations'];?></span>
                       </a>

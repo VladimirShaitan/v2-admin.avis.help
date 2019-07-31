@@ -10,9 +10,9 @@
     <div class="modal-body">
       <span class="close">&times;</span>
       <p class="title"><?php echo $avis_lang['are_you_sure'];?></p>
-      <p>This action <b>CANNOT</b> be undone. <br>
-      This will permanently delete (<b><?php if(!empty($company)){ echo $company->name;} ?></b>). </p>
-      <p>Please type below <b>DELETE</b> to confirm.</p>
+      <p><?php echo $avis_lang['undone'];?> <br>
+      <?php echo $avis_lang['permanently_delete'];?> (<b><?php if(!empty($company)){ echo $company->name;} ?></b>). </p>
+      <p><?php echo $avis_lang['type_delete'];?>.</p>
       <form id="delete_form">
         <input type="text" name="delete_text">
         <div>
@@ -40,7 +40,7 @@
         </div>
         <div class="edit-menu">
           <a class="delete"><?php echo $avis_lang['delete'];?></a>
-          <a href="/create-company/">Edit content</a>
+          <a href="/create-company/"><?php echo $avis_lang['edit'];?></a>
         </div>
       </div>
     </div>
@@ -73,7 +73,7 @@
         </div>
         <div class="edit-menu">
           <a class="delete"><?php echo $avis_lang['delete'];?></a>
-          <a href="/company/add-branch/">Edit content</a>
+          <a href="/company/add-branch/"><?php echo $avis_lang['edit'];?></a>
         </div>
       </div>
         <div class="branch-info-header">

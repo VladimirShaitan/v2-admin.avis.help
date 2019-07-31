@@ -47,7 +47,7 @@ class Login {
 	// login request
 	login(form){
 		let login_data = {
-			action:'login_user',
+			action:'login',
 		 	log_info: jQuery(form).serialize()
 		 }
 		jQuery.post(ajaxurl, login_data, function(login_resp){

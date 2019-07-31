@@ -11,7 +11,10 @@ get_header('account');
         <div class="col-6 text-center">
           <div class="add_member_wrap">
         	<form id="add_member" class="full-width-form">
-            <select>
+             <input type="email" name="member_email" id="member_email" placeholder="<?php echo $avis_lang['member_email']; ?>">
+             <input type="text" name="member_name" id="member_name" placeholder="<?php echo $avis_lang['member_name']; ?>">
+             
+             <select>
               <option><?php echo $avis_lang['select_role']; ?></option>
               <option>Role 1</option>
               <option>Role 2</option>
@@ -19,14 +22,13 @@ get_header('account');
               <option>Role 4</option>
               <option>Role 5</option>
             </select>
-             <input type="email" name="member_email" id="member_email" placeholder="<?php echo $avis_lang['member_email']; ?>">
-             <input type="text" name="member_name" id="member_name" placeholder="<?php echo $avis_lang['member_name']; ?>">
-          <!--    <select>
-              <option>Select a branch</option>
-              <option>Branch 1</option>
-              <option>Branch 2</option>
-              <option>Branch 3</option>
-            </select> -->
+
+            <select >
+              <option><?php echo $avis_lang['select_branch']; ?> </option>
+              <option disabled>Branch 1</option>
+              <option disabled>Branch 2</option>
+              <option disabled>Branch 3</option>
+            </select>
              </form>
            </div>
            </div>

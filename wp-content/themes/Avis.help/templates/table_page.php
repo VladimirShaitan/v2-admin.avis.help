@@ -6,17 +6,44 @@ get_header('account');
 
 $page_type = get_post_meta($post->ID, 'revs', true);
 if($page_type === '1') {
-	$data = json_decode($avis_helper->get_all_reviews());
+
+
+
+	$data = $avis_helper->request(
+				$avis_helper->api_path->organization->base.
+				$avis_helper->avis_creds->organizationId .
+				$avis_helper->api_path->organization->review->base,
+				true,
+				array(
+					'order' => '',
+					'page'	=> 1,
+					'size' => 10,
+					'sortBy' => ''
+				),
+				'GET'
+			);
+
+	$branches = $avis_helper->request(
+	    $avis_helper->api_path->organization->base .
+	    $avis_helper->avis_creds->organizationId .
+	    $avis_helper->api_path->organization->branch->base,
+	    true
+	  );
+
 	$viewed = $data->isViewed;
+
+
+
 } elseif($page_type === 'conv') {
 	$data = $avis_helper->get_rev_with_conversation();
 	$p_id = '55'; 
 	$viewed = $data->isChatViewed;
 }
 ?>
-<!-- <pre> -->
-	<?php // print_r($data); ?>
-<!-- </pre> -->
+
+ <!-- <pre>
+	<?php // print_r($branches); ?>
+</pre>  -->
   <div class="row m-0 full-height">
     <div class="col-12 p-0">
 	      <div class="row m-0 full-height">
@@ -27,8 +54,8 @@ if($page_type === '1') {
 			  <div class="cta-subtitle">
 		        <select id="table-select-filter" >
 		          <option value=""><?php echo $avis_lang['filter'];?></option>
-		        	<?php foreach ($data as $review) { ?>
-			          <option value="<?php echo $review->branch; ?>"><?php echo $review->branch; ?></option>
+		        	<?php foreach ($branches  as $branch) { ?>
+			          <option value="<?php echo $branch->name; ?>"><?php echo $branch->name; ?></option>
 			        <?php } ?>  
 		        </select>
 		       </div>

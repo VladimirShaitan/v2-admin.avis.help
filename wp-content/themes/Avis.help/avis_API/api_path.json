@@ -33,6 +33,9 @@
       "statistics": {
         "base": "/statistics/",
         "additional": "/statistics/raw/"
+      },
+      "review": {
+      	"base": "/review/"
       }
     }
   },

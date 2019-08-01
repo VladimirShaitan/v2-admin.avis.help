@@ -2,9 +2,15 @@
   if(empty(json_decode(base64_decode($_COOKIE['avis_auth']))->accessToken)){
     wp_safe_redirect('/logout/?lang='.explode('_', get_locale())[0]);
   };
-  $user_data = json_decode(base64_decode($_COOKIE['avis_auth']));
-  global $avis_lang;
+
+    global $avis_lang;
+    global $avis_helper;
+    $user_data = $avis_helper->request(
+      $avis_helper->api_path->user->base . $avis_helper->avis_creds->userId,
+      true
+    );
 ?>
+
 <!DOCTYPE html>
 <html class="" <?php language_attributes(); ?>>
 <head>

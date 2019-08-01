@@ -2,10 +2,23 @@
 /*Template Name: Account home page*/
   get_header('account');  
   global $avis_helper;
-  $branches = $avis_helper->get_my_branches();
-  // $user_info = json_decode($avis_helper->get_my_info());
+
+  //Get  branches
+  $branches = $avis_helper->request(
+    $avis_helper->api_path->organization->base .
+    $avis_helper->avis_creds->organizationId .
+    $avis_helper->api_path->organization->branch->base,
+    true
+  );
+
+  // $user_info = $avis_helper->request();
 ?>
-<div class="modal-overlay modal-export">
+<!-- 
+<pre>
+  <?php // print_r($user_info); ?>
+</pre>
+ -->
+ <div class="modal-overlay modal-export">
   <div class="modal-window">
     <div class="modal-head"><?php echo $avis_lang['export_xml'];?> <span class="close">&times;</span></div>
     <div class="modal-body">

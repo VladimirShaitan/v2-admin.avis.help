@@ -35,5 +35,8 @@
         "additional": "/statistics/raw/"
       }
     }
+  },
+  "user": {
+  	"base": "/user/"
   }
 }

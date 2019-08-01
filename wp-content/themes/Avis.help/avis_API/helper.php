@@ -23,13 +23,13 @@
 					"accept: */*",
 					"Content-Type: application/json",
                     "Connection: close",
-					"Authorization:".$this->avis_creds->accessToken
+					"Authorization: ".$this->avis_creds->accessToken
 				);
                 $this->settings['request_authorized_header_file'] = array(
                     "accept: */*",
                     "Content-Type: multipart/form-data",
                     "Connection: close",
-                    "Authorization:".$this->avis_creds->accessToken
+                    "Authorization: ".$this->avis_creds->accessToken
                 );
 
 
@@ -74,10 +74,24 @@
         }
 
 
-        public function request($key, $data = false, $http_method = false) {
+        public function request($key, $authorized = false , $data = false, $http_method = false) {
             $url = $this->path_constructor($key);
-            $result = $this->send($url, $this->settings['request_headers'], $data, $http_method);
-            return $result;
+
+
+            //Headers if user autorized
+            switch ($authorized){
+                case true:
+                    $request_headers = $this->settings['request_authorized_header'];
+                    break;
+                default: 
+                    $request_headers = $this->settings['request_headers'];    
+            }
+            //Headers if user autorized
+
+
+            $result = $this->send($url, $request_headers, $data, $http_method);
+
+            return  json_decode($result);
         }
 
     }

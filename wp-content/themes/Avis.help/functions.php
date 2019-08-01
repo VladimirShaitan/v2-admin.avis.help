@@ -180,11 +180,12 @@ function login(){
 	parse_str($_POST['log_info'], $arr_avis_credentials);
 	$login_info = $avis_helper->request(
 		$avis_helper->api_path->auth->login,
+		false,
 		json_encode($arr_avis_credentials),
 		'POST'
 	);
 
-	$login_info = json_decode($login_info);
+	// $login_info = json_decode($login_info);
 	$login_info = array(
 		'accessToken' => $login_info->accessToken,
 		'userId' =>  $login_info->userId,

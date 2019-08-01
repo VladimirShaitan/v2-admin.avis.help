@@ -1,6 +1,44 @@
 {
 	"auth": {
-		"login": "/auth/login" 
+		"login": "/auth/login/" 
+	},
+	"organization": {
+		"base": "/organization/",
+		"branch": {
+			"base": "/branch/",
+			"cta": {
+				"base": "/cta/"
+			},
+			"employee": {
+				"base": "/employee/",
+				"cta": {
+					"base": "/cta/"
+				}
+			},
+			"nps": {
+				"base": "/nps/"
+			},
+			"opinion": {
+				"base": "/opinion/",
+				"review": {
+					"base": "/review/"
+				},
+				"statistics": {
+					"base": "/statistics/"
+				}
+			},
+			"promo": {
+				"base": "/promo/",
+				"additional": "/promo/proceed/"
+			},
+			"statistics": {
+				"base": "/statistics/",
+				"additional": "/statistics/raw/"	
+			}
+		},
+	},
+	"user": {
+		"base": "/user/"
 	}
 
 }

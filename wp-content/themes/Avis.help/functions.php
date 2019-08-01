@@ -168,27 +168,32 @@ function avis_enqueue_scripts(){
 
 
 //login user
-add_action('wp_ajax_nopriv_login_user', 'login_user');
-add_action('wp_ajax_login_user', 'login_user');
-function login_user(){
+add_action('wp_ajax_nopriv_login', 'login');
+function login(){
 	global $avis_helper;
-	$log_arr;
 	$page_url = get_cur_loc_url(2);
-	parse_str($_POST['log_info'], $log_arr);
+	parse_str($_POST['log_info'], $arr_avis_credentials);
+	$login_info = $avis_helper->request(
+		$avis_helper->api_path->auth->login,
+		json_encode($arr_avis_credentials),
+		'POST'
+	);
 
-	// avis_API login
-	$arr_avis_credentials = array('password' => $log_arr['password'], 'email' => $log_arr['email']);
-	$login_info = $avis_helper->authenticate_user(json_encode($arr_avis_credentials));
+	$login_info = json_decode($login_info);
+	$login_info = array(
+		'accessToken' => $login_info->accessToken,
+		'userId' =>  $login_info->userId,
+		'organizationId' => $login_info->data->organizationId
+	);
 
 	setcookie("avis_auth", base64_encode(json_encode($login_info)), time() + 864000, '/', null, false, TRUE); 
-	// avis_API login
+	$login_info['redirect_url'] = $page_url; 
 
-	$login_info->redirect_url = $page_url; 
+	
 	print_r(json_encode($login_info));
-
 	wp_die();
 }
-
+//login user
 
 add_action('after_setup_theme', function(){
 	register_nav_menus( array(

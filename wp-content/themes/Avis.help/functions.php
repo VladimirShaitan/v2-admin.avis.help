@@ -178,7 +178,6 @@ function login(){
 	$page_url = get_cur_loc_url(2);
 
 	parse_str($_POST['log_info'], $arr_avis_credentials);
-
 	$login_info = $avis_helper->request(
 		$avis_helper->api_path->auth->login,
 		json_encode($arr_avis_credentials),
@@ -194,8 +193,8 @@ function login(){
 
 	setcookie("avis_auth", base64_encode(json_encode($login_info)), time() + 864000, '/', null, false, TRUE); 
 	$login_info['redirect_url'] = $page_url; 
-	print_r(json_encode($login_info));
 
+	print_r(json_encode($login_info));
 	wp_die();
 }
 //login user

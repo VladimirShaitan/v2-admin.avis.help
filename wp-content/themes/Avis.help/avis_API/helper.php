@@ -3,7 +3,9 @@
 
 	   function __construct() {
             $this->settings['protocol'] = 'https';
+            //https
             $this->settings['api_url'] = 'avistest.eu-west-3.elasticbeanstalk.com/api/';
+            //avistest.eu-west-3.elasticbeanstalk.com/api/
             $this->settings['api_version'] = 'v1';
             $this->settings['request_headers'] = array(
                 "accept: */*",
@@ -93,7 +95,7 @@
             } else {
                 $url = $this->path_constructor($key);
             }
-
+            // print_r($url);
 
             //Headers if user autorized
             switch ($authorized){

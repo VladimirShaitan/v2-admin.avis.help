@@ -1,6 +1,12 @@
 <?php 
 /* Template name: CTA main */
   get_header('account');  
+    $branches = $avis_helper->request(
+      $avis_helper->api_path->organization->base .
+      $avis_helper->avis_creds->organizationId .
+      $avis_helper->api_path->organization->branch->base,
+      true
+    );
 ?>
 
 
@@ -37,10 +43,9 @@
        <div class="subtitle cta-subtitle">
         <select>
           <option><?php echo $avis_lang['filter'];?></option>
-          <option>Branch 1</option>
-          <option>Branch 2</option>
-          <option>Branch 3</option>
-          <option>Branch 4</option>
+          <?php foreach ($branches  as $branch) { ?>
+            <option value="<?php echo $branch->name; ?>"><?php echo $branch->name; ?></option>
+          <?php } ?>  
         </select>
        </div>
       <div class="cta-answers-wrap">

@@ -943,5 +943,3 @@ if(qs('#roles-table') != null) {
 	} )
 }
 
-
-

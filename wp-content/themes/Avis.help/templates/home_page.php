@@ -114,8 +114,7 @@
                   <circle class="progress" cx="10" cy="10" r="8" :data-percentage="percentage"/></circle>
                   <text x="60%" y="73%" id="overall_mark">0</text>
                 </svg>
-              </script>
- -->
+              </script> -->
               
                 <div class="progress progress-nps" id="progress-nps">
                   <div class="inner" id="overall_mark"></div>

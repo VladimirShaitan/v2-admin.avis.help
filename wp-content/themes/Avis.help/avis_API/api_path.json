@@ -37,6 +37,12 @@
       "review": {
       	"base": "/review/"
       }
+    },
+    "info": {
+      "base": "/info",
+      "review": {
+          "base": "/review/"
+        }
     }
   },
   "user": {

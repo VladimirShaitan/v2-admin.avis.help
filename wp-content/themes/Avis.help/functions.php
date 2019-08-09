@@ -160,10 +160,21 @@ function avis_enqueue_scripts(){
 	// Login 
 
 		if(get_page_template_slug() === $__TEMPLATESDIR.'login_template.php'){
-			wp_enqueue_script('registration', get_stylesheet_directory_uri(). '/js/pages/login.js');
+			wp_enqueue_script('login', get_stylesheet_directory_uri(). '/js/pages/login.js');
+		}
+
+	// Table page
+		
+		if(get_page_template_slug() === $__TEMPLATESDIR.'table.php'){
+			wp_enqueue_script('table_page', get_stylesheet_directory_uri(). '/js/pages/table_page.js');
 		}
 
 
+    // New Role
+
+		if(get_page_template_slug() === $__TEMPLATESDIR.'role_add.php'){
+			wp_enqueue_script('role-add', get_stylesheet_directory_uri(). '/js/pages/role-add.js');
+		}
 
 
 }

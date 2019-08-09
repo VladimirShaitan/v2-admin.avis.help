@@ -945,7 +945,7 @@ opacity: 0;
 }
 
 .filter-wrap {
-  padding: 10px 30px;
+  padding: 10px 30px 12px;
   border-top: 1.1px solid #fff;
   border-bottom: 2px solid #fff;
   background-color: #d7d7d7;
@@ -2559,6 +2559,7 @@ div.lang li.current-lang a {
   border-radius: 7px;
   text-align: center;
   font-size: 18px;
+  padding: 30px 30px 30px 30px;
 }
 .modal-notification .title {
   text-transform: uppercase;
@@ -3503,7 +3504,7 @@ div.dataTables_wrapper div.dataTables_length label {
   box-shadow: 0px 7px 20px 0px rgba(0,0,0,.1);
   border-radius: 10px;
   line-height: 1;
-  padding:20px 15px;
+  padding:18px 15px;
   font-weight: 500;
   color: #575e6e;
 }
@@ -4075,7 +4076,7 @@ h1.page_header.add_branch {
   border: 2px solid #e95858;
 }
 .add_role_wrap {
-  width:50%;
+  width:80%;
   margin: 0 auto 20px;
 }
 .add_role_wrap .full-width-form input,
@@ -4111,6 +4112,7 @@ h1.page_header.add_branch {
 }
 .add_member_wrap .full-width-form .nice-select,
 .add_role_wrap .full-width-form .nice-select{
+  font-family: 'Avenir';
   border: unset;
   font-weight: 500;
   color: #9b9b9b;
@@ -4139,7 +4141,7 @@ h1.page_header.add_branch {
     top: 85%;
     border-radius: 0px 0px 5px 5px;
     box-shadow: unset;
-    max-height: 200px;
+    max-height: 310px;
     overflow-y: scroll;
 }
 .add_member_wrap .full-width-form .nice-select .list li,
@@ -4470,9 +4472,10 @@ h1.page_header.new-qr + p{
 }
 #new_calendar.jqx-input {
   width: 220px !important;
-  height: 40px !important;
+  height: 42px !important;
   border-radius: 50px;
   border: unset;
+  margin-left: 30px;
   
 }
 #new_calendar.jqx-input input {
@@ -4482,7 +4485,7 @@ h1.page_header.new-qr + p{
   font-weight: 500;
 }
 #new_calendar .jqx-input-content {
-  padding: 10px 25px !important;
+  padding: 12px 25px !important;
 }
 #new_calendar .jqx-action-button {
   height: 100% !important;
@@ -4534,4 +4537,76 @@ h1.page_header.new-qr + p{
 .jqx-calendar td.jqx-calendar-cell-today {
     background-color: #eee;
     border: 1px solid #d7d7d7;
+}
+
+
+.title_lang_block,
+.lang_block {
+    width: 80%;
+    margin: 0 auto 20px;
+}
+.title_lang_block h2 {
+    font-family: 'Avenir-Roman';
+    font-size: 24px;
+}
+.lang_block span {
+   padding: 20px 0;
+   border-bottom: 4px solid transparent;
+}
+.lang_block span:hover {
+   border-bottom: 4px solid #e95858;
+}
+.lang_block a {
+    line-height: 1;
+    border-radius: 50px;
+    padding: 14px;
+    font-size: 14px;
+    color: white;
+    font-weight: 500;
+    background: rgb(246,143,143);
+    background-image: -moz-linear-gradient( 0deg, rgb(246,145,145) 0%, rgb(233,88,88) 100%);
+    background-image: -webkit-linear-gradient( 0deg, rgb(246,145,145) 0%, rgb(233,88,88) 100%);
+    background-image: -ms-linear-gradient( 0deg, rgb(246,145,145) 0%, rgb(233,88,88) 100%);
+    border: none;
+    min-width: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: .3s;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 5px;
+    text-decoration: none;
+}
+.lang_block a.active-link {
+    color: #000000;
+    background: none;
+}
+.nice-select.open ul.list li:first-child {
+    display: none;
+}
+.nice-select.open ul.list li[data-value="Add QR category +"] {
+  color: #e95858;
+}
+.nice-select.open span.current {
+    color: #575e6e;
+}
+.nice-select span.current {
+    font-family: 'Avenir';
+    font-size: 18px;
+}
+.nice-select .option {
+    font-size: 18px;
+}
+.nice-select .option:hover, 
+.nice-select .option.focus, 
+.nice-select .option.selected.focus {
+    color: #575e6e;
+    background-color: transparent;
+}
+.cta_role {
+    display: none;
+    position: absolute;
+    bottom: -20px;
+    left: 38px;
 }

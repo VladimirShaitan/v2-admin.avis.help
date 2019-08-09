@@ -2,21 +2,29 @@
 /*Template Name: Team page*/
   get_header('account'); 
 
-  $branches = array_reverse($avis_helper->get_my_branches()); 
-  $company = json_decode($avis_helper->get_organization());
+  //$branches = array_reverse($avis_helper->get_my_branches()); 
+  // $company = json_decode($avis_helper->get_organization());
 ?>
 
 
   <div class="row m-0 full-height">
     <div class="col-3 p-0 ">
       <div class="subtitle"><?php echo $avis_lang['list_of_roles'];?></div>
+      <div class="cta-subtitle">
+        <select id="table-select-filter" >
+            <option value=""><?php echo $avis_lang['filter'];?></option>
+            <?php foreach ($branches  as $branch) { ?>
+              <option value="<?php echo $branch->name; ?>"><?php echo $branch->name; ?></option>
+            <?php } ?>  
+        </select>
+      </div>
       <div class="add-role-wrap">
         <a href="/team/new-role/" class="avis_submit"><?php echo $avis_lang['add_role'];?> +</a>
       </div>
       <div class="roles-wrap">
         <div>
             <div class="role-item">
-              <span>Role</span>
+              <span>Super admin</span>
               <div class="edit-wrap">
                 <div class="edit">
                   <div></div>
@@ -30,7 +38,7 @@
               </div>
             </div>
             <div class="role-item">
-              <span>Role</span>
+              <span>Admin</span>
               <div class="edit-wrap">
                 <div class="edit">
                   <div></div>
@@ -44,49 +52,7 @@
               </div>
             </div>
             <div class="role-item">
-              <span>Role</span>
-              <div class="edit-wrap">
-                <div class="edit">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-                <div class="edit-menu">
-                  <a class="delete"><?php echo $avis_lang['delete'];?></a>
-                  <a href=""><?php echo $avis_lang['edit'];?></a>
-                </div>
-              </div>
-            </div>
-            <div class="role-item">
-              <span>Role</span>
-              <div class="edit-wrap">
-                <div class="edit">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-                <div class="edit-menu">
-                  <a class="delete"><?php echo $avis_lang['delete'];?></a>
-                  <a href=""><?php echo $avis_lang['edit'];?></a>
-                </div>
-              </div>
-            </div>
-            <div class="role-item">
-              <span>Role</span>
-              <div class="edit-wrap">
-                <div class="edit">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-                <div class="edit-menu">
-                  <a class="delete"><?php echo $avis_lang['delete'];?></a>
-                  <a href=""><?php echo $avis_lang['edit'];?></a>
-                </div>
-              </div>
-            </div>
-            <div class="role-item">
-              <span>Role</span>
+              <span>Manager</span>
               <div class="edit-wrap">
                 <div class="edit">
                   <div></div>

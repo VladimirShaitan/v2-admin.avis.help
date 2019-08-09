@@ -16,11 +16,10 @@ get_header('account');
              
              <select>
               <option><?php echo $avis_lang['select_role']; ?></option>
-              <option>Role 1</option>
-              <option>Role 2</option>
-              <option>Role 3</option>
-              <option>Role 4</option>
-              <option>Role 5</option>
+              <option>Create Role 1</option>
+              <option>Admin</option>
+              <option>Manager</option>
+              <option>Waitress</option>
             </select>
 
             <select >
@@ -28,8 +27,8 @@ get_header('account');
               <option disabled>Branch 1</option>
               <option disabled>Branch 2</option>
               <option disabled>Branch 3</option>
-            </select>
-             </form>
+            </select> 
+          </form>
            </div>
            </div>
              <div class="col-6 text-center">
@@ -39,17 +38,18 @@ get_header('account');
                 <div class="permissions-item"><div class="auth_circle"><i class="fas fa-check"></i></div> <?php echo $avis_lang['statistics']; ?></div>
                 <div class="permissions-item"><div class="auth_circle"><i class="fas fa-check"></i></div> <?php echo $avis_lang['review']; ?></div>
                 <div class="permissions-item"><div class="auth_circle"><i class="fas fa-check"></i></div> <?php echo $avis_lang['company']; ?></div>
-                <div class="permissions-item"><div class="auth_circle"><i class="fas fa-check"></i></div> <?php echo $avis_lang['promo_codes']; ?></div> 
+                
                </div>
                <div class="col-4">
+                <div class="permissions-item"><div class="auth_circle"><i class="fas fa-check"></i></div> <?php echo $avis_lang['promo_codes']; ?></div> 
                 <div class="permissions-item"><div class="auth_circle"><i class="fas fa-check"></i></div> <?php echo $avis_lang['billing']; ?></div>
                 <div class="permissions-item"><div class="auth_circle"><i class="fas fa-check"></i></div> <?php echo $avis_lang['chats']; ?></div>
-                <div class="permissions-item"><div class="auth_circle"><i class="fas fa-check"></i></div> Scanner</div>
-                <div class="permissions-item"><div class="auth_circle"><i class="fas fa-check"></i></div> <?php echo $avis_lang['cta']; ?></div> 
+                <!-- <div class="permissions-item"><div class="auth_circle"><i class="fas fa-check"></i></div> <?php echo $avis_lang['cta']; ?></div> -->
                </div>
                <div class="col-4">
-                <div class="permissions-item"><div class="auth_circle"><i class="fas fa-check"></i></div> <?php echo $avis_lang['survey']; ?></div>
-                <div class="permissions-item"><div class="auth_circle"><i class="fas fa-check"></i></div> <?php echo $avis_lang['landing']; ?></div>
+                 <div class="permissions-item"><div class="auth_circle"><i class="fas fa-check"></i></div> Scanner</div>
+                <!-- <div class="permissions-item"><div class="auth_circle"><i class="fas fa-check"></i></div> <?php echo $avis_lang['survey']; ?></div>
+                <div class="permissions-item"><div class="auth_circle"><i class="fas fa-check"></i></div> <?php echo $avis_lang['landing']; ?></div> -->
                </div>
              </div>
             

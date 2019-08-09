@@ -5,20 +5,22 @@ get_header('account');
 
 
 $page_type = get_post_meta($post->ID, 'revs', true);
-if($page_type === '1') {
+// if($page_type === '1') {
 
+	
+	// $api_url = $avis_helper->api_path->organization->base.$avis_helper->avis_creds->organizationId .$avis_helper->api_path->organization->info->base.$avis_helper->api_path->organization->info->review->base;
 
-
-	$data = $avis_helper->request(
+	$reviews = $avis_helper->request(
 				$avis_helper->api_path->organization->base.
-				$avis_helper->avis_creds->organizationId .
-				$avis_helper->api_path->organization->review->base,
+				$avis_helper->avis_creds->organizationId.
+				$avis_helper->api_path->organization->info->base.
+				$avis_helper->api_path->organization->info->review->base,
 				true,
 				array(
-					'order' => '',
-					'page'	=> 1,
-					'size' => 10,
-					'sortBy' => ''
+					'order' => null,
+					'page'	=> 0,
+					'size' => 1000000,
+					'sortBy' => null
 				),
 				'GET'
 			);
@@ -30,20 +32,25 @@ if($page_type === '1') {
 	    true
 	  );
 
-	$viewed = $data->isViewed;
+	// $viewed = $data->isViewed;
 
 
 
-} elseif($page_type === 'conv') {
-	$data = $avis_helper->get_rev_with_conversation();
-	$p_id = '55'; 
-	$viewed = $data->isChatViewed;
-}
+// } elseif($page_type === 'conv') {
+
+
+
+// 	$data = $avis_helper->get_rev_with_conversation();
+// 	$p_id = '55'; 
+// 	$viewed = $data->isChatViewed;
+
+// }
 ?>
 
- <!-- <pre>
-	<?php // print_r($branches); ?>
-</pre>  -->
+ <pre>
+	<?php // print_r(get_locale()); ?>
+	<?php print_r($reviews[0]); ?>
+</pre>  
   <div class="row m-0 full-height">
     <div class="col-12 p-0">
 	      <div class="row m-0 full-height">
@@ -62,7 +69,8 @@ if($page_type === '1') {
 	          	<table id="table_reviews" class="table table-hover">
 	          		<thead>
 	          			<tr>
-	          				<th><?php echo $avis_lang['status'];?></th>
+	          				<th>
+	          				<?php echo $avis_lang['status'];?></th>
 		          			<th><?php echo $avis_lang['number'];?></th>
 							<th><?php echo $avis_lang['date']; ?></th>
 							<?php if($page_type === '1') { ?><th><?php echo $avis_lang['authorization']; ?> </th> <?php }; ?>
@@ -73,7 +81,7 @@ if($page_type === '1') {
 	          			</tr>
 	          		</thead>
 	          		<tbody>
-	          			<?php foreach ($data as $review) {
+	          			<?php foreach ($reviews as $review) {
 	          				if($page_type === '1') {
 								$viewed = $review->isViewed;
 								if(!empty($review->isAuthorized)){

@@ -165,7 +165,7 @@ function avis_enqueue_scripts(){
 
 	// Table page
 		
-		if(get_page_template_slug() === $__TEMPLATESDIR.'table.php'){
+		if(get_page_template_slug() === $__TEMPLATESDIR.'table_page.php'){
 			wp_enqueue_script('table_page', get_stylesheet_directory_uri(). '/js/pages/table_page.js');
 		}
 

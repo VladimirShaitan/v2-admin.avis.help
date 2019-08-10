@@ -47,10 +47,10 @@ $page_type = get_post_meta($post->ID, 'revs', true);
 // }
 ?>
 
- <pre>
+<!--  <pre>
 	<?php // print_r(get_locale()); ?>
-	<?php print_r($reviews[0]); ?>
-</pre>  
+	<?php // print_r($branches); ?>
+</pre>  --> 
   <div class="row m-0 full-height">
     <div class="col-12 p-0">
 	      <div class="row m-0 full-height">
@@ -62,7 +62,7 @@ $page_type = get_post_meta($post->ID, 'revs', true);
 		        <select id="table-select-filter" >
 		          <option value=""><?php echo $avis_lang['filter'];?></option>
 		        	<?php foreach ($branches  as $branch) { ?>
-			          <option value="<?php echo $branch->name; ?>"><?php echo $branch->name; ?></option>
+			          <option value="branch_id=<?php echo $branch->id; ?>"><?php echo $branch->name; ?></option>
 			        <?php } ?>  
 		        </select>
 		       </div>
@@ -84,24 +84,30 @@ $page_type = get_post_meta($post->ID, 'revs', true);
 	          			<?php foreach ($reviews as $review) {
 	          				if($page_type === '1') {
 								$viewed = $review->isViewed;
-								if(!empty($review->isAuthorized)){
 		          					$p_id = '96';
-		          				} else {
-		          					$p_id = '90';
-		          				} 
+								// if(!empty($review->isAuthorized)){
+
+		      //     				} else {
+		      //     					$p_id = '90';
+		      //     				} 
 							} elseif($page_type === 'conv') {
 								$viewed = $review->isChatViewed;
 							}
 	          			?>
-		          			<tr onclick="document.location = '/rev_handler/?p_id=<?php echo $p_id; ?>&rev_id=<?php echo $review->id; ?>&lang=<?php echo explode('_', get_locale())[0] ?>'" data-review-id="<?php echo $review->id; ?>" class="<?php if(empty($viewed)) { echo 'bold';}?>">
-		          				<td><?php  if(empty($viewed)){ ?><div class="status_circle"></div><?php };?></td>
-		          				<td><?php echo $avis_lang['rew_number'];?><?php echo $review->id; ?></td>
-		          				<td><?php echo gmdate('d/m/y', $review->dateCreated / 1000);?></td>
-		          				<?php if($page_type === '1') { ?><td><?php  if(!empty($review->isAuthorized)){ ?><div class="auth_circle"><i class="fas fa-check"></i></div><?php };?></td><?php }; ?>
-		          				<td><?php echo $review->branch; ?></td>
-		          				<td><div class="stars-rating stars-<?php echo $review->impression; ?>"></div></td>
-		          				<td><?php echo $review->qrType; ?></td>
-		          				<td></td>
+		          			<tr data-branch-id="<?php echo $review->branchId; ?>" onclick="document.location = '/rev_handler/?p_id=<?php echo $p_id; ?>&rev_id=<?php echo $review->review->id; ?>&lang=<?php echo explode('_', get_locale())[0] ?>'" data-review-id="<?php echo $review->id; ?>" class="<?php if(empty($viewed)) { echo 'bold';}?>">
+		          				<td>
+		          					<span class="">branch_id=<?php echo $review->branchId; ?></span>
+		          					<?php  if(empty($viewed)){ ?><div class="status_circle"></div><?php };?>
+		          				</td>
+		          				<td><?php echo $avis_lang['rew_number'];?><?php echo $review->review->id; ?></td>
+		          				<td><?php echo $review->review->dateCreated; ?></td>
+		          				<?php if($page_type === '1') { ?><td><?php  if(!empty($review->review->phone)){ ?><div class="auth_circle"><i class="fas fa-check"></i></div><?php };?></td><?php }; ?>
+		          				<td>
+		          					<?php echo $review->branchName; ?>		
+		          				</td>
+		          				<td><div class="stars-rating stars-<?php echo $review->review->impression; ?>"></div></td>
+		          				<td><?php echo $review->opinionCategory; ?></td>
+		          				<td><?php echo $review->opinionName->en; ?></td>
 		          			</tr>
 		          		</a>
 	          			<?php } ?>

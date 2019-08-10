@@ -229,7 +229,8 @@ if(qs('.table-template-wrapper') != null){
 	    jQuery('#table_reviews').DataTable( {
 	        "order": [[ 1, "desc" ]],
 	        "language": tab_trnsl,
-	        "aaSortingFixed": [[0, "desc"]]
+	        "aaSortingFixed": [[0, "desc"]],
+	        "search": {}
 	    } )
 	} );
 

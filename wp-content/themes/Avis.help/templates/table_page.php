@@ -7,9 +7,6 @@ get_header('account');
 $page_type = get_post_meta($post->ID, 'revs', true);
 // if($page_type === '1') {
 
-	
-	// $api_url = $avis_helper->api_path->organization->base.$avis_helper->avis_creds->organizationId .$avis_helper->api_path->organization->info->base.$avis_helper->api_path->organization->info->review->base;
-
 	$reviews = $avis_helper->request(
 				$avis_helper->api_path->organization->base.
 				$avis_helper->avis_creds->organizationId.
@@ -32,25 +29,8 @@ $page_type = get_post_meta($post->ID, 'revs', true);
 	    true
 	  );
 
-	// $viewed = $data->isViewed;
-
-
-
-// } elseif($page_type === 'conv') {
-
-
-
-// 	$data = $avis_helper->get_rev_with_conversation();
-// 	$p_id = '55'; 
-// 	$viewed = $data->isChatViewed;
-
-// }
 ?>
 
-<!--  <pre>
-	<?php // print_r(get_locale()); ?>
-	<?php // print_r($branches); ?>
-</pre>  --> 
   <div class="row m-0 full-height">
     <div class="col-12 p-0">
 	      <div class="row m-0 full-height">
@@ -62,7 +42,7 @@ $page_type = get_post_meta($post->ID, 'revs', true);
 		        <select id="table-select-filter" >
 		          <option value=""><?php echo $avis_lang['filter'];?></option>
 		        	<?php foreach ($branches  as $branch) { ?>
-			          <option value="branch_id=<?php echo $branch->id; ?>"><?php echo $branch->name; ?></option>
+			          <option value="<?php echo $branch->id; ?>"><?php echo $branch->name; ?></option>
 			        <?php } ?>  
 		        </select>
 		       </div>
@@ -85,11 +65,6 @@ $page_type = get_post_meta($post->ID, 'revs', true);
 	          				if($page_type === '1') {
 								$viewed = $review->isViewed;
 		          					$p_id = '96';
-								// if(!empty($review->isAuthorized)){
-
-		      //     				} else {
-		      //     					$p_id = '90';
-		      //     				} 
 							} elseif($page_type === 'conv') {
 								$viewed = $review->isChatViewed;
 							}

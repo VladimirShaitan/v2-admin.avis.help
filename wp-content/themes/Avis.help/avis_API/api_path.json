@@ -43,6 +43,15 @@
       "review": {
           "base": "/review/"
         }
+    },
+    "bundle": {
+      "base": "/bundle",
+      "qr_type": {
+        "base": "/qr-type/"
+      },
+      "cta_answers": {
+        "base": "/cta-answer-for-organization/"
+      }
     }
   },
   "user": {

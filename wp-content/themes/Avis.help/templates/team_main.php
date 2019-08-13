@@ -2,7 +2,12 @@
 /*Template Name: Team page*/
   get_header('account'); 
 
-  //$branches = array_reverse($avis_helper->get_my_branches()); 
+    $branches = $avis_helper->request(
+      $avis_helper->api_path->organization->base .
+      $avis_helper->avis_creds->organizationId .
+      $avis_helper->api_path->organization->branch->base,
+      true
+    );
   // $company = json_decode($avis_helper->get_organization());
 ?>
 

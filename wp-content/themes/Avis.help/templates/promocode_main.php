@@ -4,8 +4,8 @@
 */
 get_header('account');
  $icons = json_decode(file_get_contents(get_stylesheet_directory().'/css/icons.json')); 
- $promocodes = array_reverse($avis_helper->get_user_promocodes());
- $send_promo_url = get_cur_loc_url(277);
+ // $promocodes = array_reverse($avis_helper->get_user_promocodes());
+ // $send_promo_url = get_cur_loc_url(277);
 ?>  
 <!--  <pre>
   <?php //  print_r($promocodes); ?>

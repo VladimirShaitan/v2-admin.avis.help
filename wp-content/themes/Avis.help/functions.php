@@ -176,6 +176,12 @@ function avis_enqueue_scripts(){
 			wp_enqueue_script('role-add', get_stylesheet_directory_uri(). '/js/pages/role-add.js');
 		}
 
+	// Cta
+		if(get_page_template_slug() === $__TEMPLATESDIR.'cat_main.php'){
+			wp_enqueue_script('cta', get_stylesheet_directory_uri(). '/js/pages/cta.js');
+		}
+
+
 
 }
 

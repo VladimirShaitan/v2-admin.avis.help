@@ -240,5 +240,6 @@ $avis_lang = array(
     'add_select_qr_answers'  => 'Добавьте или выберете вопрос',
     'add_qr_answers'         => 'Добавьте вариант ответа',
     'edit_qr'                 => 'Редактировать QR',   
-    'sort'                   => 'Сорт.',  
+    'sort'                   => 'Сорт.',
+    'filter_all'             => 'Все'
 );

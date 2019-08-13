@@ -880,7 +880,7 @@ if(qs('.branch-item') != null){
   	jQuery('.branch-item').removeClass('active');
   	jQuery(this).addClass('active');
   	let index = jQuery(this).index();
-  	console.log(index);
+  	// console.log(index);
   	jQuery('.full-branch-info-wrap').removeClass('active');
   	jQuery('.full-branch-info-wrap').eq(index).addClass('active');
   })

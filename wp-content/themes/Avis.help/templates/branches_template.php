@@ -1,10 +1,21 @@
 <?php 
 /*Template Name: Branches page*/
-  get_header('account');  
-  $branches = array_reverse($avis_helper->get_my_branches()); 
-  $company = json_decode($avis_helper->get_organization());
-?>
 
+
+
+
+  get_header('account');  
+    $branches = $avis_helper->request(
+      $avis_helper->api_path->organization->base .
+      $avis_helper->avis_creds->organizationId .
+      $avis_helper->api_path->organization->branch->base,
+      true
+    );
+  // $company = json_decode($avis_helper->get_organization());
+?>
+<pre>
+  <?php print_r($branches); ?>
+</pre>
 <div class="modal-overlay modal-company">
   <div class="modal-window">
     <div class="modal-body">

@@ -253,4 +253,5 @@ $avis_lang = array(
     'add_qr_answers'         => 'Add an Answer',
     'edit_qr'                => 'Edit QR',  
     'sort'                   => 'Sort',  
+    'filter_all'             => 'All'
 );

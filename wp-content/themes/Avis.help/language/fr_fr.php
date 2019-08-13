@@ -244,5 +244,6 @@ $avis_lang = array(
     'add_qr_answers'         => 'Ajouter une réponse',
     'edit_qr'                 => 'Modifier QR',   
     'sort'                   => 'Trier',  
+    'filter_all'             => 'Tous'
 
 );

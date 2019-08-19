@@ -18,29 +18,27 @@
       $avis_helper->api_path->organization->bundle->qr_type->base,
       true
     );
-
-    $cta_answers = $avis_helper->request(
-      $cta_api_page . 
-      $avis_helper->api_path->organization->bundle->cta_answers->base,
-      true
-    )
 ?>
-<!-- <pre>
-  <?php // print_r($cta_answers); ?>
-</pre> -->
 
   <div class="row m-0 full-height">
     <div class="col-3 p-0 general-cta-wrap">
       <div class="subtitle cta-subtitle"><?php echo $avis_lang['qr_name'];?></div>
       <div class="cta-wrap">
         <div id="qr-filter">
-          <?php foreach ($cta->cta as $cta) { ?>
             <div 
               class="branch-item"
-              data-branch-id="<?php echo $cta->branchId; ?>"
-              data-cta-id="<?php echo $cta->id; ?>"
+              data-branch-id="allё"
+              data-cta-id="all"
             >
-              <span><?php echo $cta->name;?></span>
+              <span><?php echo $avis_lang['filter_all'];?></span>
+            </div>
+          <?php foreach ($cta->cta as $qr) { ?>
+            <div 
+              class="branch-item"
+              data-branch-id="<?php echo $qr->branchId; ?>"
+              data-cta-id="<?php echo $qr->id; ?>"
+            >
+              <span><?php echo $qr->name;?></span>
             </div>
           <?php } ?>
 
@@ -60,22 +58,35 @@
       <div class="cta-answers-wrap">
         <div class="branch-table">
           <div> 
-          <div class="branch-table-item">
-            <div class="cta-info">
-              <span class="title">Answer 1</span>
-              <span class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
-            </div>
-            <div class="cta-analytics">
-              <div class="cta-analytics-item">
-                <span class="count">5</span>
-                <span><?php echo $avis_lang['clicked'];?></span>
+
+          <?php
+           foreach ($cta->cta as $answer) {
+              foreach ($answer->options as $option) {
+           ?>
+              <div class="branch-table-item" data-opinion-cta-id="<?php echo $answer->id; ?>" data-branch-id="<?php  echo $answer->branchId; ?>">
+                <div class="cta-info">
+                  <?php 
+                    $questions = (array) $answer->question;
+                    $message = (array) $option->value; 
+                  ?>
+                  <span class="title"><?php echo $questions[$answer->defaultLocale]; ?></span>
+                  <span class="description"><?php echo $message[$answer->defaultLocale]; ?></span>
+                </div>
+                <div class="cta-analytics">
+                  <div class="cta-analytics-item">
+                    <span class="count"><?php echo $option->hits; ?></span>
+                    <span><?php echo $avis_lang['clicked'];?></span>
+                  </div>
+                  <div class="cta-analytics-item">
+                    <span class="count"><?php echo $option->averageReactionTime; ?> 
+                      <span class="time"><?php echo $avis_lang['min'];?></span>
+                    </span>
+                    <span><?php echo $avis_lang['reaction_time'];?></span>
+                  </div>
+                </div>
               </div>
-              <div class="cta-analytics-item">
-                <span class="count">27 <span class="time"><?php echo $avis_lang['min'];?></span></span>
-                <span><?php echo $avis_lang['reaction_time'];?></span>
-              </div>
-            </div>
-          </div>
+
+          <?php } } ?>  
 
 
           </div>

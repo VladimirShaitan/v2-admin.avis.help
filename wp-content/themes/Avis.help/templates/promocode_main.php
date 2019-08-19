@@ -4,12 +4,17 @@
 */
 get_header('account');
  $icons = json_decode(file_get_contents(get_stylesheet_directory().'/css/icons.json')); 
- // $promocodes = array_reverse($avis_helper->get_user_promocodes());
+ $promocodes = $avis_helper->request(
+    $avis_helper->api_path->organization->base .
+    $avis_helper->avis_creds->organizationId .
+    $avis_helper->api_path->organization->promo->base,
+    true
+ )
  // $send_promo_url = get_cur_loc_url(277);
 ?>  
-<!--  <pre>
-  <?php //  print_r($promocodes); ?>
-</pre>  -->
+<!-- <pre>
+  <?php // print_r($promocodes); ?>
+</pre> -->
 <script type="text/javascript">
   let promocodes_cuont = <?php echo count($promocodes); ?>
 </script>
@@ -51,7 +56,7 @@ get_header('account');
                     <tr class="row-<?php echo $promocode->id; ?>">
                       <td>
                         <div class="table-icon-wrapper text-center">
-                          <i class="fas fa-<?php echo $promocode->iconCode; ?>"></i>
+                          <i class="fas fa-<?php echo $promocode->iconId; ?>"></i>
                         </div>
                       </td>
                       <td><?php echo $promocode->name; ?></td>

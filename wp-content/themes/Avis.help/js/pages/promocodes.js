@@ -1,4 +1,4 @@
-// Promocode table
+/*// Promocode table
 if(qs('#promocodes-table') != null){
 	jQuery(document).ready(function() {
 	let tab_trnsl;
@@ -65,12 +65,12 @@ if(qs('#promocodes-table') != null){
 		}
  	}
 
-		jQuery('#promocodes-table').DataTable({
-			"searching": false,
-			"language": tab_trnsl,
-			"ordering": false,
-		});
-	})
+		// jQuery('#promocodes-table').DataTable({
+		// 	"searching": false,
+		// 	"language": tab_trnsl,
+		// 	"ordering": false,
+		// });
+	})*/
 
 	// Delete promocode
 	qs('#promocodes-table').addEventListener('click', function(e){
@@ -113,7 +113,7 @@ if(qs('#promocodes-table') != null){
 	})
 
 
-}
+// }
 
 
 // add pomocode

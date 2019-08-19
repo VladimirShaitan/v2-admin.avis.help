@@ -8,29 +8,29 @@ $page_type = get_post_meta($post->ID, 'revs', true);
 // if($page_type === '1') {
 
 	$reviews = $avis_helper->request(
-				$avis_helper->api_path->organization->base.
-				$avis_helper->avis_creds->organizationId.
-				$avis_helper->api_path->organization->info->base.
-				$avis_helper->api_path->organization->info->review->base,
-				true,
-				array(
-					'order' => null,
-					'page'	=> 0,
-					'size' => 1000000,
-					'sortBy' => null
-				),
-				'GET'
-			);
+					$avis_helper->api_path->organization->base.
+					$avis_helper->avis_creds->organizationId.
+					$avis_helper->api_path->organization->info->base.
+					$avis_helper->api_path->organization->info->review->base,
+					true,
+					array(
+						'order' => null,
+						'page'	=> 0,
+						'size' => 1000000,
+						'sortBy' => null
+					),
+					'GET'
+				);
 
 	$branches = $avis_helper->request(
-	    $avis_helper->api_path->organization->base .
-	    $avis_helper->avis_creds->organizationId .
-	    $avis_helper->api_path->organization->branch->base,
-	    true
-	  );
+				    $avis_helper->api_path->organization->base .
+				    $avis_helper->avis_creds->organizationId .
+				    $avis_helper->api_path->organization->branch->base,
+				    true
+				  );
 
 ?>
-
+<div class="fake_disable hidden"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>
   <div class="row m-0 full-height">
     <div class="col-12 p-0">
 	      <div class="row m-0 full-height">
@@ -40,7 +40,8 @@ $page_type = get_post_meta($post->ID, 'revs', true);
 	          	<?php }; ?>
 			  <div class="cta-subtitle">
 		        <select id="table-select-filter" >
-		          <option value=""><?php echo $avis_lang['filter'];?></option>
+		        	<option value=""><?php echo $avis_lang['filter'];?></option>
+		          	<option value="all"><?php echo $avis_lang['filter_all'];?></option>
 		        	<?php foreach ($branches  as $branch) { ?>
 			          <option value="<?php echo $branch->id; ?>"><?php echo $branch->name; ?></option>
 			        <?php } ?>  
@@ -71,7 +72,6 @@ $page_type = get_post_meta($post->ID, 'revs', true);
 	          			?>
 		          			<tr data-branch-id="<?php echo $review->branchId; ?>" onclick="document.location = '/rev_handler/?p_id=<?php echo $p_id; ?>&rev_id=<?php echo $review->review->id; ?>&lang=<?php echo explode('_', get_locale())[0] ?>'" data-review-id="<?php echo $review->id; ?>" class="<?php if(empty($viewed)) { echo 'bold';}?>">
 		          				<td>
-		          					<span class="">branch_id=<?php echo $review->branchId; ?></span>
 		          					<?php  if(empty($viewed)){ ?><div class="status_circle"></div><?php };?>
 		          				</td>
 		          				<td><?php echo $avis_lang['rew_number'];?><?php echo $review->review->id; ?></td>
@@ -92,5 +92,9 @@ $page_type = get_post_meta($post->ID, 'revs', true);
 	      </div>
     </div>
   </div>
+
+<script>
+	let tableRows = document.querySelectorAll('#table_reviews tbody tr'); 
+</script>
 
 <?php get_footer('account'); ?> 

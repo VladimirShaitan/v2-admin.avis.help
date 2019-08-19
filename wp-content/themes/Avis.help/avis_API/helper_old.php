@@ -1,4 +1,4 @@
-<?php 
+пара<?php 
     class avis_helper{
 
 	   function __construct() {

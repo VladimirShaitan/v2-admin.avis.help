@@ -50,8 +50,14 @@
         "base": "/qr-type/"
       },
       "cta_answers": {
-        "base": "/cta-answer-for-organization/"
+        "base": "/cta/"
+      },
+      "branch_opinions": {
+        "base": "/branch-opinions/"
       }
+    },
+    "promo": {
+      "base": "/promo/"
     }
   },
   "user": {

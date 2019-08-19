@@ -1,11 +1,10 @@
-
 <?php
     if(!empty($_COOKIE['avis_auth'])){
         wp_safe_redirect('/');
     };
     select_lang_first_load();
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html class="" <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">

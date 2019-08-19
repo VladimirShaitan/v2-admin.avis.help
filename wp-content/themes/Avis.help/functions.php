@@ -147,6 +147,7 @@ function avis_enqueue_scripts(){
 			// https://github.com/jackocnr/intl-tel-input#recommended-usage
 			wp_enqueue_script('utilsJs', get_stylesheet_directory_uri(). '/js/utils.js');
 			wp_enqueue_script('inpTel', get_stylesheet_directory_uri(). '/js/intlTelInput.min.js');
+			wp_enqueue_script('table_page', get_stylesheet_directory_uri(). '/js/pages/table_page.js');
 			wp_enqueue_script('promocodes', get_stylesheet_directory_uri(). '/js/promocodes.js');
 		}
 
@@ -181,11 +182,7 @@ function avis_enqueue_scripts(){
 			wp_enqueue_script('cta', get_stylesheet_directory_uri(). '/js/pages/cta.js');
 		}
 
-
-
 }
-
-
 
 
 //login user

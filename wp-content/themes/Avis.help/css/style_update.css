@@ -349,7 +349,12 @@ form#send_promo input{
 form.error_login_form  .error-login {
     opacity: 1
 }
+div#table_reviews_wrapper .row:not(:first-child) {
+    width: 100%;
+}
 
+
+.branch-item span{pointer-events: none}
 @media(max-width: 1500px){
 
     .promo-icons-wrapper ul{

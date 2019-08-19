@@ -1,21 +1,19 @@
 <?php 
 /*Template Name: Branches page*/
 
-
-
-
   get_header('account');  
     $branches = $avis_helper->request(
       $avis_helper->api_path->organization->base .
       $avis_helper->avis_creds->organizationId .
-      $avis_helper->api_path->organization->branch->base,
+      $avis_helper->api_path->organization->bundle->base .
+      $avis_helper->api_path->organization->bundle->branch_opinions->base,
       true
     );
   // $company = json_decode($avis_helper->get_organization());
 ?>
-<pre>
-  <?php print_r($branches); ?>
-</pre>
+<!-- <pre>
+  <?php // print_r($branches[0]); ?>
+</pre> -->
 <div class="modal-overlay modal-company">
   <div class="modal-window">
     <div class="modal-body">
@@ -76,17 +74,17 @@
     <div class="col-9">
       <?php foreach ($branches as $branch) { ?>
       <div class="full-branch-info-wrap" id="<?php echo $branch->id;?>">
-        <div class="edit-wrap">
+<!--         <div class="edit-wrap">
         <div class="edit">
           <div></div>
           <div></div>
           <div></div>
         </div>
         <div class="edit-menu">
-          <a class="delete"><?php echo $avis_lang['delete'];?></a>
-          <a href="/company/add-branch/"><?php echo $avis_lang['edit'];?></a>
+          <a class="delete"><?php // echo $avis_lang['delete'];?></a>
+          <a href="/company/add-branch/"><?php // echo $avis_lang['edit'];?></a>
         </div>
-      </div>
+      </div> -->
         <div class="branch-info-header">
           <form data-branch-id="<?php echo $branch->id; ?>">
             <label>
@@ -105,23 +103,16 @@
           <div><?php echo $branch->phone; ?></div>
         </div>
         <div class="qr-wrap">
-          <?php foreach ($branch->qrCodes as $qr_code) { ?>
+          <?php foreach ($branch->opinions as $qr_code) { ?>
           <div class="qr-item">
-            <div><?php echo localize_qr_type($qr_code->qrType); ?></div>
-            <div  class="caption"><?php echo $qr_code->humanReadableId; ?></div>
+            <div>QR <?php echo $qr_code->qrCode->id; ?></div>
+            <div  class="caption"><?php echo $qr_code->qrCode->humanReadableId; ?></div>
             <div class="qr-img-wrapper">
-              <img width="100%" height="100%" draggable="false" src="<?php echo $qr_code->qrUrl; ?>">
+              <img width="100%" height="100%" draggable="false" src="<?php echo $qr_code->qrCode->imageUrl; ?>">
             </div>
-            <a href="<?php echo $qr_code->qrUrl; ?>" target="_blank" class="avis_submit"><?php echo $avis_lang['download'];?></a>         
+            <a href="<?php echo $qr_code->qrCode->imageUrl; ?>" target="_blank" class="avis_submit"><?php echo $avis_lang['download'];?></a>         
           </div>
         <?php } ?>
-        <div class="qr-item">
-            <div>test</div>
-            <div  class="caption">test</div>
-            <div class="qr-img-wrapper">
-            </div>
-            <a href="<?php echo $qr_code->qrUrl; ?>" target="_blank" class="avis_submit"><?php echo $avis_lang['download'];?></a>         
-          </div>
         </div>
         <div class="branch-btns-wrap">
           <a href="/company/add-branch/" class="avis_submit"><?php echo $avis_lang['edit'];?></a> 

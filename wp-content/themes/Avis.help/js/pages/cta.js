@@ -25,5 +25,16 @@ qs('#cta-branch-filter').parentElement.addEventListener('click', function(e){
 qs('#qr-filter').addEventListener('click', function(e) {
 	if(e.target.classList.contains('branch-item')){
 		e.target.classList.add('active');
+		let currentOpinion = e.target.getAttribute('data-cta-id');
+		console.log(e.target.getAttribute('data-cta-id'));
+		let branchItems = qsa('.branch-table-item');
+
+		branchItems.forEach((item) => {
+			if(item.getAttribute('data-opinion-cta-id') != currentOpinion && currentOpinion != 'all'){
+				item.classList.add('hidden');
+			} else {
+				item.classList.remove('hidden');
+			}
+		})
 	}
 });

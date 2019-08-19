@@ -836,6 +836,7 @@ opacity: 0;
 .content_block_wrapper{
   padding: 0;
   height: 100%;
+  position: relative;
 }
 
 .menu-item a:before {

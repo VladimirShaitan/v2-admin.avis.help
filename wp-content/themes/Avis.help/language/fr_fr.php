@@ -103,6 +103,7 @@ $avis_lang = array(
     'go_to_review' => 'Aller à la critique',
     'invite_to_chat' => 'Inviter à discuter',
     'invite'            => 'Inviter',
+    'apply_error'                   => 'Il n\'y a pas de code promo avec un tel identifiant',
 
     /* ******************** company **************************** */
     'enter_company_came'            => 'Entrez le nom de l\'entreprise',
@@ -167,7 +168,7 @@ $avis_lang = array(
     'export'                   => 'Statistiques d\'exportation',
     'export_btn'               => 'Exportation',
     'export_mes'               => 'Le fichier sera envoyé dès qu\'il sera généré. Cela prend de 5 à 30 minutes selon la quantité de commentaires. La période pour laquelle le fichier sera formé est sélectionnée dans le calendrier de la page d\'accueil.',
-    'export_xml'               => 'Télécharger le fichier XML',
+    'export_xml'               => 'Télécharger le fichier CSV',
 
     /* ************************ Notification ****************************** */
 

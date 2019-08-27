@@ -250,6 +250,14 @@ text-decoration: underline;
 .social-media-wrap a.google:hover {
     box-shadow: 0px 5px 10px 0px rgba(82, 134, 235,.5);
 }
+
+/*@media(max-width: 992px){
+    .branch-table>div{
+      max-height: 468px;
+     }
+}
+*/
+
 @media(max-width: 570px){
   .login_form_wrapper{
     width: 100% 
@@ -1469,7 +1477,7 @@ span.calendar-line {
   line-height: 1;
   border-radius: 50px;
   padding: 17px 40px;
-  font-size: 18px;
+  font-size: 16px;
   color: white;
   font-weight: 500;
   background: rgb(246,143,143); /* Old browsers */
@@ -2653,7 +2661,7 @@ div.lang li.current-lang a {
     .acc-home-wrapper.branches-wrapper table,
     .avis_submit,
     .review-page-wrapper .table tr td {
-      font-size: 16px;
+      font-size: 14px;
     }
     .fake_btn .btn_checkbox_text {
       line-height: 1;
@@ -4003,8 +4011,10 @@ h1.page_header.add_branch {
   flex-wrap: wrap;
   width: 100%;
   overflow-y: scroll;
-  max-height: 500px;
+  max-height: 468px;
  }
+
+
 .branch-table-item {
   width: 37%;
   background-color: #fff;
@@ -4105,7 +4115,7 @@ h1.page_header.add_branch {
 .add_member_wrap .full-width-form .nice-select,
 .add_member_wrap .full-width-form textarea{
   width: 80%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
       resize: none;
 }
 .add_member_wrap .full-width-form input.not-edit {
@@ -4425,7 +4435,7 @@ h1.page_header.new-qr + p{
   font-size: 26px;
   box-shadow: 0px 0px 7px rgba(89,94,108,0.2);
   margin-bottom:20px;
-  height: 223px;
+  height: 200px;
  
 }
   .qr-type a{

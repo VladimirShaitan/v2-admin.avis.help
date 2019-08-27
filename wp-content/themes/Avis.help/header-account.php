@@ -2,7 +2,6 @@
   if(empty(json_decode(base64_decode($_COOKIE['avis_auth']))->accessToken)){
     wp_safe_redirect('/logout/?lang='.explode('_', get_locale())[0]);
   };
-
     global $avis_lang;
     global $avis_helper;
     $user_data = $avis_helper->request(
@@ -10,7 +9,6 @@
       true
     );
 ?>
-
 <!DOCTYPE html>
 <html class="" <?php language_attributes(); ?>>
 <head>
@@ -92,7 +90,7 @@
       <a><?php echo $user_data->email; ?></a>
     </li>
     <li class="nav-item text-nowrap nav-item-logo">
-        <img width="50" height="50" src="<?php if(!empty($user_data->avatarUrl)) {echo $user_data->avatarUrl;} else { echo '/wp-content/uploads/2019/03/img-profile.png';} ?>" alt="<?php echo $user_data->username; ?>" title="<?php echo $user_data->username; ?>">    
+        <img width="50" height="50" src="<?php if(!empty($user_data->avatarUrl)) {echo $user_data->avatarUrl;} else { echo '/wp-content/uploads/2019/03/img-profile.png';} ?>" alt="<?php // echo $user_data->username; ?>" title="<?php // echo $user_data->username; ?>">    
     </li>
     <div class="profile-menu">
         <a href="<?php if (get_locale() === 'fr_FR'){?> /fr/profil<?php } elseif (get_locale() === 'ru_RU'){?> /ru/profile-ru/<?php } else { ?> /profile<?php };?>"><?php echo $avis_lang['your_profile'];?></a>

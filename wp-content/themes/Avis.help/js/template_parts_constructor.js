@@ -98,15 +98,33 @@ let template_constructor = {
             qs('#create-shortcode').reset();
 
             promocodes_cuont++;
-            // if(promocodes_cuont >= 4){
-            //     qs('.promocodes_warning').classList.remove('hidden');
-            //     qsa('#create-shortcode input').forEach(function(item){item.setAttribute('disabled', 'disabled')});
-            // } else {
-            //     if(qs('.promocodes_warning').classList.contains('hidden')){
-            //         qs('.promocodes_warning').classList.add('hidden')
-            //     }
-            // }
             qs('.promocodes-count').innerHTML = promocodes_cuont;
 
+    },
+    add_op_category: function(data){
+        let template = '';
+
+        template += '<input class="name" data-old-value="'+data.value+'" value="'+data.value+'">';
+        template += '<div class="icons_holder">';
+        template += '<div class="before_edit">';
+        template += '<span class="func_btn edit_op_cat">';
+        template += '<img src="/wp-content/uploads/2019/08/olivets.png">'
+        template += '</span>&nbsp;';
+        template += '<span class="func_btn remove_op_cat">';
+        template += '<img src="/wp-content/uploads/2019/08/urna.png">'
+        template += '</span>';
+        template += '</div>';
+        template += '<div class="while_edit hidden">';
+        template += '<span class="save_edited">'+data.translate.save+'</span>';
+        template += '</div>';
+        template += '</div>';
+
+        let item = document.createElement('li');
+        item.setAttribute('data-autoclose', 'true');
+        item.setAttribute('data-value', data.value);
+        item.className = 'option';
+        item.innerHTML = template;
+
+        return item;
     }
 }

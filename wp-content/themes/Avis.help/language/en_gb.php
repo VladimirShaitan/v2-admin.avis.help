@@ -105,7 +105,8 @@ $avis_lang = array(
     'enter_promo_id'                => 'Enter Promo code ID',
     'apply'                  		=> 'Apply',
     'add_promo'                   	=> 'Add promo code',
-    'name_promo'                  		=> 'Name',
+    'name_promo'                  	=> 'Name',
+    'apply_error'                   => 'A promotional code with such an Id does not exist',
 
     /* ******************** chat page**************************** */
     'go_to_review'                  => 'GO TO REVIEW',
@@ -175,7 +176,7 @@ $avis_lang = array(
     'export'                   => 'Export statistics',
     'export_btn'               => 'Export',
     'export_mes'               => 'The file will be sent as soon as it is generated. It takes from 5 to 30 minutes depending on the quantity of the reviews. The period for which the file will be formed is selected in the calendar on the home page.',
-    'export_xml'               => 'Download XML file',
+    'export_xml'               => 'Download CSV file',
     
     /* ************************ Notification ****************************** */
 

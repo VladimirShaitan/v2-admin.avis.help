@@ -1,88 +1,16 @@
-/*// Promocode table
-if(qs('#promocodes-table') != null){
-	jQuery(document).ready(function() {
-	let tab_trnsl;
-	if(lang === 'ru_RU'){
-		tab_trnsl = {
-	       	search: "",
-	        lengthMenu:    "_MENU_",
-	        info:           "Показано с  _START_ по _END_ из _TOTAL_ элементов",
-	        infoEmpty:      "",
-	        loadingRecords: "Загрузка",
-	        emptyTable:     "В таблице нет данных",
-	        paginate: {
-	            first:      "Первая",
-	            previous:   "Предыдущая",
-	            next:       "Следующая",
-	            last:       "Последняя"
-	        },
-	        aria: {
-	            sortAscending:  ": Сортировка по возростанию",
-	            sortDescending: ": Сортировка по убыванию"
-	        }
-	    }
-	} else if(lang === 'fr_FR'){
-		tab_trnsl = {
-	        processing:     "Traitement en cours...",
-	        search:         "",
-	        lengthMenu:    "_MENU_",
-	        info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
-	        infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
-	        infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
-	        infoPostFix:    "",
-	        loadingRecords: "Chargement en cours...",
-	        zeroRecords:    "Aucun &eacute;l&eacute;ment &agrave; afficher",
-	        emptyTable:     "Aucune donnée disponible dans le tableau",
-	        paginate: {
-	            first:      "Premier",
-	            previous:   "Pr&eacute;c&eacute;dent",
-	            next:       "Suivant",
-	            last:       "Dernier"
-	        },
-	        aria: {                                                                                                 
-	            sortAscending:  ": activer pour trier la colonne par ordre croissant",
-	            sortDescending: ": activer pour trier la colonne par ordre décroissant"
-	        }
-    	}
-	} else {
-		tab_trnsl = {
-	       	search: "",
-	        lengthMenu:    "_MENU_",
-	        info:           "Shown from _START_ to _END_ of _TOTAL_ elements",
-	        infoEmpty:      "",
-	        loadingRecords: "Loading",
-	        emptyTable:     "No data in table",
-	        paginate: {
-	            first:      "First",
-	            previous:   "<",
-	            next:       ">",
-	            last:       "Last"
-	        },
-	        aria: {
-	            sortAscending:  ": Sort Ascending",
-	            sortDescending: ": Sort descending"
-	    	}
-		}
- 	}
-
-		// jQuery('#promocodes-table').DataTable({
-		// 	"searching": false,
-		// 	"language": tab_trnsl,
-		// 	"ordering": false,
-		// });
-	})*/
-
 	// Delete promocode
-	qs('#promocodes-table').addEventListener('click', function(e){
-		if(e.target.classList.contains('delete_promo')){
-			let del_promocode_data = {
-				action: 'delete_promocode', 
-				promocode_id: e.target.getAttribute('data-promo-id'),
-			};
-			let current_row = e.target.parentFinder('row-'+del_promocode_data.promocode_id); 
+	if(qs('#promocodes-table') != null) {
+		qs('#promocodes-table').addEventListener('click', function(e){
+			if(e.target.classList.contains('delete_promo')){
+				let del_promocode_data = {
+					action: 'delete_promocode', 
+					promocode_id: e.target.getAttribute('data-promo-id'),
+				};
+				let current_row = e.target.parentFinder('row-'+del_promocode_data.promocode_id); 
 
-			jQuery.post(ajaxurl, del_promocode_data, (data) => {
-				if(data === 'Success'){
+				console.log(current_row);
+
+				jQuery.post(ajaxurl, del_promocode_data, (data) => {
 					current_row.style.transform = 'translateX(200%)';
 					setTimeout(function(){
 						current_row.style.position = 'absolute';
@@ -91,29 +19,53 @@ if(qs('#promocodes-table') != null){
 					setTimeout(function(){
 						current_row.remove();
 					}, 300)
+				})
+			}
+		});
 
+		// Nice select fix
+		setTimeout(function(){
+			qs('#promocodes-table_wrapper label').onclick = function() {return false}
+		}, 500)
+
+		// apply promocode 
+
+		qs('.apply-promocode').addEventListener('keydown', function(e){
+				if(e.target.value.length > 0 ){
+					e.target.nextElementSibling.focus();
+				} else {
+					e.target.previousElementSibling.focus();
 				}
-			})
-		}
-	});
+			});
 
-	// Nice select fix
-	setTimeout(function(){
-		qs('#promocodes-table_wrapper label').onclick = function() {return false}
-	}, 500)
+		qs('.apply-promocode').addEventListener('submit', function(e){
+				e.preventDefault();
 
-	// apply promocode 
+				let loader = qs('.promo-id-wrap .fake_disable');
+				let inps = qsa('#apply-promocode input[type=text]');
+				let hId = '';
+				loader.classList.remove('hidden');
 
-	qs('.apply-promocode').addEventListener('keydown', function(e){
-		if(e.target.value.length > 0 ){
-			e.target.nextElementSibling.focus();
-		} else {
-			e.target.previousElementSibling.focus();
-		}
-	})
+				inps.forEach((item) => {hId+=item.value});
+				hId = hId.toUpperCase();
 
 
-// }
+				jQuery.post(ajaxurl, {action: 'apply_promocode', humenId: hId}, (resp) => {
+					resp = JSON.parse(resp)
+
+					if(resp.id){
+						inps.forEach((item) => {item.value = ''});
+						qs('.apply_error').classList.add('hidden');
+					} else if(resp.error != '') {
+						qs('.apply_error').classList.remove('hidden');
+					} 
+					
+					loader.classList.add('hidden');
+					console.log();
+				})
+
+			});	
+	}	
 
 
 // add pomocode
@@ -129,15 +81,16 @@ if(qs('#promocodes-table') != null){
  		jQuery.post(ajaxurl, promoData, function(resp){
  			let responce = JSON.parse(resp);
  			console.log(responce);
- 			if(responce.success){
- 				location.href = success_url;
+ 			if(responce.id){
+ 				location.href = responce.return_url;
  			}
  		})
  	})
  }
 
- // send promocode 
 
+
+ // send promocode 
 if(qs('#promocode-send-page') != null){
 
 	const prefCountries = {

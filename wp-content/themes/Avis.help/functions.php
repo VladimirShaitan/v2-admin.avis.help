@@ -5,8 +5,20 @@ if(!is_admin()){
 	require_once(__DIR__ . '/language/'.strtolower(get_locale()).'.php');
 }
 
-// global $api_path;
-// $api_path = json_decode(file_get_contents(__DIR__.'/avis_API/api_path.json'));
+
+function getLoc() {
+	if(get_locale() === 'en_GB'){
+		$loc = 'en';
+	} elseif(get_locale() === 'ru_RU') {
+		$loc = 'ru';
+	} elseif(get_locale() === 'fr_FR') {
+		$loc = 'fr';
+	} else {
+		$loc = 'ukr';
+	}
+
+	return $loc;
+}
 
 
 function get_cur_loc_url($p_id = FALSE){
@@ -148,7 +160,7 @@ function avis_enqueue_scripts(){
 			wp_enqueue_script('utilsJs', get_stylesheet_directory_uri(). '/js/utils.js');
 			wp_enqueue_script('inpTel', get_stylesheet_directory_uri(). '/js/intlTelInput.min.js');
 			wp_enqueue_script('table_page', get_stylesheet_directory_uri(). '/js/pages/table_page.js');
-			wp_enqueue_script('promocodes', get_stylesheet_directory_uri(). '/js/promocodes.js');
+			wp_enqueue_script('promocodes', get_stylesheet_directory_uri(). '/js/pages/promocodes.js');
 		}
 
 
@@ -181,6 +193,12 @@ function avis_enqueue_scripts(){
 		if(get_page_template_slug() === $__TEMPLATESDIR.'cat_main.php'){
 			wp_enqueue_script('cta', get_stylesheet_directory_uri(). '/js/pages/cta.js');
 		}
+
+	// qr manager opinion
+		if(get_page_template_slug() === $__TEMPLATESDIR.'qr_opinion.php'){
+			wp_enqueue_script('cta', get_stylesheet_directory_uri(). '/js/pages/qr_opinion.js');
+		}
+		
 
 }
 
@@ -286,9 +304,20 @@ function add_promocode(){
 			wp_die();
 		}
 	}
-	$new_promocode = $avis_helper->add_promocode(json_encode($promocode_data));
-	$new_promocode = json_decode($new_promocode);
-	$new_promocode->data = $promocode_data;
+
+	$promocode_data['timesUsedMax'] = '100';
+
+	$new_promocode = (array) $avis_helper->request(
+		$avis_helper->api_path->organization->base .
+	    $avis_helper->avis_creds->organizationId .
+	    $avis_helper->api_path->organization->promo->base,
+	    true,
+	    json_encode($promocode_data),
+	    'POST'
+	);
+	
+	$new_promocode['return_url'] = get_cur_loc_url(64);
+
 	print_r(json_encode($new_promocode));
 	wp_die();
 }
@@ -297,8 +326,17 @@ add_action('wp_ajax_delete_promocode', 'delete_promocode');
 add_action('wp_ajax_nopriv_delete_promocode', 'delete_promocode');
 function delete_promocode(){
 	global $avis_helper;
-	$deleted_promocode = $avis_helper->delete_promocode($_POST['promocode_id']);
-	print_r($deleted_promocode);
+	$deleted_promocode = $avis_helper->request(
+		$avis_helper->api_path->organization->base .
+    	$avis_helper->avis_creds->organizationId .
+    	$avis_helper->api_path->organization->promo->base.
+    	$_POST['promocode_id'],
+    	true,
+    	false,
+    	'DELETE'
+	);
+
+	print_r(json_encode($deleted_promocode));
 	wp_die();
 }
 
@@ -543,13 +581,32 @@ function send_promocode_on_phone(){
 	global $avis_lang;
 
 	parse_str($_POST['data'], $promo_data);
-	$api_resp_decoded = json_decode($avis_helper->send_prmocode_mob($promo_data), true);
-	if($api_resp_decoded['success']){
-		$api_resp_decoded['message_loc'] = $avis_lang['success_send_promo_mob']; 	
+
+	$prep_data = json_encode(
+		array(
+			'phoneNumber' => str_replace('+', '', $promo_data['recipient'])
+		)
+	);
+
+	$api_path = $avis_helper->api_path->organization->base .
+      	$avis_helper->avis_creds->organizationId .
+      	$avis_helper->api_path->organization->promo->base .
+      	$promo_data['promocode_id'] .
+      	$avis_helper->api_path->organization->promo->sms->base;
+
+	$api_resp = $avis_helper->request($api_path, true, $prep_data, 'POST');
+
+	if($api_resp->errors){
+		print_r(json_encode(
+			array(
+			'success' => false,
+		)));
 	} else {
-		$api_resp_decoded['message_loc'] = $avis_lang['failure_send_promo_mob']; 
+		print_r(json_encode(
+			array(
+			'success' => true,
+		)));	
 	}
-	print_r(json_encode($api_resp_decoded));
 	wp_die();
 }
 
@@ -579,5 +636,31 @@ function avis_register(){
 	$reg_data['role'] = "ROLE_ADMIN";
 	$reg_resp = $avis_helper->register(json_encode($reg_data));
 	print_r($reg_resp);
+	wp_die();
+}
+
+
+// apply promocode
+
+add_action('wp_ajax_apply_promocode', 'apply_promocode');
+add_action('wp_ajax_nopriv_apply_promocode', 'apply_promocode');	
+function apply_promocode(){
+	global $avis_helper;
+
+	$api_path = $avis_helper->api_path->organization->base .
+      			$avis_helper->avis_creds->organizationId .
+      			$avis_helper->api_path->organization->promo->base .
+      			$avis_helper->api_path->organization->promo->apply->base . 
+      			$_POST['humenId'];
+
+  			
+    $apply_responce = $avis_helper->request(
+    	$api_path,
+    	true,
+    	false,
+    	'POST'
+    );
+
+    print_r(json_encode($apply_responce));
 	wp_die();
 }

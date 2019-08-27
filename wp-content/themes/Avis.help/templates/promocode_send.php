@@ -4,7 +4,14 @@
     wp_safe_redirect('/promocodes/');
  }
  get_header('account');
- $promocode_data = json_decode($avis_helper->get_promocode_by_id($_GET['promocode_id']));
+
+  $promocode_data = $avis_helper->request(
+      $avis_helper->api_path->organization->base .
+      $avis_helper->avis_creds->organizationId .
+      $avis_helper->api_path->organization->promo->base .
+      $_GET['promocode_id'],
+      true
+  );
 ?>
 <!-- <pre>
   <?php // print_r($promocode_data); ?>
@@ -17,14 +24,16 @@
         <div class="col-6">
           <div class="promo-info">
             <div class="promo-name">
-              <div class="table-icon-wrapper text-center"><i class="fas fa-<?php echo $promocode_data->message->iconCode; ?>"></i></div>
-              <span id="promo_name"><?php echo $promocode_data->message->name; ?></span>
+              <div class="table-icon-wrapper text-center">
+                <i class="fas fa-<?php echo $promocode_data->iconId; ?>"></i>
+              </div>
+              <span id="promo_name"><?php echo $promocode_data->name; ?></span>
             </div>
             <div class="promo-description">
-              <?php echo $promocode_data->message->description; ?>
+              <?php echo $promocode_data->description; ?>
             </div>
             <div class="promo-lifetime">
-              <?php echo $avis_lang['valid_for']; ?> <span><?php echo $promocode_data->message->lifeTime; ?></span> <?php echo $avis_lang['days']; ?>
+              <?php echo $avis_lang['valid_for']; ?> <span><?php echo $promocode_data->lifeTime; ?></span> <?php echo $avis_lang['days']; ?>
             </div>
           </div>
         </div>

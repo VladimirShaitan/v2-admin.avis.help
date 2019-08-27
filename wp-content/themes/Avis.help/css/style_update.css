@@ -60,6 +60,7 @@
     letter-spacing: .05px;
     text-align: center;
     background: none; 
+    text-transform: uppercase;
 }
 .promo-id-wrap form input::placeholder{
     color:#6c757d;
@@ -107,7 +108,7 @@ a.avis_submit_wrapper:hover{
 }
 
 .add-promo-form-wrapper form  textarea{
-    margin: 35px 0;
+    margin: 25px 0;
 }
 
 
@@ -117,7 +118,7 @@ a.avis_submit_wrapper:hover{
 }
 
 
-.add-promo-form-wrapper form input[name=lifeTime] {
+.add-promo-form-wrapper form input[name=daysToExpire] {
     width: 74px;
     text-align: center;
     padding: 10px;
@@ -358,7 +359,7 @@ div#table_reviews_wrapper .row:not(:first-child) {
 @media(max-width: 1500px){
 
     .promo-icons-wrapper ul{
-        height: 250px;
+        height: 230px;
         overflow-y: auto;
     }
 
@@ -383,4 +384,138 @@ div#table_reviews_wrapper .row:not(:first-child) {
     h1.add_promo_page_header{
         padding: 20px 0
     }
+}
+
+.apply_error {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+div#op_cats.show_anyway ul {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+#op_cats {
+    position: relative;
+    width: 80%;
+}
+
+#op_cats ul {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    z-index: -1;
+    margin-top: -35px;
+}
+
+#op_cats ul li {
+    text-align: left;
+    border-bottom: 2px solid #f5f5f5;
+    padding: 10px 15px;
+    font-size: 18px;
+    color: #9b9b9b;
+    display: flex;
+    justify-content: space-between;
+}
+
+#op_cats.open ul {
+    opacity: 1;
+    z-index: 1;
+    background: white;
+    box-shadow: 0 10px 17px -4px rgba(0, 0, 0, 0.3);
+}
+#op_cats #selected_value{
+    border: 0;
+    box-shadow: 0px 7px 20px 0px rgba(0,0,0,.1);
+    border-radius: 10px;
+    line-height: 1;
+    padding: 18px 15px;
+    font-weight: 500;
+    color: #9b9b9b;
+    background: white;
+    text-align: left;
+    margin-bottom: 30px;
+    font-family: 'Avenir';
+    font-size: 18px;
+}
+
+#op_cats #selected_value:after {
+    content: '';
+    display: block; 
+    margin-top: -4px;
+    pointer-events: none;
+    position: absolute;
+    -webkit-transform-origin: 66% 66%;
+    -ms-transform-origin: 66% 66%;
+    transform-origin: 66% 66%;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+
+    border-bottom: 2px solid #e95858;
+    border-right: 2px solid #e95858;
+    right: 7px;
+    width: 10px;
+    height: 10px;
+    transition: all 0.3s ease;
+    top: 25%;
+    right: 5%;
+    margin-top: 0;
+
+}
+#op_cats.open #selected_value:after{
+    transform: rotate(-135deg);
+}
+
+
+.create_op_cat input{
+    margin: 0!important;
+    padding: 0;
+    box-shadow: none;
+}
+
+.create_cat_submit, .save_edited{
+    font-weight: bold;
+    text-transform: uppercase;
+    color: black;
+    cursor: pointer;
+    user-select: none
+}
+.icons_holder{
+    user-select: none
+}
+#op_cats ul li:first-child{
+    padding: 0;
+}
+
+#op_cats .icons_holder span.func_btn{
+    cursor: pointer
+}
+#op_cats .icons_holder span.func_btn img {
+    width: 20px;
+    pointer-events: none
+}
+
+#op_cats ul li input:not([name=create_cat]) {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    pointer-events: none;
+    color: #9b9b9b
+}
+
+#op_cats ul li.add_qr_cat{
+    color: #e95858;
+    user-select: none;
+    cursor: pointer;
+}
+#add_opinion li, #add_opinion .current{cursor: pointer;}
+
+.no_arr:before, .no_arr:after {
+    display: none!important
 }

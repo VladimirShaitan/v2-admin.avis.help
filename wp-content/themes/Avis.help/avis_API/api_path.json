@@ -54,10 +54,19 @@
       },
       "branch_opinions": {
         "base": "/branch-opinions/"
+      },
+      "opinion_cat": {
+        "base": "/category/"
       }
     },
     "promo": {
-      "base": "/promo/"
+      "base": "/promo/",
+      "sms": {
+        "base": "/send-via-sms/"
+      },
+      "apply": {
+        "base": "proceed/"
+      }
     }
   },
   "user": {

@@ -26,14 +26,16 @@
 					"accept: */*",
 					"Content-Type: application/json",
                     "Connection: close",
-					"Authorization: ".$this->avis_creds->accessToken
+					"Authorization: ".$this->avis_creds->accessToken,
+                    "Accept-Language: " . getLoc()
 				);
 
                 $this->settings['request_authorized_header_file'] = array(
                     "accept: */*",
                     "Content-Type: multipart/form-data",
                     "Connection: close",
-                    "Authorization: ".$this->avis_creds->accessToken
+                    "Authorization: ".$this->avis_creds->accessToken,
+                    "Accept-Language: " . getLoc()
                 );
 
 
@@ -76,6 +78,8 @@
                 }
             }
             curl_setopt($ch, CURLOPT_HTTPHEADER, $req_headers);
+                /*print_r(curl_exec($ch));        
+                die();*/
             return curl_exec($ch);
         }
 
@@ -89,6 +93,9 @@
 
 
         public function request($key, $authorized = false , $data = false, $http_method = false) {
+/*            print_r($this->settings['request_authorized_header']);
+            wp_die();*/
+
 
             if($http_method === "GET" && !empty($data)){
                 $url = $this->path_constructor($key, $data);

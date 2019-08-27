@@ -4,11 +4,11 @@
   get_header('account');
   $rev_coockie = json_decode(base64_decode($_COOKIE['rev_cookie']));
 
-  $review_data = $avis_helper->get_single_review($rev_coockie->rev_id);
+/*  $review_data = $avis_helper->get_single_review($rev_coockie->rev_id);
   $chat_history = $avis_helper->getChatHistoryWeb($rev_coockie->rev_id);
   $promocodes = $avis_helper->get_user_promocodes();
   $viewed = $avis_helper->set_rev_viewed($rev_coockie->rev_id);
-  $anon_rev_arr = array(90,154,224);
+  $anon_rev_arr = array(90,154,224);*/
 
   if(!empty($review_data->imageUrl)){
     $img = $review_data->imageUrl;

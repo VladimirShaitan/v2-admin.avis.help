@@ -16,14 +16,14 @@ get_header('account');
         	<div class="add-promo-form-wrapper">
         		<form id="add-promocode-form">
         			<div>
-        				<input type="text" required name="name" placeholder="<?php echo $avis_lang['create_name']; ?>" autocomplete="off">
+        				<input type="text"  minlength="4" required name="name" placeholder="<?php echo $avis_lang['create_name']; ?>" autocomplete="off">
         			</div>
         			<div>
         				<textarea required name="description" maxlength="200" placeholder="<?php echo $avis_lang['desc_max']; ?>" rows="3" ></textarea>
         			</div>
         			<div class="vf">
         				<span><?php echo $avis_lang['valid_for']; ?></span>
-        				<input type="text" required value="30" name="lifeTime">
+        				<input type="text" required value="30" name="daysToExpire">
         				<span><?php echo $avis_lang['days']; ?></span>
         			</div>
         		</form>
@@ -35,7 +35,7 @@ get_header('account');
         		<ul class="list-unstyled clearfix m-0">
         			<?php foreach ( $icons as  $icon) { ?>
 	                  <li class="promocode-item">
-	                    <input form="add-promocode-form" type="radio" <?php if($icon === $icons[0]){echo 'checked';}?> id="promocode-<?php echo $icon; ?>" value="<?php echo $icon; ?>" name="icon" required>
+	                    <input form="add-promocode-form" type="radio" <?php if($icon === $icons[0]){echo 'checked';}?> id="promocode-<?php echo $icon; ?>" value="<?php echo $icon; ?>" name="iconId" required>
 	                    <label for="promocode-<?php echo $icon; ?>">
 	                    <div class="promo-prview-wrapper">
 	                      <div>

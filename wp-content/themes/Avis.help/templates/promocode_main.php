@@ -9,12 +9,10 @@ get_header('account');
     $avis_helper->avis_creds->organizationId .
     $avis_helper->api_path->organization->promo->base,
     true
- )
- // $send_promo_url = get_cur_loc_url(277);
+ );
+ $promocodes = array_reverse($promocodes);
+ $send_promo_url = get_cur_loc_url(277);
 ?>  
-<!-- <pre>
-  <?php // print_r($promocodes); ?>
-</pre> -->
 <script type="text/javascript">
   let promocodes_cuont = <?php echo count($promocodes); ?>
 </script>
@@ -22,9 +20,11 @@ get_header('account');
         <div class="col-3 p-0">
           <div class="subtitle"><?php echo $avis_lang['apply_promo']; ?></div>
           <div class="promo-id-wrap text-center">
+            <div class="fake_disable hidden"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>
             <div class="promo-id-title"><?php echo $avis_lang['enter_promo_id']; ?></div>
-            <form class="apply-promocode">
+            <form id="apply-promocode" class="apply-promocode">
               <span></span>
+              <input type="text" name="" maxlength="1" placeholder="—">
               <input type="text" name="" maxlength="1" placeholder="—">
               <input type="text" name="" maxlength="1" placeholder="—">
               <input type="text" name="" maxlength="1" placeholder="—">
@@ -33,7 +33,10 @@ get_header('account');
               <span></span>
             </form>
             <input type="text" class="hidden fake-apply">
-            <input type="submit" name="promo-id" value="<?php echo $avis_lang['apply']; ?>" class="avis_submit">
+            <input type="submit" form="apply-promocode" name="promo-id" value="<?php echo $avis_lang['apply']; ?>" class="avis_submit">
+            <div class="apply_error hidden text-danger text-uppercase h6">
+              <b><?php echo $avis_lang['apply_error'];?></b>
+            </div>
           </div>
         </div>
         <div class="col-9 full-height promocode-table">
@@ -46,9 +49,9 @@ get_header('account');
                   <tr>
                     <th></th>
                     <th><?php echo $avis_lang['name_promo']; ?></th>
-                    <th><?php echo $avis_lang['valid_for']; ?></th> 
-                    <th></th>
-                    <th></th>
+                    <th class="no_arr"><?php echo $avis_lang['valid_for']; ?></th> 
+                    <th class="no_arr"></th>
+                    <th class="no_arr"></th>
                   </tr>
                 </thead>  
                 <tbody>
@@ -62,7 +65,7 @@ get_header('account');
                       <td><?php echo $promocode->name; ?></td>
                       <td><?php echo $promocode->lifeTime; ?></td> 
                       <td class="text-right">
-                        <span class="delete_promo" data-promo-id="<?php echo $promocode->id; ?>">
+                        <span class="delete_promo" data-promo-id="<?php   echo $promocode->id; ?>">
                           <i class="fas fa-trash"></i>
                         </span>
                       </td>
